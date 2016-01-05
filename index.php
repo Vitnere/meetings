@@ -113,7 +113,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = 'meetings';
+	$application_folder = 'app';
 
 /*
  *---------------------------------------------------------------
