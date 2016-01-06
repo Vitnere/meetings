@@ -38,6 +38,8 @@
         tr:first-child td:last-child { border-top-right-radius: 10px!important;}
         tr:last-child td:first-child { border-bottom-left-radius: 10px!important; }
         tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
+        #cover{margin-left: -3%;width:100%;}
+        #main{height:800px;background-color:#ffffff;margin:-30px 3px 0 3px;}
     </style>
 </head>
 <!-- Navigation -->
@@ -121,7 +123,28 @@
             <?= $content ?>
         </div>
     </div>
+    <br />
     <!-- /.row -->
+
+    <!--cover-->
+    <div class="row">
+        <div class="col-lg-12" id="cover">
+            <img src="http://i.imgur.com/UgTtpka.png" alt="img">
+        </div>
+    </div>     
+    <!--/. cover-->
+
+   <!--background-->
+    <!--<div class="jumbotron">
+    </div>-->
+    <!--/. background-->
+
+    <!--main-->
+    <div class="col-lg-12" id="main">
+        <p>test</p>                                 
+
+    </div>
+    <!--/.main-->
 
     <!-- Footer -->
     <footer>
