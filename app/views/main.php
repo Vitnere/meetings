@@ -38,8 +38,13 @@
         tr:first-child td:last-child { border-top-right-radius: 10px!important;}
         tr:last-child td:first-child { border-bottom-left-radius: 10px!important; }
         tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
-        #cover{margin-left: -3%;width:100%;}
+        #cover{width:100%;padding: 0px!important}
         #main{height:800px;background-color:#ffffff;margin:-30px 3px 0 3px;}
+        #back{height: 900px;position: relative;width:100%;background-color:#CECECE;
+        display: block;float:left;margin: 0 0px 0 0px; }
+        #footer1{background-color: ;height: 62px;}
+        #footer2{background: url(/img/footer_background.jpg) repeat left bottom;
+            height: 62px;}
     </style>
 </head>
 <!-- Navigation -->
@@ -106,7 +111,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container" id="back">
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
         <div class="col-lg-12">
@@ -127,17 +132,12 @@
     <!-- /.row -->
 
     <!--cover-->
-    <div class="row">
+   <div class="row">
         <div class="col-lg-12" id="cover">
             <img src="http://i.imgur.com/UgTtpka.png" alt="img">
         </div>
     </div>     
     <!--/. cover-->
-
-   <!--background-->
-    <!--<div class="jumbotron">
-    </div>-->
-    <!--/. background-->
 
     <!--main-->
     <div class="col-lg-12" id="main">
@@ -149,10 +149,23 @@
     <!-- Footer -->
     <footer>
         <div class="row">
+            <div class="col-lg-12" id="footer1">
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12" id="footer2">
+                
+            </div>   
+        </div>
+
+        <div class="row">
             <div class="col-lg-12">
                 <p>Copyright &copy; Meetings <?=date('Y')?></p>
             </div>
         </div>
+
     </footer>
 </div>
 <!-- /.container -->
