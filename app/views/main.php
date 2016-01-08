@@ -2,6 +2,7 @@
 <html lang="en" style="position: relative; min-height: 100%;">
 <head>
     <title><?= $document_title ?></title>
+    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
@@ -21,31 +22,7 @@
 
         });
     </script>
-    <style>
-        .nav li a{
-            color:#000!important;
-            padding-bottom: 25px!important;
-        }
-        .navbar-inverse{
-            border-color:#000!important;
-        }
-        a.navbar-brand{
-            padding-bottom: 10px!important;
-        }
-        table { border-collapse: separate!important; }
-        td { border: solid 1px #666666!important; }
-        tr:first-child td:first-child { border-top-left-radius: 10px!important; }
-        tr:first-child td:last-child { border-top-right-radius: 10px!important;}
-        tr:last-child td:first-child { border-bottom-left-radius: 10px!important; }
-        tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
-        #cover{width:100%;padding: 0px!important}
-        #main{height:800px;background-color:#ffffff;margin:-30px 3px 0 3px;}
-        #back{height: 900px;position: relative;width:100%;background-color:#CECECE;
-        display: block;float:left;margin: 0 0px 0 0px; }
-        #footer1{background-color: ;height: 62px;}
-        #footer2{background: url(/img/footer_background.jpg) repeat left bottom;
-            height: 62px;}
-    </style>
+
 </head>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -141,8 +118,36 @@
 
     <!--main-->
     <div class="col-lg-12" id="main">
-        <p>test</p>                                 
-
+        <div class="col-lg-8">
+            <h4>GO INTERNATIONAL - ICT BROKERAGE EVENT 2015</h4>   
+            <br />
+            <p>Get connected and take advantage of ICT networking 
+            opportunities by discovering new international partnerships 
+            to grow your business.</p>  
+            <br />
+            <p>Enterprise Europe Network in Macedonia is pleased 
+            to invite you to participate on business meetings that will 
+            take place within Go International -<span id="blue_text"> ICT Brokerage Event 2015 
+            on November 13 in Skopje in Hotel Continental, Skopje.</span></p>
+            <br />
+            <p>The event is free of charge and targets companies and organizations
+             working in the ICT sector interested in presenting and discovering
+              new products and services, exploring new business opportunities, 
+              finding new potential clients and partners for creating new business 
+              opportunities and industry partnerships for reaching international
+               markets.</p>
+            <br />
+            <p>The Go International - ICT Brokerage Event 2015 is organized by the
+             Foundation for Management and Industrial Research, Youth Entrepreneurial 
+             Service Foundation and cooperating network partners: University of Novi Sad 
+             - Serbia, ARC Consulting – Bulgaria and Chamber of Economy - Montenegro.</p>
+            <br />
+            <p>The event is supported by the Ministry of Economy of the Republic 
+            of Macedonia and CEI – Central European Initiative.</p>  
+        </div>  
+        <div class="col-lg-4">
+            
+        </div>    
     </div>
     <!--/.main-->
 
@@ -158,6 +163,14 @@
             <div class="col-lg-12" id="footer2">
                 
             </div>   
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12" id="footer3">
+                <p><a href="http://www.talkb2b.net/">TalkB2B.net</a>
+                 | The Brokerage Event Platform |
+                 <a href="http://goict.talkb2b.net/#privacy_policy">Privacy Policy</a> </p>
+            </div>
         </div>
 
         <div class="row">
