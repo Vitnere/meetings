@@ -25,8 +25,9 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
 
 #main{height:1100px;background-color:#ffffff;margin:-30px 3px 0 3px;
     z-index: 1000;position: relative;}
+#blue_text{color:#006699;}
 
-#back{height: 1290px;position: relative;width:100%;
+#back{height: 1612px;position: relative;width:100%;
     background-color:#CECECE;}
 
 
