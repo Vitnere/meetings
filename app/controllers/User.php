@@ -94,7 +94,6 @@ class User extends MY_Controller
         $this->content = $this->view('user/index', $data);
         $this->_show();
     }
-
 }
 
 ?>
