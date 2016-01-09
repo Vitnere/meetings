@@ -23,8 +23,13 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
 /*basic elements*/
 #cover{width:100%;padding: 0px!important;}
 
+
+/*main*/
 #main{height:1100px;background-color:#ffffff;margin:-30px 3px 0 3px;
     z-index: 1000;position: relative;}
+#blue_text{color:#006699;}
+#main_right{margin-top: 20px;}
+
 
 #back{height: 1290px;position: relative;width:100%;
     background-color:#CECECE;}
