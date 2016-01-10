@@ -5,9 +5,9 @@ if (!defined('BASEPATH'))
 
 class Get_model extends CI_Model
 {
-	function getData($page)
+	function getData($id)
 	{
-		$query=$this->db->get_where(TBL_MAIN_MAIN,array("page"=>$page));
+		$query=$this->db->get_where(TBL_MAIN,array("id"=>$id));
 		return $query->result();
 	}
 }
