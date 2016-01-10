@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php echo doctype("html5"); ?>
+
 <html lang="en" style="position: relative; min-height: 100%;">
 <head>
     <title><?= $document_title ?></title>
@@ -111,7 +112,7 @@
     <!--cover-->
    <div class="row">
         <div class="col-lg-12" id="cover">
-            <img src="http://i.imgur.com/UgTtpka.png" alt="img">
+            <?php echo img('assets/img/cover.png'); ?>
         </div>
     </div>     
     <!--/. cover-->
@@ -121,7 +122,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                <h1>GO INTERNATIONAL - ICT <br />BROKERAGE EVENT 2015</h1>   
+                <?php echo heading("GO INTERNATIONAL - ICT <br />
+                BROKERAGE EVENT 2015",1);?>   
                 <br />
                 <p>Get connected and take advantage of ICT networking 
                 opportunities by discovering new international partnerships 
