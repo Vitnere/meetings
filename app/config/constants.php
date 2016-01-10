@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /------------------------------------------------------------------------
 */
 define("TBL_USERS", "users");
+define("TBL_MAIN_MAIN", "main_main");
 
 /*
 |--------------------------------------------------------------------------
