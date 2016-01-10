@@ -5,10 +5,10 @@ if (!defined('BASEPATH'))
 
 class Get_model extends CI_Model
 {
-	function getData($id)
+	function getData($id=1)
 	{
 		$query=$this->db->get_where(TBL_MAIN,array("id"=>$id));
-		return $query->result();
+		return $query->first_row();
 	}
 }
 
