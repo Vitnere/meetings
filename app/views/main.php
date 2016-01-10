@@ -117,14 +117,25 @@
     </div>     
     <!--/. cover-->
 
-    <!--main-->
+    <!--main-->   
     <div class="col-lg-12" id="main">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                <?php echo heading("GO INTERNATIONAL - ICT <br />
-                BROKERAGE EVENT 2015",1);?>   
-                <br />
+
+        <?php 
+        foreach ($results as $row) 
+        {
+           $title=$row->title;
+           $text_left=$row->text_left;
+           $text_right=$row->text_right;
+        }
+         echo Heading($title,1);
+        ?>  
+        <p><?php echo $text_left; ?> </p> 
+        <p><?php echo $text_right; ?> </p>
+                   
+               <!-- <br />
                 <p>Get connected and take advantage of ICT networking 
                 opportunities by discovering new international partnerships 
                 to grow your business.</p>  
@@ -158,7 +169,7 @@
                     <span>89</span><br />   
                    <span>339</span><br />
                     <span>165</span><br />
-                </div>    
+                </div>   --> 
             </div>
         </div>
     </div>
