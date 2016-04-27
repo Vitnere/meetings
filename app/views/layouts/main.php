@@ -2,7 +2,7 @@
 
 <html lang="en" style="position: relative; min-height: 100%;">
 <head>
-    <title><?= $document_title ?></title>
+    <title><?= $document_title ?>>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
     <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -36,28 +36,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?=site_url('index/index')?>"><img src="<?=base_url('media/img/logo-sm.png')?>"></a>
+
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<?=site_url('site/index')?>">Home</a>
+                    <a href="<?=base_url()?>">Home</a>
                 </li>
                 <li>
-                    <a href="<?=site_url('site/index')?>">How it works</a>
+                    <a href="<?=base_url()?>Home/show_second">How it works</a>
                 </li>
                 <li>
-                    <a href="<?=site_url('site/index')?>">Bilateral Meeting-How it works</a>
+                    <a href="<?php echo base_url()?>Home/show_third">Bilateral Meeting-How it works</a>
                 </li>
                 <li>
-                    <a href="<?=site_url('site/index')?>">Programme</a>
+                    <a href="<?=base_url()?>Home/show_fourth">Programme</a>
                 </li>
                 <li>
-                    <a href="<?=site_url('site/index')?>">FAQ</a>
+                    <a href="<?=base_url()?>Home/show_fifth">FAQ</a>
                 </li>
                 <li>
-                    <a href="<?=site_url('site/index')?>">Contact</a>
+                    <a href="<?=base_url()?>Home/show_sixth">Contact</a>
                 </li>
                 <?php if (isset($loged_name)) { ?>
                     <li>
@@ -78,7 +78,7 @@
                     </li>
                 <?php } else  { ?>
                     <li>
-                        <a href="<?=site_url('user/login')?>">Log in</a>
+                        <a href="<a href="<?=base_url('user/login')?>">Log in</a>
                     </li>
                 <?php } ?>
             </ul>
@@ -87,6 +87,9 @@
     </div>
     <!-- /.container -->
 </nav>
+
+<a class="navbar-brand" href="<?=site_url('index/index')?>">
+    <img src="<?=base_url('assets/img/cover.png')?>"></a>
 
 <!-- Page Content -->
 <div class="container" id="back">
@@ -103,10 +106,13 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <?= $content ?>
+
         </div>
     </div>
     <!--/.main-->
+
+<?php $this->load->view($content); ?>
+
 
     <!-- Footer -->
 </div>
