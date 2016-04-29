@@ -60,30 +60,14 @@
                 <li>
                     <a href="<?php echo base_url()?>Home/show_sixth">Contact</a>
                 </li>
-                <?php if (isset($loged_name)) { ?>
-                    <li>
-                        <a href="<?php echo base_url('user/index')?>">Profile</a>
-                    </li>
-                    <?php if ($loged_admin==1) { ?>
-                        <li>
-                            <a href="<?php echo base_url('user/register')?>">Register</a>
-                        </li>
-                    <?php } ?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome: @<?= $loged_name ?> <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="<?php echo base_url('user/logout')?>">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                <?php } else  { ?>
-                    <li>
-                        <a href="<?php echo base_url()?>User/login">Log in</a>
+                <?php if($this->session->userdata('logged_in')) : ?>
+                    <!--<li>?php echo $this->session->userdata('username'); ?></li>-->
+                    <li><a href="<?php echo base_url()?>User/logout">Log out</a></li>
+                <?php else : ?>
 
-                    </li>
-                <?php } ?>
-            </ul>
+                    <li><a href="<?php echo base_url()?>User/login">Log in</a></li>
+
+                <?php endif; ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -92,7 +76,6 @@
 
 <a class="navbar-brand" href="<?=site_url('index/index')?>">
     <img src="<?=base_url('assets/img/cover.png')?>"></a>
-
 <!-- Page Content -->
 <div class="container" id="back">
     <!-- Page Heading/Breadcrumbs -->
@@ -114,6 +97,8 @@
     <!--/.main-->
 
 <?php $this->load->view($content); ?>
+
+
 
 
     <!-- Footer -->

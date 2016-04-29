@@ -12,6 +12,38 @@
 
 
 <body>
+<!--flashdata mesages-->
+
+<!--registration sucsess-->
+<?php if($this->session->flashdata('registered')) : ?>
+<p class="alert alert-dismissable alert-success">
+    <?php echo $this->session->flashdata('registered');?>
+</p>
+<?php endif; ?>
+
+
+<!--login sucsess-->
+<?php if($this->session->flashdata('login_success')) : ?>
+<p class="alert alert-dismissable alert-success">
+    <?php echo $this->session->flashdata('login_success');?>
+</p>
+<?php endif; ?>
+
+<!--log out-->
+<?php if($this->session->flashdata('logged_out')) : ?>
+    <p class="alert alert-dismissable alert-success">
+        <?php echo $this->session->flashdata('logged_out');?>
+    </p>
+<?php endif; ?>
+
+<!--no access-->
+<?php if($this->session->flashdata('noaccess')) : ?>
+    <p class="alert alert-dismissable alert-danger">
+        <?php echo $this->session->flashdata('noaccess');?>
+    </p>
+<?php endif; ?>
+<!--flashdata mesages close-->
+
 <div class="container-fluid" id="main_home">
     <div class="row-fluid">
 
@@ -56,6 +88,4 @@
 
     </div>
 </footer>
-
-
 

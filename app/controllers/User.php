@@ -13,87 +13,94 @@ class User extends MY_Controller
 
     public function register()
     {
-        $this->admin_access();
-        $this->title = "Register a new user";
-        $data = array();
-        $this->content = $this->view('user/register', $data);
-        $this->_show();
+        /*validation rules*/
+        $this->form_validation->set_rules('first_name','First_Name', 'trim|required|max_length[50]|min_length[2]');
+        $this->form_validation->set_rules('last_name','Last_Name','trim|required|max_length[50]|min_length[2]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[100]|min_length[5]|valid_email');
+        $this->form_validation->set_rules('username','Username','trim|required|max_length[20]|min_length[4]|is_unique[users.username]');
+        $this->form_validation->set_rules('password','Password','trim|required|max_length[50]|min_length[6]');
+        $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[2]|matches[password]');
+
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('users/register');
+
+        }
+        else
+        {
+            if($this->User_model->create_member())
+            {
+                $this->session->set_flashdata('registered','You are now registered and can log in');
+                redirect('home/index');
+            }
+        }
     }
+
 
     public function login()
     {
-        $this->free_access();
-        $this->title = "Login";
-        $data = array();
-        $this->content = $this->view('user/login', $data);
-        $this->_show();
-    }
+        /*validation*/
+        $this->form_validation->set_rules('username','Username','trim|required|min_length[3]');
+        $this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[50]');
 
-    public function ajaxLogin()
-    {
-        $email = trim($this->input->post('email'));
-        $password = trim($this->input->post('password'));
+        if($this->form_validation->run() == FALSE)
+        {
+             $this->load->view('users/login');
+        }
 
-        $user = $this->user_model->checkLogin($email, $password);
+        else
+        {
+            //Get from post
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
 
-        if (!empty($user)) {
-            $data = array(
-                'user' => $user->id
-            );
-            $this->session->set_userdata($data);
-            echo $user->id;
+            $user_id = $this->User_model->login_user($username, $password);
+
+            //Validate user
+            if($user_id)
+            {
+                //Create array of user data
+                $user_data=array(
+                    'user_id'=>$user_id,
+                    'username'=>$username,
+                    'logged_in'=>true
+                );
+
+
+                $this->session->set_userdata($user_data);
+                $this->session->set_flashdata('login_success', 'You are now logged in');
+                redirect('home/index');
+            } else {
+                //Set error
+                $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
+                redirect('home/index');
+            }
         }
     }
-
-    public function ajaxRegister()
-    {
-        $email = trim($this->input->post('email'));
-        $password = trim($this->input->post('password'));
-        $first_name = trim($this->input->post('first_name'));
-        $last_name = trim($this->input->post('last_name'));
-        if(valid_mail($email) && strlen($password)>5 && strlen($last_name)>5 && strlen($first_name)>5) {
-            $user = $this->user_model->checkRegister($email, $password, $first_name,last_name);
-
-            if (!empty($user)) {
-                echo true;
-            }
-            else {
-                echo false;
-            }
-        }
-        echo false;
-    }
-    public function ajaxChangeEmail(){
-        $email = trim($this->input->post('email'));
-        if(valid_mail($email)) {
-            $user = $this->user_model->changeEmail($email,$this->session->userdata('user'));
-
-            if (!empty($user)) {
-                echo true;
-            }
-            else {
-                echo false;
-            }
-        }
-        echo false;
-    }
-
 
     public function logout()
     {
-        $this->session->unset_userdata('user');
-        redirect('user/index');
+        //unset session data
+        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('username');
+        $this->session->sess_destroy();
+        redirect('home/index');
+
     }
 
 
-    public function index()
-    {
-        $this->limit_access();
-        $user = $this->user_model->get_user($this->session->userdata('user'));
-        $data = array('user_email' => $user->email);
-        $this->content = $this->view('user/index', $data);
-        $this->_show();
-    }
+
+
+
+
+
+
+
+
+
+
 }
 
 ?>
