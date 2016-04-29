@@ -2,7 +2,7 @@
 
 <html lang="en" style="position: relative; min-height: 100%;">
 <head>
-    <title><?= $document_title ?>>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
+    <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
     <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -23,6 +23,7 @@
 
         });
     </script>
+
 
 </head>
 <!-- Navigation -->
@@ -51,34 +52,35 @@
                     <a href="<?php echo base_url()?>Home/show_third">Bilateral Meeting-How it works</a>
                 </li>
                 <li>
-                    <a href="<?=base_url()?>Home/show_fourth">Programme</a>
+                    <a href="<?php echo base_url()?>Home/show_fourth">Programme</a>
                 </li>
                 <li>
-                    <a href="<?=base_url()?>Home/show_fifth">FAQ</a>
+                    <a href="<?php echo base_url()?>Home/show_fifth">FAQ</a>
                 </li>
                 <li>
-                    <a href="<?=base_url()?>Home/show_sixth">Contact</a>
+                    <a href="<?php echo base_url()?>Home/show_sixth">Contact</a>
                 </li>
                 <?php if (isset($loged_name)) { ?>
                     <li>
-                        <a href="<?=site_url('user/index')?>">Profile</a>
+                        <a href="<?php echo base_url('user/index')?>">Profile</a>
                     </li>
                     <?php if ($loged_admin==1) { ?>
                         <li>
-                            <a href="<?=site_url('user/register')?>">Register</a>
+                            <a href="<?php echo base_url('user/register')?>">Register</a>
                         </li>
                     <?php } ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome: @<?= $loged_name ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="<?=site_url('user/logout')?>">Logout</a>
+                                <a href="<?php echo base_url('user/logout')?>">Logout</a>
                             </li>
                         </ul>
                     </li>
                 <?php } else  { ?>
                     <li>
-                        <a href="<a href="<?=base_url('user/login')?>">Log in</a>
+                        <a href="<?php echo base_url()?>User/login">Log in</a>
+
                     </li>
                 <?php } ?>
             </ul>
