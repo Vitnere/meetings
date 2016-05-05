@@ -12,40 +12,42 @@
 
 
 <body>
-<!--flashdata mesages-->
-
-<!--registration sucsess-->
-<?php if($this->session->flashdata('registered')) : ?>
-<p class="alert alert-dismissable alert-success">
-    <?php echo $this->session->flashdata('registered');?>
-</p>
-<?php endif; ?>
-
-
-<!--login sucsess-->
-<?php if($this->session->flashdata('login_success')) : ?>
-<p class="alert alert-dismissable alert-success">
-    <?php echo $this->session->flashdata('login_success');?>
-</p>
-<?php endif; ?>
-
-<!--log out-->
-<?php if($this->session->flashdata('logged_out')) : ?>
-    <p class="alert alert-dismissable alert-success">
-        <?php echo $this->session->flashdata('logged_out');?>
-    </p>
-<?php endif; ?>
-
-<!--no access-->
-<?php if($this->session->flashdata('noaccess')) : ?>
-    <p class="alert alert-dismissable alert-danger">
-        <?php echo $this->session->flashdata('noaccess');?>
-    </p>
-<?php endif; ?>
-<!--flashdata mesages close-->
 
 <div class="container-fluid" id="main_home">
     <div class="row-fluid">
+
+        <!--flashdata mesages-->
+
+        <!--registration sucsess-->
+        <?php if($this->session->flashdata('registered')) : ?>
+            <p class="alert alert-dismissable alert-success">
+                <?php echo $this->session->flashdata('registered');?>
+            </p>
+        <?php endif; ?>
+
+
+        <!--login sucsess-->
+        <?php if($this->session->flashdata('login_success')) : ?>
+            <p class="alert alert-dismissable alert-success">
+                <?php echo $this->session->flashdata('login_success');?>
+            </p>
+        <?php endif; ?>
+
+
+        <!--log out-->
+        <?php if($this->session->flashdata('logged_out')) : ?>
+            <p class="alert alert-dismissable alert-success">
+                <?php echo $this->session->flashdata('logged_out');?>
+            </p>
+        <?php endif; ?>
+
+        <!--no access-->
+        <?php if($this->session->flashdata('noaccess')) : ?>
+            <p class="alert alert-dismissable alert-danger">
+                <?php echo $this->session->flashdata('noaccess');?>
+            </p>
+        <?php endif; ?>
+        <!--flashdata mesages close-->
 
         <div class="col-md-8"><!--div left-->
             <h2>GO INTERNATIONAL - ICT BROKERAGE EVENT 2015</h2>
@@ -69,14 +71,37 @@
                 of Economy of the Republic of Macedonia and CEI – Central European Initiative.
             </p>
         </div><!--div left close-->
+        <br><br>
 
         <div class=col-md-4><!--div right-->
-
+            <?php echo form_open_multipart('Photo/save/'); ?>
+            <table class="table">
+                <tr>
+                    <td>Title</td>
+                    <td><?php echo form_input('title'); ?></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><?php echo form_upload('pic'); ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><?php echo form_submit('submit', 'Save', 'class="btn btn-primary"'); ?></td>
+                </tr>
+            </table>
         </div><!--div right close-->
-
 
     </div><!--div row-fluid close-->
 </div><!--div container fluid close-->
+
+
+
+
+
+
+
+
+
 </body>
 
 <footer>

@@ -86,6 +86,7 @@ class User extends MY_Controller
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
         $this->session->sess_destroy();
+
         redirect('home/index');
 
     }
