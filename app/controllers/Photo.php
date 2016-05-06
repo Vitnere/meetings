@@ -14,19 +14,21 @@ class Photo extends CI_Controller {
     }
     public function save()
     {
-        $url = $this->do_upload();
+        $file_name = $this->do_upload();
         $title = $_POST["title"];
-        $this->Photo_model->save($title, $url);
+        $this->Photo_model->save($title, $file_name);
+        redirect('home/index');
     }
     private function do_upload()
     {
         $type = explode('.', $_FILES["pic"]["name"]);
         $type = strtolower($type[count($type)-1]);
-        $url = "./assets/img".uniqid(rand()).'.'.$type;
+        $file_name = uniqid(rand()).'.'.$type;
+        $url = "./data/baners/".$file_name;
         if(in_array($type, array("jpg", "jpeg", "gif", "png")))
             if(is_uploaded_file($_FILES["pic"]["tmp_name"]))
                 if(move_uploaded_file($_FILES["pic"]["tmp_name"],$url))
-                    return $url;
+                    return $file_name;
         return "";
     }
 }
