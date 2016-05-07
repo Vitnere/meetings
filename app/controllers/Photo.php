@@ -17,6 +17,8 @@ class Photo extends CI_Controller {
         $file_name = $this->do_upload();
         $title = $_POST["title"];
         $this->Photo_model->save($title, $file_name);
+
+        $this->session->set_flashdata('saved','You picture is saved!');
         redirect('home/index');
     }
     private function do_upload()
@@ -31,4 +33,5 @@ class Photo extends CI_Controller {
                     return $file_name;
         return "";
     }
+
 }

@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
-        <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-        <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
-        <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
-        <script src="<?=base_url()?>assets/js/jquery.js"></script>
-        <script src="<?=base_url()?>assets/js/jquery.ui.shake.js"></script>
-        <script src="<?=base_url()?>assets/js/bootstrap.js"></script>
+    <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
+    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.ui.shake.js"></script>
+    <script src="<?=base_url()?>assets/js/bootstrap.js"></script>
 </head>
 
 <!--navbar-->
@@ -96,8 +96,8 @@
 
             <!--Submit Buttons-->
             <?php $data = array("value" => "Logout",
-                                "name"  => "submit",
-                                "class" => "btn btn-primary"); ?>
+                "name"  => "submit",
+                "class" => "btn btn-primary"); ?>
             <?php echo form_submit($data); ?>
             <?php echo form_close(); ?>
 

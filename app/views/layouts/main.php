@@ -96,12 +96,33 @@
     </div>
     <!--/.main-->
 
-<?php $this->load->view($content); ?>
+    <div class="container-fluid" id="main_home">
+        <div class="row-fluid">
+            <div class="col-md-8"><!--div left-->
+                <?php $this->load->view($content); ?>
+            </div><!--div left close-->
+
+            <div class=col-md-4><!--div right-->
+                <?php /*$this->load->view($pic); */?>
+            </div><!--div right close-->
+
+        </div><!--div row-fluid close-->
+    </div><!--div container fluid close-->
 
 
 
 
     <!-- Footer -->
+    <footer>
+        <div class="footer-shape"><!--footer-->
+            <p>
+                <a href="http://www.talkb2b.net" target="_blank">TalkB2B.net</a> | The Brokerage Event Platform |
+                <a class="model-dialog" href="#privacy_policy">Privacy Policy
+                </a>
+
+        </div>
+    </footer>
+
 </div>
 <!-- /.container -->
 </body>
