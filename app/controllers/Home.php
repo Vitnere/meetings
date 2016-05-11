@@ -6,13 +6,31 @@
  * Time: 9:16 AM
  */
 
-class Home extends CI_Controller
+class Home extends MY_Controller
 {
     public function index()//Show home page
     {
-        $data['content'] = 'pages/home';
+        $data = array(
+            'content' => 'pages/home',
+            'pic' => 'pictures/pform',
+        );
+        /*$data['content'] ='pages/home' ;
+        $data['pic'] ='pictures/pform' ;*/
+
+
+        $this->load->view('pages/home');
+
+
         $this->load->view('layouts/main',$data);
     }
+
+    /*public function right()
+    {
+        $data['pic'] ='pictures/pform' ;
+        $this->load->view('pictures/pform',$data);
+
+        $this->load->view('layouts/main',$data);
+    }*/
 
 
     public function show_second()//show how it works

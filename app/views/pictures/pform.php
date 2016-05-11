@@ -1,3 +1,4 @@
+<p>Add photos to area right</p>
 <?php echo form_open_multipart('Photo/save/'); ?>
 <table class="table">
     <tr>

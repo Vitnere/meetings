@@ -74,7 +74,7 @@
     <!-- /.container -->
 </nav>
 
-<a class="navbar-brand" href="<?=site_url('index/index')?>">
+<a class="navbar-brand" id="cover" href="<?php echo base_url()?>">
     <img src="<?=base_url('assets/img/cover.png')?>"></a>
 <!-- Page Content -->
 <div class="container" id="back">
@@ -98,18 +98,20 @@
 
     <div class="container-fluid" id="main_home">
         <div class="row-fluid">
+
             <div class="col-md-8"><!--div left-->
                 <?php $this->load->view($content); ?>
             </div><!--div left close-->
 
-            <div class=col-md-4><!--div right-->
-                <?php /*$this->load->view($pic); */?>
-            </div><!--div right close-->
+
+                <div class="col-md-4" id="right"><!--div right-->
+                    <?php $this->load->view($pic); ?>
+
+                </div><!--div right close-->
+
 
         </div><!--div row-fluid close-->
     </div><!--div container fluid close-->
-
-
 
 
     <!-- Footer -->
@@ -122,7 +124,6 @@
 
         </div>
     </footer>
-
 </div>
 <!-- /.container -->
 </body>

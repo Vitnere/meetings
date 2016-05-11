@@ -21,19 +21,14 @@ tr:last-child td:first-child { border-bottom-left-radius: 10px!important; }
 tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
 
 /*basic elements*/
-#cover{width:100%;padding: 0px!important;}
+#cover{width:100%;padding-left: 0px;!important;}
 
 
 /*main*/
-#main{height:1200px;background-color:red;margin:-30px 3px 0 3px;
-    z-index: 1000;position: relative;}
-#blue_text{color:#006699;}
-#main_right{margin-top: 20px;}
+
+#right{margin-top: 4%;}
 #main_home{margin-top:22%;height:90%;width:100%;background-color: #FFFFFF}
-
-
-#back{height: 600%;position: relative;width:100%;
-    background-color:#CECECE;z-index: -1;}
+ #back{height: 600%;position: relative;width:100%;  background-color:#CECECE;z-index:-1;}
 
 
 /*footer*/

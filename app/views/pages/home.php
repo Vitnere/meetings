@@ -30,8 +30,8 @@
         <?php endif; ?>
     <!--flashdata mesages close-->
 
-            <h2>GO INTERNATIONAL - ICT BROKERAGE EVENT 2015</h2>
-            <p>Get connected and take advantage of ICT networking opportunities
+    <h2>GO INTERNATIONAL - ICT BROKERAGE EVENT 2015</h2>
+    <p>Get connected and take advantage of ICT networking opportunities
                 by discovering new international partnerships to grow your business.
 
                 Enterprise Europe Network in Macedonia is pleased to invite you to
@@ -49,25 +49,7 @@
                 cooperating network partners: University of Novi Sad - Serbia, ARC Consulting â€“
                 Bulgaria and Chamber of Economy - Montenegro.The event is supported by the Ministry
                 of Economy of the Republic of Macedonia and CEI â€“ Central European Initiative.
-            </p>
-
-
-    <?php echo form_open_multipart('Photo/save/'); ?>
-    <table class="table">
-        <tr>
-            <td>Title</td>
-            <td><?php echo form_input('title'); ?></td>
-        </tr>
-        <tr>
-            <td>Image</td>
-            <td><?php echo form_upload('pic'); ?></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><?php echo form_submit('submit', 'Save', 'class="btn btn-primary"'); ?></td>
-        </tr>
-    </table>
-
+    </p>
 
 
 
