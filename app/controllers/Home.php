@@ -10,59 +10,73 @@ class Home extends MY_Controller
 {
     public function index()//Show home page
     {
-       /* $data=array(
+        $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer'
-        );*/
-
-        $data['content'] ='pages/home';
-        $data['pic'] ='pictures/pform';
-        $data['foot'] = 'layouts/footer';
-
-
-
-/*        $this->load->view('pages/home');*/
+        );
 
 
         $this->load->view('layouts/main', $data);
     }
 
-    /*public function right()
-    {
-        $data['pic'] ='pictures/pform' ;
-        $this->load->view('pictures/pform',$data);
-
-        $this->load->view('layouts/main',$data);
-    }*/
-
 
     public function show_second()//show how it works
     {
+        $data=array(
+            'content'=>'pages/home',
+            'pic'=>'pictures/pform',
+            'foot'=>'layouts/footer'
+        );
+
         $data['content']='pages/second';
         $this->load->view('layouts/main', $data);
     }
 
     public function show_third()//show BILATERAL MEETINGS - HOW IT WORKS
     {
+        $data=array(
+            'content'=>'pages/home',
+            'pic'=>'pictures/pform',
+            'foot'=>'layouts/footer'
+        );
+
         $data['content']='pages/third';
         $this->load->view('layouts/main', $data);
     }
 
     public function show_fourth()//show programme
     {
+        $data=array(
+            'content'=>'pages/home',
+            'pic'=>'pictures/pform',
+            'foot'=>'layouts/footer'
+        );
+
         $data['content']='pages/fourth';
         $this->load->view('layouts/main', $data);
     }
 
     public function show_fifth()//show FAQ
     {
+        $data=array(
+            'content'=>'pages/home',
+            'pic'=>'pictures/pform',
+            'foot'=>'layouts/footer'
+        );
+
         $data['content']='pages/fifth';
         $this->load->view('layouts/main', $data);
     }
 
     public function show_sixth()
     {
+        $data=array(
+            'content'=>'pages/home',
+            'pic'=>'pictures/pform',
+            'foot'=>'layouts/footer'
+        );
+
         $data['content']='pages/sixth';
         $this->load->view('layouts/main', $data);
     }

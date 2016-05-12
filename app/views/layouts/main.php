@@ -1,31 +1,34 @@
 <?php echo doctype("html5"); ?>
 
 <html lang="en" style="position: relative; min-height: 100%;">
-<head>
-    <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
-    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
-    <script src="<?=base_url()?>assets/js/jquery.js"></script>
-    <script src="<?=base_url()?>assets/js/jquery.ui.shake.js"></script>
-    <script src="<?=base_url()?>assets/js/bootstrap.js"></script>
+<header>
+    <head>
+        <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
+        <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
+        <script src="<?=base_url()?>assets/js/jquery.js"></script>
+        <script src="<?=base_url()?>assets/js/jquery.ui.shake.js"></script>
+        <script src="<?=base_url()?>assets/js/bootstrap.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('#alert').delay(3000).slideUp("slow");
-            window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).remove();
-                });
-            }, 3000);
+        <script>
+            $(document).ready(function() {
+                $('#alert').delay(3000).slideUp("slow");
+                window.setTimeout(function() {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                        $(this).remove();
+                    });
+                }, 3000);
 
-        });
-    </script>
+            });
+        </script>
 
 
-</head>
+    </head>
+</header>
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -74,55 +77,44 @@
     <!-- /.container -->
 </nav>
 
-<a class="navbar-brand" id="cover" href="<?php echo base_url()?>">
-    <img src="<?=base_url('assets/img/cover.png')?>"></a>
-<!-- Page Content -->
-<div class="container" id="back">
-    <!-- Page Heading/Breadcrumbs -->
-    <div class="row">
-        <div class="col-lg-12">
-            <br>
-            <?php if ($this->session->flashdata('msg')): ?>
-                <div class="row">
-                    <div class="col-sm-offset-2 col-xs-12 col-sm-8" style="padding-top:20px">
-                        <div id="alert" class="alert <?=$this->session->flashdata('msg_class')?>">
-                            <?=$this->session->flashdata('msg')?>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
 
-        </div>
+<!--cover-->
+    <section>
+    <div class="col-md-12" id="cover">
+        <img src="<?=base_url('assets/img/cover.png')?>" alt="cover">
     </div>
-    <!--/.main-->
+    </section>
 
-    <div class="container-fluid" id="main_home">
-        <div class="row-fluid">
+<!-- Main -->
+    <div class="container-fluid" id="back">
 
-            <div class="col-md-8"><!--div left-->
+        <!--home view-->
+        <div class="row" id="main">
+        <article>
+            <div class="col-md-8">
                 <?php $this->load->view($content); ?>
+            </div>
+        </article>
 
-
-                </div><!--div left close-->
-
-
-                <div class="col-md-4" id="right"><!--div right-->
-                    <?php $this->load->view($pic); ?>
-
-                    <?php /*$data['pic'] = $pic;
-                    $this->load->view('pictures/pform',$data); */?>
-                </div><!--div right close-->
-
-
-        </div><!--div row-fluid close-->
-    </div><!--div container fluid close-->
+            <?php if($this->session->userdata('logged_in')) : ?>
+         <!--photo form upload - pform view-->
+        <aside>
+            <div class="col-md-4" id="pform">
+                <?php $this->load->view($pic); ?>
+            </div>
+        </aside>
+        </div><!--row close-->
+    </div><!--container fludi close-->
+            <?php endif; ?>
 
 
     <!-- Footer -->
     <footer>
+        <div class="col-md-12">
         <?php $this->load->view($foot); ?>
+        </div>
     </footer>
-</div>
+
 <!-- /.container -->
 </body>
 

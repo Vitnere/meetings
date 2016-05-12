@@ -29,7 +29,9 @@
             </p>
         <?php endif; ?>
     <!--flashdata mesages close-->
+    <div class="col-md-8">
 
+    </div>
     <h2>GO INTERNATIONAL - ICT BROKERAGE EVENT 2015</h2>
     <p>Get connected and take advantage of ICT networking opportunities
                 by discovering new international partnerships to grow your business.

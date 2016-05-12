@@ -21,14 +21,16 @@ tr:last-child td:first-child { border-bottom-left-radius: 10px!important; }
 tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
 
 /*basic elements*/
-#cover{width:100%;padding-left: 0px;!important;}
+#cover{width:100%;padding-left: 0px; !important;}
+
 
 
 /*main*/
+ #cover{z-index: 5;position: relative; !important;}
+ #back{width:100%;background-color:#CECECE;}
+#main{margin:1%;background-color: #FFFFFF;!important;  }
+ #pform{margin-top: 4%;}
 
-#right{margin-top: 4%;}
-#main_home{margin-top:22%;height:90%;width:100%;background-color: #FFFFFF}
- #back{height: 600%;position: relative;width:100%;  background-color:#CECECE;z-index:-1;}
 
 
 /*footer*/
