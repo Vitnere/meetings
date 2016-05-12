@@ -40,6 +40,7 @@ class MY_Controller extends CI_Controller
     public function view($file, $data = array())
     {
         return $this->load->view($file, $data, true);
+
     }
 
     protected function limit_access()
