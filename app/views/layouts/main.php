@@ -96,6 +96,13 @@
             </div>
         </article>
 
+         <aside>
+             <div class="col-md-4">
+                 <?php $this->load->view($rcontent); ?>
+             </div>
+         </aside>
+
+
             <?php if($this->session->userdata('logged_in')) : ?>
          <!--photo form upload - pform view-->
         <aside>

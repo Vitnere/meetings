@@ -13,7 +13,9 @@ class Home extends MY_Controller
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
-            'foot'=>'layouts/footer'
+            'foot'=>'layouts/footer',
+            'rcontent'=>'pictures/rcontent'
+
         );
 
 

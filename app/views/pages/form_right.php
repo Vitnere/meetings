@@ -1,4 +1,4 @@
-<div class=col-md-4><!--div right-->
+
     <div class="secondary-section gray">
         <h3 class="svgbg">Bilateral Talks</h3>
         <div class="secondary-content">
@@ -132,5 +132,3 @@
         <img src="<?=base_url('assets/img/staticmap.png" alt="staticmap.png')?> "/>
 
     </div>
-
-</div><!--div right close-->
