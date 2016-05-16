@@ -8,19 +8,33 @@
 
 class Home extends MY_Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Gallery_model');
+        $this->load->helper(['url','html','form']);
+        $this->load->database();
+        $this->load->library(['form_validation','session']);
+    }
+
     public function index()//Show home page
     {
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
-            'rcontent'=>'pictures/rcontent'
-
+            'gallery'=>'gallery/index',
+            'images'   => $this->Gallery_model->all(),
+            'guest' =>'gallery/guest'
         );
 
 
         $this->load->view('layouts/main', $data);
+
     }
+
+
 
 
     public function show_second()//show how it works

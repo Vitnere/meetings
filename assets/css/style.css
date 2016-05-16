@@ -29,7 +29,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px!important; }
  #cover{z-index: 5;position: relative; !important;}
  #back{width:100%;background-color:#CECECE;}
 #main{margin:1%;background-color: #FFFFFF;!important;  }
- #pform{margin-top: 4%;float: right;}
+ #pform{margin-top: 4%;}
 
 
 

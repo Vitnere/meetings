@@ -98,18 +98,14 @@
 
          <aside>
              <div class="col-md-4">
-                 <?php $this->load->view($rcontent); ?>
+                 <?php $this->load->view($guest); ?>
              </div>
          </aside>
 
 
             <?php if($this->session->userdata('logged_in')) : ?>
          <!--photo form upload - pform view-->
-        <aside>
-            <div class="col-md-4" id="pform">
-                <?php $this->load->view($pic); ?>
-            </div>
-        </aside>
+
         </div><!--row close-->
     </div><!--container fludi close-->
             <?php endif; ?>
@@ -121,6 +117,14 @@
         <?php $this->load->view($foot); ?>
         </div>
     </footer>
+
+    <?php if($this->session->userdata('logged_in')) : ?>
+    <aside>
+        <div class="col-md-12" id="pform">
+            <?php $this->load->view($gallery); ?>
+        </div>
+    </aside>
+    <?php endif; ?>
 
 <!-- /.container -->
 </body>
