@@ -86,29 +86,34 @@
     </section>
 
 <!-- Main -->
-    <div class="container-fluid" id="back">
+<div class="container-fluid" id="back">
 
-        <!--home view-->
-        <div class="row" id="main">
-        <article>
+    <div class="row" id="main">
+
+    <?php if($this->session->userdata('logged_in')) : ?>
+    <aside>
+        <div class="col-md-8" id="pform">
+            <?php $this->load->view($gallery); ?>
+        </div>
+    </aside>
+    <?php endif; ?>
+
+
+        <article><!--home view-->
             <div class="col-md-8">
                 <?php $this->load->view($content); ?>
             </div>
         </article>
 
-         <aside>
+         <aside><!-- guest gallery-->
              <div class="col-md-4">
                  <?php $this->load->view($guest); ?>
              </div>
          </aside>
 
-
-            <?php if($this->session->userdata('logged_in')) : ?>
-         <!--photo form upload - pform view-->
-
         </div><!--row close-->
     </div><!--container fludi close-->
-            <?php endif; ?>
+
 
 
     <!-- Footer -->
@@ -118,13 +123,7 @@
         </div>
     </footer>
 
-    <?php if($this->session->userdata('logged_in')) : ?>
-    <aside>
-        <div class="col-md-12" id="pform">
-            <?php $this->load->view($gallery); ?>
-        </div>
-    </aside>
-    <?php endif; ?>
+
 
 <!-- /.container -->
 </body>

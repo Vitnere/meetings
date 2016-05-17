@@ -1,14 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gallery extends CI_Controller {
+class Gallery extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Gallery_model');
-        $this->load->helper(['url','html','form']);
-        $this->load->database();
-        $this->load->library(['form_validation','session']);
     }
 
     public function index()
@@ -102,7 +99,7 @@ class Gallery extends CI_Controller {
             {
                 /* Start Uploading File */
                 $config =   [
-                    'upload_path'   => './data/baners/',
+                    'upload_path'   => 'data/baners/',
                     'allowed_types' => 'gif|jpg|png|jpeg',
                     'max_size'      => 100,
                     'max_width'     => 1024,

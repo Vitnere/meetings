@@ -32,6 +32,7 @@ class Home extends MY_Controller
 
         $this->load->view('layouts/main', $data);
 
+
     }
 
 
