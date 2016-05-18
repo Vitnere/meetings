@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <hr />
             <div class="row">
                 <?php foreach($images->result() as $img) : ?>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="thumbnail">
                             <?=img($img->file)?>
                             <div class="caption">
