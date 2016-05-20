@@ -48,4 +48,22 @@ class Gallery_model extends CI_Model {
         }
     }
 
+    public function insert_in_db($data) {
+       /* $this->db->insert('dropdown_value', $data);
+        if ($this->db->affected_rows() > 1) {
+            return true;
+        } else {
+
+        }*/
+
+        try{
+            $this->db->insert('images', $data);
+            return true;
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+    }
+
+
+
 }

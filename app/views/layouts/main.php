@@ -92,7 +92,7 @@
 
     <?php if($this->session->userdata('logged_in')) : ?>
     <aside>
-        <div class="col-md-8" id="pform">
+        <div class="col-md-12" id="pform">
             <?php $this->load->view($gallery); ?>
         </div>
     </aside>

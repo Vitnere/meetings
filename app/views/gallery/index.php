@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <head>
     <meta charset="utf-8">
-    <title>CodeIgniter Image Gallery</title>
 
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <style type="text/css">
 
@@ -60,7 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     </style>
 </head>
-        <h1>Welcome master jedi.You can add new images to right side.</h1>
+        <div class="col-md-12" align="center">
+            <h1>Welcome master jedi.You can add new images to right side.</h1>
+        </div>
         <?php if($images->num_rows() > 0) : ?>
 
             <?php if($this->session->flashdata('message')) : ?>
@@ -69,7 +72,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             <?php endif; ?>
 
-            <div align="center"><?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?></div>
+            <div class="col-md-12" align="center">
+                <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
+                <?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?>
+                <br /><br />
+            </div>
+
+
             <hr />
             <div class="row">
                 <?php foreach($images->result() as $img) : ?>
@@ -88,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 <?php endforeach; ?>
             </div>
-            <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
+
         <?php else : ?>
             <div align="center">We don't have any image yet, go ahead and <?=anchor('gallery/add','add a new one')?>.</div>
         <?php endif; ?>

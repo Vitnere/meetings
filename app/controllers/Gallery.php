@@ -16,6 +16,9 @@ class Gallery extends MY_Controller {
         $this->load->view('gallery/index', $data);
     }
 
+
+
+
     public function add(){
         $rules =    [
             [
@@ -26,6 +29,11 @@ class Gallery extends MY_Controller {
             [
                 'field' => 'description',
                 'label' => 'Description',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'category',
+                'label' => 'Category',
                 'rules' => 'required'
             ]
         ];
@@ -63,7 +71,8 @@ class Gallery extends MY_Controller {
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
                     'caption'      => set_value('caption'),
-                    'description'   => set_value('description')
+                    'description'   => set_value('description'),
+                    'category'       => set_value('category')
                 ];
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
@@ -123,6 +132,7 @@ class Gallery extends MY_Controller {
 
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');
+            $data['category']   = set_value('category');
 
             $this->Gallery_model->update($id,$data);
             $this->session->set_flashdata('message','New image has been updated..');

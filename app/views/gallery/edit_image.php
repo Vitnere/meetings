@@ -76,6 +76,12 @@ $description    = $image->description;
 <div id="container">
     <h1>Update Image</h1>
 
+    <div class="col-md-12" align="center">
+        <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
+        <?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?>
+        <br /><br />
+    </div>
+
     <div id="body">
         <?php if(validation_errors() || isset($error)) : ?>
             <div class="alert alert-danger" role="alert" align="center">
