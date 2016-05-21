@@ -1,0 +1,3 @@
+ALTER TABLE `categories` ADD INDEX(`id`);
+ALTER TABLE `categories` ADD FOREIGN KEY (`id`) REFERENCES `meetings`.`images`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
