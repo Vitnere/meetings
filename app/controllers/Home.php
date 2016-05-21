@@ -43,7 +43,10 @@ class Home extends MY_Controller
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
-            'foot'=>'layouts/footer'
+            'foot'=>'layouts/footer',
+            'gallery'=>'gallery/index',
+            'images'   => $this->Gallery_model->all(),
+            'guest' =>'gallery/guest'
         );
 
         $data['content']='pages/second';
@@ -55,7 +58,10 @@ class Home extends MY_Controller
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
-            'foot'=>'layouts/footer'
+            'foot'=>'layouts/footer',
+            'gallery'=>'gallery/index',
+            'images'   => $this->Gallery_model->all(),
+            'guest' =>'gallery/guest'
         );
 
         $data['content']='pages/third';
@@ -67,7 +73,10 @@ class Home extends MY_Controller
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
-            'foot'=>'layouts/footer'
+            'foot'=>'layouts/footer',
+            'gallery'=>'gallery/index',
+            'images'   => $this->Gallery_model->all(),
+            'guest' =>'gallery/guest'
         );
 
         $data['content']='pages/fourth';
@@ -79,7 +88,10 @@ class Home extends MY_Controller
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
-            'foot'=>'layouts/footer'
+            'foot'=>'layouts/footer',
+            'gallery'=>'gallery/index',
+            'images'   => $this->Gallery_model->all(),
+            'guest' =>'gallery/guest'
         );
 
         $data['content']='pages/fifth';
@@ -91,7 +103,10 @@ class Home extends MY_Controller
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
-            'foot'=>'layouts/footer'
+            'foot'=>'layouts/footer',
+            'gallery'=>'gallery/index',
+            'images'   => $this->Gallery_model->all(),
+            'guest' =>'gallery/guest'
         );
 
         $data['content']='pages/sixth';
