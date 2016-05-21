@@ -1,3 +1,7 @@
 ALTER TABLE `categories` ADD INDEX(`id`);
 ALTER TABLE `categories` ADD FOREIGN KEY (`id`) REFERENCES `meetings`.`images`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+ALTER TABLE `images` ADD `categories_id` INT(11) NOT NULL AFTER `id`;
+ALTER TABLE `images` ADD INDEX(`categories_id`);
+ALTER TABLE `categories` ADD CONSTRAINT `categories_id` FOREIGN KEY (`id`) REFERENCES `meetings`.`images`(`categories_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
