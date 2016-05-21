@@ -119,7 +119,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo form_dropdown('category', $options, 'organizers');
 
                     ?>
-
         </div>
 
         <div class="form-group">

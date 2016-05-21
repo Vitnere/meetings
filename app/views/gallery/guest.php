@@ -16,7 +16,6 @@
         <ul class="participants">
 
             <li>
-
                 <span><a href="#">Bosnia-Herzegovina</a></span>
                 <span class="number">7</span>
             </li>

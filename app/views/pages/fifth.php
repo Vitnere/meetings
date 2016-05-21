@@ -15,7 +15,7 @@
 <div class="container-fluid" id="main_home">
     <div class="row-fluid">
 
-        <div class="col-md-8"><!--div left-->
+        <div class="col-md-12"><!--div left-->
             <section class="primary">
 
                 <div class="intro-text">
@@ -233,10 +233,7 @@
 
         </div><!--div left close-->
 
-        <div class=col-md-4><!--div right-->
 
-
-        </div><!--div right close-->
 
 
     </div><!--div row-fluid close-->

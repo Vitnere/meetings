@@ -6,7 +6,6 @@
         <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
         <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
         <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-        <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
         <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
         <script src="<?=base_url()?>assets/js/jquery.js"></script>

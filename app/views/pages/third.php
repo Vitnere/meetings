@@ -17,18 +17,17 @@
 
         <div class="col-md-8"><!--div left-->
             <div class="intro-text">
-                <h1>Bilateral Meetings -  How it Works</h1>          </div>
+                <h1>Bilateral Meetings -  How it Works</h1>
+            </div>
+        </div><!--div left close-->
 
-            <div class="rich-text">
-                <table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+            <div class="col-md-8">
+                <table border="4" cellpadding="4" cellspacing="8" style="width: 550px;">
                     <tbody>
                     <tr>
-                        <td>
-                            Timelines&nbsp;</td>
-                        <td>
-                            Task&nbsp;</td>
-                        <td>
-                            Description</td>
+                        <td>Timelines&nbsp;</td>
+                        <td>Task&nbsp;</td>
+                        <td>Description</td>
                     </tr>
                     <tr>
                         <td style="width: 150px;">
@@ -48,8 +47,10 @@
                                 <em><strong>The better your profile the more meeting requests you will receive!</strong></em></div>
                         </td>
                     </tr>
+
                     <tr>
                         <td>
+
                             18 October - &nbsp;08 November</td>
                         <td>
                             Book B2B meetings</td>
@@ -99,11 +100,9 @@
 
 
 
-        </div><!--div left close-->
 
-        <div class=col-md-4><!--div right-->
 
-        </div><!--div right close-->
+
 
     </div><!--div row-fluid close-->
 </div><!--div container fluid close-->

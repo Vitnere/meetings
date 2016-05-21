@@ -72,6 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             <?php endif; ?>
 
+
             <div class="col-md-12" align="center">
                 <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
                 <?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?>

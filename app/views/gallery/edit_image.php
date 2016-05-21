@@ -98,6 +98,27 @@ $description    = $image->description;
         </div>
 
         <div class="form-group">
+            <label for="category">Category</label>
+
+            <?php
+
+            $options = array(
+                'participants' => 'participants',
+                'organizers' => 'organizers',
+                'co-organizers' => 'co-organizers',
+                'supporters' => 'supporters',
+                'location' => 'location',
+            );
+
+            $category = array('small', 'large');
+
+            echo form_dropdown('category', $options, 'organizers');
+
+            ?>
+
+        </div>
+
+        <div class="form-group">
             <label for="caption">Caption</label>
             <input type="text" class="form-control" name="caption" value="<?=$caption?>">
         </div>

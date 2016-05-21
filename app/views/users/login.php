@@ -5,7 +5,6 @@
     <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
     <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
     <script src="<?=base_url()?>assets/js/jquery.js"></script>
@@ -80,7 +79,7 @@
 <body>
 <div class="row">
     <div id="login" class="col-md-4 col-md-offset-4"><!-- login form -->
-        <h3>Login</h3>
+        <h1 align="center">LOGIN</h1><br>
         <?php if($this->session->userdata('logged_in')) : ?>
 
 
@@ -108,14 +107,14 @@
 
             <?php echo form_open('User/login', $attributes); ?>
 
-            <p><!-- USERNAME -->
+            <p align="center"><!-- USERNAME -->
                 <?php echo form_label('Username'); ?>
                 <?php
 
                 $data = array(
                     'name' => 'username',
                     'placeholder' => 'Enter Username',
-                    'style'      => 'width:30%',
+                    'style'      => 'width:50%',
                     'value'      =>  set_value('username'));
 
                 ?>
@@ -123,21 +122,21 @@
                 <?php echo form_input($data); ?>
             </p>
 
-            <p><!-- PASSWORD -->
+            <p align="center"><!-- PASSWORD -->
                 <?php echo form_label('Password'); ?>
                 <?php
 
                 $data = array(
                     'name'        => 'password',
                     'placeholder' => 'Enter Password',
-                    'style'       => 'width:30%',
+                    'style'       => 'width:50%',
                     'value'       =>  set_value('password'));
                 ?>
 
                 <?php echo form_password($data); ?>
             </p>
 
-            <p><!-- SUBMIT -->
+            <p align="center"><!-- SUBMIT -->
                 <?php
 
                 $data = array('name'        => 'submit',
@@ -150,7 +149,7 @@
             <?php echo form_close(); ?>
 
             <br>
-            <p>Dont have account?Please <a href="<?php echo base_url()?>User/register">register</a></p>
+            <p>Dont have account? Please <a href="<?php echo base_url()?>User/register">register</a></p>
         <?php endif; ?>
     </div><!--login form close-->
 </div> <!--row close-->
