@@ -1,1 +1,0 @@
-CREATE TABLE `meetings`.`categories` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `category` TEXT(64) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB
