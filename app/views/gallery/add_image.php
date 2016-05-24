@@ -9,7 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/font-awesome.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">
     <script src="<?=base_url()?>assets/js/jquery.js"></script>
@@ -71,10 +70,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             border: 1px solid #D0D0D0;
             box-shadow: 0 0 8px #D0D0D0;
 
-        .drop_pos{
-            padding-left:78px;
-            width:500px;
-        }
     </style>
 </head>
 <body>
@@ -96,46 +91,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php endif; ?>
         <?=form_open_multipart('gallery/add')?>
 
-        <div class="form-group">
+        <div class="form-group"><!--choose image-->
             <label for="userfile">Image File</label>
             <input type="file" class="form-control" name="userfile">
         </div>
 
-        <div class="form-group">
-            <label for="category">Category</label>
 
-                    <?php
 
-                    $options = array(
-                        'participants' => 'participants',
-                        'organizers' => 'organizers',
-                        'co-organizers' => 'co-organizers',
-                        'supporters' => 'supporters',
-                        'location' => 'location',
-                    );
-
-                    $category = array('small', 'large');
-
-                    echo form_dropdown('category', $options, 'organizers');
-
-                    ?>
-        </div>
-
-        <div class="form-group">
+        <div class="form-group"><!--caption-->
             <label for="caption">Caption</label>
             <input type="text" class="form-control" name="caption" value="">
         </div>
 
-        <div class="form-group">
+        <div class="form-group"><!--description-->
             <label for="description">Description</label>
             <textarea class="form-control" name="description"></textarea>
         </div>
+
+        </form>
+
+
+
+        <?=form_open_multipart('gallery/add_cat')?>
+
+        <div class="form-group"><!--category select-->
+            <label for="categories_id">Category</label>
+
+            <?php
+
+            $options = array(
+                '1' => 'participants',
+                '2' => 'organizers',
+                '3' => 'co-organizers',
+                '4' => 'supporters',
+                '5' => 'location',
+            );
+
+            $category = array('small', 'large');
+
+            echo form_dropdown('categories_id', $options, 'organizers');
+
+            ?>
+        </div>
+
+
 
         <button type="submit" class="btn btn-primary">Upload</button>
         <?=anchor('gallery','Cancel',['class'=>'btn btn-warning'])?>
 
         </form>
-    </div>
+
+
+
 
     <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>

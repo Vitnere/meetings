@@ -11,7 +11,7 @@ class User extends MY_Controller
         parent::__construct();
     }
 
-    public function register()
+    public function register()/*register user*/
     {
         /*validation rules*/
         $this->form_validation->set_rules('first_name','First_Name', 'trim|required|max_length[50]|min_length[2]');
@@ -38,7 +38,7 @@ class User extends MY_Controller
     }
 
 
-    public function login()
+    public function login()/*login user*/
     {
         /*validation*/
         $this->form_validation->set_rules('username','Username','trim|required|min_length[3]');
@@ -79,7 +79,7 @@ class User extends MY_Controller
         }
     }
 
-    public function logout()
+    public function logout()/*logout user*/
     {
         //unset session data
         $this->session->unset_userdata('logged_in');

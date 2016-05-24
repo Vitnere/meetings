@@ -16,11 +16,9 @@ class Gallery extends MY_Controller {
         $this->load->view('gallery/index', $data);
     }
 
-
-
-
-    public function add(){
-        $rules =    [
+    public function add(){/*add new photo*/
+        $rules =
+            [
             [
                 'field' => 'caption',
                 'label' => 'Caption',
@@ -30,12 +28,8 @@ class Gallery extends MY_Controller {
                 'field' => 'description',
                 'label' => 'Description',
                 'rules' => 'required'
-            ],
-            [
-                'field' => 'category',
-                'label' => 'Category',
-                'rules' => 'required'
             ]
+
         ];
 
         $this->form_validation->set_rules($rules);
@@ -51,7 +45,7 @@ class Gallery extends MY_Controller {
             $config =   [
                 'upload_path'   => './data/baners/',
                 'allowed_types' => 'gif|jpg|png|jpeg',
-                'max_size'      => 100,
+                'max_size'      => 200,
                 'max_width'     => 1024,
                 'max_height'    => 768
             ];
@@ -70,18 +64,66 @@ class Gallery extends MY_Controller {
                 //print_r($file);
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
+                    'categories_id'       => set_value('categories_id'),
                     'caption'      => set_value('caption'),
-                    'description'   => set_value('description'),
-                    'category'       => set_value('category')
+                    'description'   => set_value('description')
+
                 ];
                 $this->Gallery_model->create($data);
+
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('gallery');
             }
         }
     }
 
-    public function edit($id){
+    public function add_cat()
+    {
+
+            $rules=
+                [
+                    [
+                        'field' => 'categories_id',
+                        'label' => 'Category',
+                        'rules' => 'required'
+                    ]
+                ];
+
+
+
+         $this->form_validation->set_rules($rules);
+
+
+
+        if ( ! $this->upload->do_upload())
+        {
+            $error = array('error' => $this->upload->display_errors());
+
+            $this->load->view('gallery/add_image', $error);
+        }
+        else
+        {
+            $file = $this->upload->data();
+            //print_r($file);
+            $data = [
+                'categories_id'       => set_value('categories_id'),
+                'title'      => set_value('title'),
+
+
+            ];
+            $this->Gallery_model->create($data);
+            $this->Gallery_model->create_categories($data);
+
+            $this->session->set_flashdata('message','New image has been added..');
+            redirect('gallery');
+        }
+    }
+
+    
+
+
+
+    public function edit($id){/*edit photo*/
         $rules =    [
             [
                 'field' => 'caption',
@@ -91,6 +133,11 @@ class Gallery extends MY_Controller {
             [
                 'field' => 'description',
                 'label' => 'Description',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'category',
+                'label' => 'Category',
                 'rules' => 'required'
             ]
         ];
@@ -129,10 +176,10 @@ class Gallery extends MY_Controller {
                     unlink($image->file);
                 }
             }
-
+            $data['categories_id']   = set_value('categories_id');
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');
-            $data['category']   = set_value('category');
+
 
             $this->Gallery_model->update($id,$data);
             $this->session->set_flashdata('message','New image has been updated..');
@@ -140,7 +187,7 @@ class Gallery extends MY_Controller {
         }
     }
 
-    public function delete($id)
+    public function delete($id)/*delete photo*/
     {
         $this->Gallery_model->delete($id);
         $this->session->set_flashdata('message','Image has been deleted..');

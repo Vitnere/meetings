@@ -15,6 +15,18 @@ class Gallery_model extends CI_Model {
         return $row;
     }
 
+    public function create_categories($data)
+    {
+        try
+        {
+          $this->db->insert('categories',$data);
+            return true;
+        }catch(Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
     public function create($data)
     {
         try{
@@ -47,23 +59,5 @@ class Gallery_model extends CI_Model {
             echo $e->getMessage();
         }
     }
-
-    public function insert_in_db($data) {
-       /* $this->db->insert('dropdown_value', $data);
-        if ($this->db->affected_rows() > 1) {
-            return true;
-        } else {
-
-        }*/
-
-        try{
-            $this->db->insert('images', $data);
-            return true;
-        }catch(Exception $e){
-            echo $e->getMessage();
-        }
-    }
-
-
 
 }
