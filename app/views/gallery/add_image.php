@@ -96,7 +96,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="file" class="form-control" name="userfile">
         </div>
 
+        <div class="form-group"><!--category select-->
+            <label for="categories_id">Category</label>
 
+                    <?php
+
+                    $options = array(
+                        '1' => 'participants',
+                        '2' => 'organizers',
+                        '3' => 'co-organizers',
+                        '4' => 'supporters',
+                        '5' => 'location',
+                    );
+
+                    $category = array('small', 'large');
+
+                    echo form_dropdown('categories_id', $options, 'organizers');
+
+                    ?>
+        </div>
 
         <div class="form-group"><!--caption-->
             <label for="caption">Caption</label>
@@ -108,41 +126,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <textarea class="form-control" name="description"></textarea>
         </div>
 
-        </form>
-
-
-
-        <?=form_open_multipart('gallery/add_cat')?>
-
-        <div class="form-group"><!--category select-->
-            <label for="categories_id">Category</label>
-
-            <?php
-
-            $options = array(
-                '1' => 'participants',
-                '2' => 'organizers',
-                '3' => 'co-organizers',
-                '4' => 'supporters',
-                '5' => 'location',
-            );
-
-            $category = array('small', 'large');
-
-            echo form_dropdown('categories_id', $options, 'organizers');
-
-            ?>
-        </div>
-
-
-
         <button type="submit" class="btn btn-primary">Upload</button>
         <?=anchor('gallery','Cancel',['class'=>'btn btn-warning'])?>
 
         </form>
-
-
-
+    </div>
 
     <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>

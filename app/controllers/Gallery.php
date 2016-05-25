@@ -17,8 +17,12 @@ class Gallery extends MY_Controller {
     }
 
     public function add(){/*add new photo*/
-        $rules =
+        $rules =    [
             [
+                'field' => 'categories_id',
+                'label' => 'Category',
+                'rules' => 'required'
+            ],
             [
                 'field' => 'caption',
                 'label' => 'Caption',
@@ -64,64 +68,20 @@ class Gallery extends MY_Controller {
                 //print_r($file);
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
-                    'categories_id'       => set_value('categories_id'),
+
                     'caption'      => set_value('caption'),
                     'description'   => set_value('description')
 
                 ];
-                $this->Gallery_model->create($data);
-
+                $data1=['categories_id'       => set_value('categories_id'),];
+                $this->Gallery_model->create($data,$data1);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('gallery');
             }
         }
     }
 
-    public function add_cat()
-    {
-
-            $rules=
-                [
-                    [
-                        'field' => 'categories_id',
-                        'label' => 'Category',
-                        'rules' => 'required'
-                    ]
-                ];
-
-
-
-         $this->form_validation->set_rules($rules);
-
-
-
-        if ( ! $this->upload->do_upload())
-        {
-            $error = array('error' => $this->upload->display_errors());
-
-            $this->load->view('gallery/add_image', $error);
-        }
-        else
-        {
-            $file = $this->upload->data();
-            //print_r($file);
-            $data = [
-                'categories_id'       => set_value('categories_id'),
-                'title'      => set_value('title'),
-
-
-            ];
-            $this->Gallery_model->create($data);
-            $this->Gallery_model->create_categories($data);
-
-            $this->session->set_flashdata('message','New image has been added..');
-            redirect('gallery');
-        }
-    }
-
     
-
-
 
     public function edit($id){/*edit photo*/
         $rules =    [
