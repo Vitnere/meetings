@@ -15,11 +15,10 @@ class Gallery_model extends CI_Model {
         return $row;
     }
 
-    public function create($data,$data1)
+    public function create($data)
     {
         try{
             $this->db->insert('images', $data);
-            $this->db->insert('categories', $data1);
             return true;
         }catch(Exception $e){
             echo $e->getMessage();

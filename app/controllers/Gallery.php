@@ -68,13 +68,13 @@ class Gallery extends MY_Controller {
                 //print_r($file);
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
-
+                    'categories_id'       => set_value('categories_id'),
                     'caption'      => set_value('caption'),
                     'description'   => set_value('description')
 
                 ];
-                $data1=['categories_id'       => set_value('categories_id'),];
-                $this->Gallery_model->create($data,$data1);
+                $data=['categories_id'       => set_value('categories_id'),];
+                $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('gallery');
             }
