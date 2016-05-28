@@ -68,12 +68,12 @@ class Gallery extends MY_Controller {
                 //print_r($file);
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
-                    'categories_id'       => set_value('categories_id'),
+                    "categories_id"       => set_value("categories_id"),
                     'caption'      => set_value('caption'),
                     'description'   => set_value('description')
 
                 ];
-                $data=['categories_id'       => set_value('categories_id'),];
+                
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('gallery');
@@ -81,6 +81,38 @@ class Gallery extends MY_Controller {
         }
     }
 
+    public function admin_category()
+    {
+        $rules =    [
+            [
+                'field' => 'title',
+                'label' => 'Category',
+                'rules' => 'required'
+            ]
+            ];
+
+        $this->form_validation->set_rules($rules);
+        $this->load->library('upload');
+
+        if ( ! $this->upload->do_upload())
+        {
+            $error = array('error' => $this->upload->display_errors());
+
+            $this->load->view('gallery/add_image', $error);
+        }
+        else
+        {
+            $file=$this->upload->data();
+            //print_r($file);
+            $data = array(
+                'title' => $this->input->post('title')
+            );
+
+            $this->Gallery_model->create_category($data);
+        }
+
+
+    }
     
 
     public function edit($id){/*edit photo*/
@@ -136,7 +168,7 @@ class Gallery extends MY_Controller {
                     unlink($image->file);
                 }
             }
-            $data['categories_id']   = set_value('categories_id');
+            $data['categories_id']   = set_value("categories_id");
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');
 

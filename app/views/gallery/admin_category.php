@@ -74,99 +74,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-
-
 <div id="container">
-
-
-
-<?php if($this->session->userdata('logged_in')) : ?>
-    <?php echo $this->session->userdata('Vitnere'); ?>
-    <p>test</p>
-<?php else : ?>
-    <?php endif; ?>
-
-
-
 
     <div class="col-md-12"><!--ADMIN area-->
         <!-- Small modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Categories admin</button>
+
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
                     <?=form_open_multipart('gallery/admin_category')?>
                     <div class="form-group"><!--description-->
                         <p align="center">Admin category form.<br>Control your categories here</p>
                         <label for="title">Title</label>
                         <textarea class="form-control" name="description"></textarea>
-
                         <button type="submit" class="btn btn-primary">Upload</button>
-                        <input type="submit" value="submit" />
                     </div>
                     </form>
 
-    </div><!--ADMIN area close-->
-
-    <br><br>
-    <h1>Add New Image</h1>
-
-    <div class="col-md-12">
-        <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
-        <br /><br />
-    </div>
-
-    <div id="body">
-        <?php if(validation_errors() || isset($error)) : ?>
-            <div class="alert alert-danger" role="alert" align="center">
-                <?=validation_errors()?>
-                <?=(isset($error)?$error:'')?>
+                </div>
             </div>
-        <?php endif; ?>
-        <?=form_open_multipart('gallery/add')?>
-
-        <div class="form-group"><!--choose image-->
-            <label for="userfile">Image File</label>
-            <input type="file" class="form-control" name="userfile">
-        </div>
-
-        <div class="form-group"><!--category select-->
-            <label for="categories_id">Category</label>
-
-                    <?php
-
-                    $options = array(
-                        '1' => 'participants',
-                        '2' => 'organizers',
-                        '3' => 'co-organizers',
-                        '4' => 'supporters',
-                        '5' => 'location',
-                    );
-
-                    $category = array('small', 'large');
-
-                    echo form_dropdown('categories_id', $options, 'organizers');
-
-                    ?>
-
-
-        <div class="form-group"><!--caption-->
-            <label for="caption">Caption</label>
-            <input type="text" class="form-control" name="caption" value="">
-        </div>
-
-        <div class="form-group"><!--description-->
-            <label for="description">Description</label>
-            <textarea class="form-control" name="description"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Upload</button>
-        <?=anchor('gallery','Cancel',['class'=>'btn btn-warning'])?>
-
-        </form>
-    </div>
-
-
-    <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</div>
-
-
+        </div><!--Small modal close-->
+    </div><!--ADMIN area close-->
 
 </body>
 </html>

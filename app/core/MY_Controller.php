@@ -12,7 +12,7 @@ class MY_Controller extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->load->model('user_model');
+        $this->load->model('User_model');
         $this->load->model('get_model');
     }
 
@@ -65,6 +65,10 @@ class MY_Controller extends CI_Controller
         $user = $this->user_model->get_user($this->session->userdata('user'));
         if ($user->admin != 1) {
             redirect('user/login');
+        }
+        else
+        {
+            redirect('admin/index');
         }
     }
 }//class

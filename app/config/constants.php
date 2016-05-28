@@ -1,5 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+/*
+|--------------------------------------------------------------------------
+| Application constants
+|--------------------------------------------------------------------------
+|
+| If set to TRUE, a backtrace will be displayed along with php errors. If
+| error_reporting is disabled, the backtrace will not display, regardless
+| of this setting
+|
+*/
+define('HASH_KEY','starwarslightsaber');
 
 /*
 /------------------------------------------------------------------------
