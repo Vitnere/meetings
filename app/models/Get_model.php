@@ -5,11 +5,16 @@ if (!defined('BASEPATH'))
 
 class Get_model extends CI_Model
 {
-	function getData($main_id)
+	function get_user()
 	{
-		$query=$this->db->get_where(TBL_MAIN,array("id"=>$id));
-		return $query->first_row();
-	}
+
+        $this->db->select('admin');
+        $this->db->where('id', '10');
+        $q = $this->db->get('users');
+        $data = $q->row();
+
+
+    }
 }
 
 ?>

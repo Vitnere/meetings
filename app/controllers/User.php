@@ -9,7 +9,6 @@ class User extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-
     }
 
     public function register()/*register user*/
@@ -65,29 +64,32 @@ class User extends MY_Controller
                 $user_data=array(
                     'user_id'=>$user_id,
                     'username'=>$username,
-                    'logged_in'=>true,
-                     'admin'=>0
+                    'logged_in'=>true
                 );
 
 
                 $this->session->set_userdata($user_data);
 
-                if('admin'==1)
+
+                $admin = $this->Get_model->get_user();
+                if($admin == 1)
                 {
-                    $this->load->admin_access();
+                    $this->load->view('admin/dashboard');
                 }
                 else
                 {
-                    $this->load->free_access();
+                    echo ('You are in the public area');
                 }
-                /*$this->session->set_flashdata('login_success', 'You are now logged in');
-                redirect('home/index');*/
+
+
+
+                $this->session->set_flashdata('login_success', 'You are now logged in');
+                redirect('home/index');
             } else {
                 //Set error
                 $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
                 redirect('home/index');
             }
-
         }
     }
 

@@ -25,17 +25,6 @@ class Gallery_model extends CI_Model {
         }
     }
 
-    public function create_category($data)
-    {
-        try{
-            $this->db->set('title',$data);
-            $this->db->insert('categories', $data);
-            return true;
-        }catch(Exception $e){
-            echo $e->getMessage();
-        }
-    }
-
     public function update($id, $data)
     {
         try{

@@ -81,38 +81,6 @@ class Gallery extends MY_Controller {
         }
     }
 
-    public function admin_category()
-    {
-        $rules =    [
-            [
-                'field' => 'title',
-                'label' => 'Category',
-                'rules' => 'required'
-            ]
-            ];
-
-        $this->form_validation->set_rules($rules);
-        $this->load->library('upload');
-
-        if ( ! $this->upload->do_upload())
-        {
-            $error = array('error' => $this->upload->display_errors());
-
-            $this->load->view('gallery/add_image', $error);
-        }
-        else
-        {
-            $file=$this->upload->data();
-            //print_r($file);
-            $data = array(
-                'title' => $this->input->post('title')
-            );
-
-            $this->Gallery_model->create_category($data);
-        }
-
-
-    }
     
 
     public function edit($id){/*edit photo*/

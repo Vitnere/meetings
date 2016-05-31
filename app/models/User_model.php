@@ -13,7 +13,6 @@ class User_model extends CI_Model
         $this->db->where('username',$username);
         $this->db->where('password',$enc_password);
 
-
         $result = $this->db->get('users');
         if($result->num_rows() == 1)
         {
@@ -39,16 +38,6 @@ class User_model extends CI_Model
 
         $insert = $this->db->insert('users', $data);
         return $insert;
-    }
-
-    public function get_user($id)
-    {
-        $row = $this->db->get_where(TBL_USERS, array('id' => $id))->first_row();
-        $result = null;
-        if (isset($row->id)) {
-            $result = $row;
-        }
-        return $result;
     }
 
 }

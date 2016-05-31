@@ -74,37 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-
-
 <div id="container">
-
-
-
-<?php if($this->session->userdata('logged_in')) : ?>
-    <?php echo $this->session->userdata('Vitnere'); ?>
-    <p>test</p>
-<?php else : ?>
-    <?php endif; ?>
-
-
-
-
-    <div class="col-md-12"><!--ADMIN area-->
-        <!-- Small modal -->
-                    <?=form_open_multipart('gallery/admin_category')?>
-                    <div class="form-group"><!--description-->
-                        <p align="center">Admin category form.<br>Control your categories here</p>
-                        <label for="title">Title</label>
-                        <textarea class="form-control" name="description"></textarea>
-
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                        <input type="submit" value="submit" />
-                    </div>
-                    </form>
-
-    </div><!--ADMIN area close-->
-
-    <br><br>
     <h1>Add New Image</h1>
 
     <div class="col-md-12">
@@ -146,6 +116,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     ?>
 
 
+        </div>
+
         <div class="form-group"><!--caption-->
             <label for="caption">Caption</label>
             <input type="text" class="form-control" name="caption" value="">
@@ -165,8 +137,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
-
-
 
 </body>
 </html>

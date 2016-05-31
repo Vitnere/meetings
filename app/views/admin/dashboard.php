@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>This is admin area</title>
 </head>
 <body>
-<p>This is admin area</p>
+
 </body>
 </html>
