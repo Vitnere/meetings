@@ -9,6 +9,7 @@ class User extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('User_model');
     }
 
     public function register()/*register user*/
@@ -46,7 +47,7 @@ class User extends MY_Controller
 
         if($this->form_validation->run() == FALSE)
         {
-             $this->load->view('users/login');
+            $this->load->view('users/login');
         }
 
         else
@@ -60,53 +61,34 @@ class User extends MY_Controller
             //Validate user
             if($user_id)
             {
-
                 //Create array of user data
-                $admin_data=array(
+                $user_data=array(
                     'user_id'=>$user_id,
-                    'admin'=>1,
-                    'admin_logged_in'=>true
+                    'username'=>$username,
+                    'logged_in'=>true
                 );
-                $this->session->set_userdata(array("admin"=>$admin_data));
-                $admin = $this->session->userdata('admin');
+                $result = $this->User_model->login_user($admin);
+                $this->session->set_userdata('admin', $admin);
 
 
-                if($admin_data == 1)
+                if($admin==1)
                 {
-                    $this->load->view('admin/dashboard');
+                    echo('admin_page');
                 }
                 else
                 {
-                    /*echo ('this is not admin');*/
-                    $user_data=array(
-                        'user_id'=>$user_id,
-                        'username'=>$username,
-                        'admin'=>0,
-                        'logged_in'=>true
-                    );
-                    $this->session->set_userdata(array("user"=>$user_data));
-                    $user = $this->session->userdata('admin');
-
-                    if($user_data !== 0)
-                    {
-                        redirect('home/index');
-                    }
-                    else
-                    {
-                        echo ('Not in the user area');
-                    }
+                 echo('public page');
                 }
 
 
 
-
-
+                $this->session->set_userdata($user_data);
                 $this->session->set_flashdata('login_success', 'You are now logged in');
                 /*redirect('home/index');*/
             } else {
                 //Set error
                 $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
-                redirect('home/index');
+                /*redirect('home/index');*/
             }
         }
     }
@@ -114,10 +96,6 @@ class User extends MY_Controller
     public function logout()/*logout user*/
     {
         //unset session data
-
-        $this->session->unset_userdata('users');
-
-        $this->session->unset_userdata('admin');
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');

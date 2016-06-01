@@ -145,20 +145,7 @@
                 ?>
 
                 <?php echo form_submit($data); ?>
-
-                <?php
-
-                $options = array(
-                    '1' => 'admin',
-                    '2' => 'user',
-
-                );
-
-                $category = array('small', 'large');
-
-                echo form_dropdown('categories_id', $options, 'organizers');
-                ?>
-
+            </p>
             <?php echo form_close(); ?>
 
             <br>
