@@ -1,2 +1,0 @@
-ALTER TABLE `users` ADD `admin` INT NOT NULL AFTER `register_date`;
-UPDATE `users` SET `admin` = '1' WHERE `users`.`id` = 8;
