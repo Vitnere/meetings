@@ -5,6 +5,6 @@
     <title>This is admin area</title>
 </head>
 <body>
-
+<p>This is admin area</p>
 </body>
 </html>

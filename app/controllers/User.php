@@ -60,31 +60,49 @@ class User extends MY_Controller
             //Validate user
             if($user_id)
             {
+
                 //Create array of user data
-                $user_data=array(
+                $admin_data=array(
                     'user_id'=>$user_id,
-                    'username'=>$username,
-                    'logged_in'=>true
+                    'admin'=>1,
+                    'admin_logged_in'=>true
                 );
+                $this->session->set_userdata(array("admin"=>$admin_data));
+                $admin = $this->session->userdata('admin');
 
 
-                $this->session->set_userdata($user_data);
-
-
-                $admin = $this->Get_model->get_user();
-                if($admin == 1)
+                if($admin_data == 1)
                 {
                     $this->load->view('admin/dashboard');
                 }
                 else
                 {
-                    echo ('You are in the public area');
+                    /*echo ('this is not admin');*/
+                    $user_data=array(
+                        'user_id'=>$user_id,
+                        'username'=>$username,
+                        'admin'=>0,
+                        'logged_in'=>true
+                    );
+                    $this->session->set_userdata(array("user"=>$user_data));
+                    $user = $this->session->userdata('admin');
+
+                    if($user_data !== 0)
+                    {
+                        redirect('home/index');
+                    }
+                    else
+                    {
+                        echo ('Not in the user area');
+                    }
                 }
 
 
 
+
+
                 $this->session->set_flashdata('login_success', 'You are now logged in');
-                redirect('home/index');
+                /*redirect('home/index');*/
             } else {
                 //Set error
                 $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
@@ -96,6 +114,10 @@ class User extends MY_Controller
     public function logout()/*logout user*/
     {
         //unset session data
+
+        $this->session->unset_userdata('users');
+
+        $this->session->unset_userdata('admin');
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
