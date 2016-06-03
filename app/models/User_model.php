@@ -27,7 +27,7 @@ class User_model extends CI_Model
         foreach ($result->result() as $user)
         {
             return $user->id;
-            return $user->admin;
+            return $user->admin;//trebam shvatiti rjesiti zasto oba returna ne rade
 
 
         }
@@ -51,11 +51,7 @@ class User_model extends CI_Model
         return $insert;
     }
 
-    public function get_user()
-    {
-        $query=$this->db->get('users');
-        return $query->row();
-    }
+
 }
 
 ?>
