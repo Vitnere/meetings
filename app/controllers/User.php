@@ -56,33 +56,54 @@ class User extends MY_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
+            //get id
             $user_id = $this->User_model->login_user($username, $password);
+
+
 
             //Validate user
             if($user_id)
             {
-                //Create array of user data
+
+                //set user data
                 $user_data=array(
-                    'user_id'=>$user_id,
+                  'user_id'=>$user_id,
                     'username'=>$username,
                     'logged_in'=>true
                 );
-                $result = $this->User_model->login_user($admin);
-                $this->session->set_userdata('admin', $admin);
 
-
-                if($admin==1)
-                {
-                    echo('admin_page');
-                }
-                else
-                {
-                 echo('public page');
-                }
-
-
-
+                /*set user_data*/
                 $this->session->set_userdata($user_data);
+
+                if($user_id==4)
+                {
+
+                    echo('admin page');
+
+                    /*info data*/
+                    echo '<pre>';
+                    print_r($this->session->userdata());
+                    echo '<pre>';
+
+                }
+
+             else
+                {
+
+                    echo ('user page');
+                    
+                    /*info data*/
+                    echo '<pre>';
+                    print_r($this->session->userdata());
+                    echo '<pre>';
+
+                    echo $user_id;
+
+
+                }
+
+
+
                 $this->session->set_flashdata('login_success', 'You are now logged in');
                 /*redirect('home/index');*/
             } else {
@@ -96,10 +117,12 @@ class User extends MY_Controller
     public function logout()/*logout user*/
     {
         //unset session data
-        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('admin');
         $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('username');
         $this->session->sess_destroy();
+
 
         redirect('home/index');
 

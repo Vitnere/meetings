@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class User_model extends CI_Model
 {
-    public function login_user($username, $password,$data,$admin)
+    public function login_user($username, $password)
     {
         $enc_password = md5($password);
 
@@ -13,30 +13,24 @@ class User_model extends CI_Model
         $this->db->where('username',$username);
         $this->db->where('password',$enc_password);
 
-        $result = $this->db->get('users');
-        if($result->num_rows() == 1)
-        {
-          $data = $result->row(0)->id;
-            return $data;
 
+        $result = $this->db->get('users');
+       /* if($result->num_rows() == 1)
+        {
+            return $result->row(0)->id;
+            return $result->row(0)->admin;
         }else
         {
             return false;
-        }
+        }*/
 
-        $result = $this->db->get('users');
-        if($result->num_rows() == 1)
+        foreach ($result->result() as $user)
         {
-            $admin= $result->row(0)->admin;
-            return $admin;
+            return $user->id;
+            return $user->admin;
 
-        }else
-        {
-            return false;
+
         }
-
-
-
 
     }
 
@@ -57,8 +51,11 @@ class User_model extends CI_Model
         return $insert;
     }
 
-
-
+    public function get_user()
+    {
+        $query=$this->db->get('users');
+        return $query->row();
+    }
 }
 
 ?>
