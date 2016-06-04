@@ -57,25 +57,24 @@ class User extends MY_Controller
             $password = $this->input->post('password');
 
             //get id
-            $user_id = $this->User_model->login_user($username, $password);
-
-
+            $result = $this->User_model->login_user($username, $password);
 
             //Validate user
-            if($user_id)
+            if($result)
             {
 
-                //set user data
+                //set user data array
                 $user_data=array(
-                  'user_id'=>$user_id,
+                  'user_id'=>$result->id,
                     'username'=>$username,
+                    'admin'=>$result->admin,
                     'logged_in'=>true
                 );
 
                 /*set user_data*/
                 $this->session->set_userdata($user_data);
 
-                if($user_id==4)
+                    if($result->id==4)
                 {
 
                     echo('admin page');
@@ -96,13 +95,7 @@ class User extends MY_Controller
                     echo '<pre>';
                     print_r($this->session->userdata());
                     echo '<pre>';
-
-                    echo $user_id;
-
-
                 }
-
-
 
                 $this->session->set_flashdata('login_success', 'You are now logged in');
                 /*redirect('home/index');*/

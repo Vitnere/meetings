@@ -13,24 +13,15 @@ class User_model extends CI_Model
         $this->db->where('username',$username);
         $this->db->where('password',$enc_password);
 
-
+        //query
         $result = $this->db->get('users');
-       /* if($result->num_rows() == 1)
-        {
-            return $result->row(0)->id;
-            return $result->row(0)->admin;
-        }else
-        {
-            return false;
-        }*/
 
+        //return result to User controller
         foreach ($result->result() as $user)
         {
-            return $user->id;
-            return $user->admin;//trebam shvatiti rjesiti zasto oba returna ne rade
-
-
+            return $user;
         }
+
 
     }
 
