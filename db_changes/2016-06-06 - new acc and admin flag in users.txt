@@ -1,0 +1,4 @@
+//new admin and user acc because of new hash protection of passwords
+
+-
+UPDATE `users` SET `admin` = '1' WHERE `users`.`id` = 9;

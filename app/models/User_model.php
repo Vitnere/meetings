@@ -7,27 +7,30 @@ class User_model extends CI_Model
 {
     public function login_user($username, $password)
     {
-        $enc_password = md5($password);
+        $enc_password = hash('sha512', $password);
 
 
         $this->db->where('username',$username);
         $this->db->where('password',$enc_password);
 
         //query
+        $this->db->select('id, admin');
         $result = $this->db->get('users');
 
-        //return result to User controller
-        foreach ($result->result() as $user)
-        {
+
+        if ($result->num_rows() > 0) {
+            $user = $result->first_row();
             return $user;
         }
+
+
 
 
     }
 
     public function create_member()
     {
-        $enc_password = md5($this->input->post('password'));
+        $enc_password = hash('sha512',$this->input->post('password'));
 
         $data = array(
 

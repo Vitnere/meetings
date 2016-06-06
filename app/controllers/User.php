@@ -74,7 +74,7 @@ class User extends MY_Controller
                 /*set user_data*/
                 $this->session->set_userdata($user_data);
 
-                    if($result->id==4)
+                    if($result->admin==1)
                 {
 
                     echo('admin page');
