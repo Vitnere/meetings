@@ -151,7 +151,7 @@
                                 <h4 class="title">Edit Users</h4>
                             </div>
                             <div class="content">
-
+                                <p>Here you can add and delete users of the page and manage user roles.</p>
                             </div>
                         </div>
                     </div>
