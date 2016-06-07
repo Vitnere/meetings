@@ -35,6 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url();?>assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -146,76 +147,104 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div class="content">
-        <!--line below bug, cant pull data from the db-->
-        <?php if($images->num_rows() > 0) : ?>
 
-            <?php if($this->session->flashdata('message')) : ?>
-                <div class="alert alert-success" role="alert" align="center">
-                    <?=$this->session->flashdata('message')?>
-                </div>
-            <?php endif; ?>
+            <h1>Add New Image</h1>
 
-            <hr />
             <div class="col-md-12">
-                <?php foreach($images->result() as $img) : ?>
-                    <div class="col-md-4">
-                        <div class="thumbnail">
-                            <?=img($img->file)?>
-                            <div class="caption">
-                                <h3><?=$img->caption?></h3>
-                                <p><?=substr($img->description, 0,100)?>...</p>
-                                <p>
-                                    <?=anchor('gallery/edit/'.$img->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
-                                    <?=anchor('gallery/delete/'.$img->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
-                                </p>
-                            </div>
-                        </div>
+                <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
+                <br /><br />
+            </div>
+
+            <div id="body">
+                <?php if(validation_errors() || isset($error)) : ?>
+                    <div class="alert alert-danger" role="alert" align="center">
+                        <?=validation_errors()?>
+                        <?=(isset($error)?$error:'')?>
                     </div>
-                <?php endforeach; ?>
+                <?php endif; ?>
+                <?=form_open_multipart('Admin/add')?>
+
+                <div class="form-group"><!--choose image-->
+                    <label for="userfile">Image File</label>
+                    <input type="file" class="form-control" name="userfile">
+                </div>
+
+                <div class="form-group"><!--category select-->
+                    <label for="categories_id">Category</label>
+
+                    <?php
+
+                    $options = array(
+                        '1' => 'participants',
+                        '2' => 'organizers',
+                        '3' => 'co-organizers',
+                        '4' => 'supporters',
+                        '5' => 'location',
+                    );
+
+                    $category = array('small', 'large');
+
+                    echo form_dropdown('categories_id', $options, 'organizers');
+
+                    ?>
+
+
+                </div>
+
+                <div class="form-group"><!--caption-->
+                    <label for="caption">Caption</label>
+                    <input type="text" class="form-control" name="caption" value="">
+                </div>
+
+                <div class="form-group"><!--description-->
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Upload</button>
+                <?=anchor('gallery','Cancel',['class'=>'btn btn-warning'])?>
+
+                </form>
             </div>
 
-        <?php else : ?>
-            <div align="center">We don't have any image yet, go ahead and <?=anchor('gallery/add','add a new one')?>.</div>
-        <?php endif; ?>
+
+            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 
         </div>
 
 
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="<?php base_url();?>">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Company
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <p class="copyright pull-right">
+                &copy; 2016 <a href="http://nemanjakolar.bitballoon.com/">Nemanja Kolar</a>, web developer
         </div>
+    </footer>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="<?php base_url();?>">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; 2016 <a href="http://nemanjakolar.bitballoon.com/">Nemanja Kolar</a>, web developer
-            </div>
-        </footer>
-
-    </div>
+</div>
 </div>
 
 
@@ -241,3 +270,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
 
 </html>
+

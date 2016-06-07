@@ -60,6 +60,13 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo base_url();?>Admin/add">
+                        <i class="pe-7s-graph"></i>
+                        <p>Add photos</p>
+                    </a>
+                </li>
+
+                <li>
                     <a href="<?php echo base_url();?>Admin/users">
                         <i class="pe-7s-news-paper"></i>
                         <p>Users</p>
