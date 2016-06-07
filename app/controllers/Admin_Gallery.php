@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gallery extends MY_Controller {
+class Admin_Gallery extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -13,7 +13,7 @@ class Gallery extends MY_Controller {
         $data = [
             'images'   => $this->Gallery_model->all()
         ];
-        $this->load->view('gallery/index', $data);
+        $this->load->view('Admin/gallery', $data);
 
     }
 
@@ -74,7 +74,7 @@ class Gallery extends MY_Controller {
                     'description'   => set_value('description')
 
                 ];
-                
+
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('gallery');
@@ -82,7 +82,7 @@ class Gallery extends MY_Controller {
         }
     }
 
-    
+
 
     public function edit($id){/*edit photo*/
         $rules =    [

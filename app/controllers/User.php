@@ -19,8 +19,8 @@ class User extends MY_Controller
         $this->form_validation->set_rules('last_name','Last_Name','trim|required|max_length[50]|min_length[2]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[100]|min_length[5]|valid_email');
         $this->form_validation->set_rules('username','Username','trim|required|max_length[20]|min_length[4]|is_unique[users.username]');
-        $this->form_validation->set_rules('password','Password','trim|required|max_length[50]|min_length[6]');
-        $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[2]|matches[password]');
+        $this->form_validation->set_rules('password','Password','trim|required|max_length[50]|min_length[8]');
+        $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[8]|matches[password]');
 
 
         if ($this->form_validation->run() == FALSE)
@@ -77,12 +77,7 @@ class User extends MY_Controller
                     if($result->admin==1)
                 {
 
-                    echo('admin page');
-
-                    /*info data*/
-                    echo '<pre>';
-                    print_r($this->session->userdata());
-                    echo '<pre>';
+                    $this->load->view('admin/dashboard');
 
                 }
 
