@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>Admin</title>
@@ -53,7 +53,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url();?>Admin/home">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
@@ -87,7 +87,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">BackEnd Admin</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -139,33 +139,28 @@
         <div class="content">
 
 
-            <!--<div class="container-fluid">
+
+           <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+                                <h4 class="title">Front-End</h4>
+                                <p class="category">preview changes</p>
                             </div>
                             <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                                    </div>
+                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
+                                    <a class="btn btn-primary" target="_blank" href="<?php echo base_url()?>">Preview</a>
                                 </div>
+
+
+
+
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-8">
+                    <!-- <div class="col-md-8">
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Users Behavior</h4>

@@ -76,21 +76,28 @@ class User extends MY_Controller
 
                     if($result->admin==1)
                 {
-
                     $this->load->view('admin/dashboard');
-
                 }
 
-             else
-                {
+                   /* else if($result->admin==2)
+                    {
+                        echo ('super_user');*/
 
-                    echo ('user page');
-                    
-                    /*info data*/
-                    echo '<pre>';
-                    print_r($this->session->userdata());
-                    echo '<pre>';
-                }
+                        /*info data*/
+                       /* echo '<pre>';
+                        print_r($this->session->userdata());
+                        echo '<pre>';
+                    }*/
+
+                     else
+                        {
+                            echo ('user page');
+
+                            /*info data*/
+                            echo '<pre>';
+                            print_r($this->session->userdata());
+                            echo '<pre>';
+                        }
 
                 $this->session->set_flashdata('login_success', 'You are now logged in');
                 /*redirect('home/index');*/

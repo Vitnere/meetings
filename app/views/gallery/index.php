@@ -51,12 +51,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php else : ?>
             <div align="center">We don't have any image yet, go ahead and <?=anchor('gallery/add','add a new one')?>.</div>
         <?php endif; ?>
-
-      <!--  <div class="col-md-12">
-            <a class="btn btn-primary" href="<?php /*echo base_url()*/?>admin/home">Back to admin</a>
-        </div>
--->
-
-
-
-

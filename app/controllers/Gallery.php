@@ -15,6 +15,7 @@ class Gallery extends MY_Controller {
         ];
         $this->load->view('gallery/index', $data);
 
+
     }
 
     public function add(){/*add new photo*/

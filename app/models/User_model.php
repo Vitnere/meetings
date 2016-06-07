@@ -7,7 +7,7 @@ class User_model extends CI_Model
 {
     public function login_user($username, $password)
     {
-        $enc_password = hash('sha512', $password);
+        $enc_password = hash('sha512', $password);//pojacati sigurnost sifre
 
 
         $this->db->where('username',$username);
@@ -30,7 +30,7 @@ class User_model extends CI_Model
 
     public function create_member()
     {
-        $enc_password = hash('sha512',$this->input->post('password'));
+        $enc_password = hash('sha512',$this->input->post('password'));//pojacati sigurnost sifre
 
         $data = array(
 

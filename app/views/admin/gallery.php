@@ -4,18 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Admin</title>
+    <title>Gallery</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
     <!-- Gallery-->
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-    <link href="<?/*=base_url()*/?>assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?/*=base_url()*/?>assets/css/gallery.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/gallery.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
 
@@ -50,12 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Admin
+                    Gallery
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url();?>Admin/home">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
@@ -140,51 +140,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="content">
 
-                <h1>Welcome master jedi.You can add new images to right side.</h1>
-            </div>
-            <?php if($images->num_rows() > 0) : ?>
+            <h1>Welcome master jedi.You can add new images to right side.</h1>
+        </div>
 
-                <?php if($this->session->flashdata('message')) : ?>
-                    <div class="alert alert-success" role="alert" align="center">
-                        <?=$this->session->flashdata('message')?>
-                    </div>
-                <?php endif; ?>
+        <!--line below bug, cant pull data from the db-->
+        <?php if($images->num_rows() > 0) : ?>
 
-
-                <div class="col-md-12" align="center">
-                    <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
-                    <?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?>
-                    <br /><br />
+            <?php if($this->session->flashdata('message')) : ?>
+                <div class="alert alert-success" role="alert" align="center">
+                    <?=$this->session->flashdata('message')?>
                 </div>
-
-
-                <hr />
-                <div class="col-md-12">
-                    <?php foreach($images->result() as $img) : ?>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <?=img($img->file)?>
-                                <div class="caption">
-                                    <h3><?=$img->caption?></h3>
-                                    <p><?=substr($img->description, 0,100)?>...</p>
-                                    <p>
-                                        <?=anchor('gallery/edit/'.$img->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
-                                        <?=anchor('gallery/delete/'.$img->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-
-
-            <?php else : ?>
-                <div align="center">We don't have any image yet, go ahead and <?=anchor('gallery/add','add a new one')?>.</div>
             <?php endif; ?>
 
-            <!--  <div class="col-md-12">
-            <a class="btn btn-primary" href="<?php /*echo base_url()*/?>admin/home">Back to admin</a>
-        </div>
--->
+
+            <div class="col-md-12" align="center">
+                <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
+                <?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?>
+                <br /><br />
+            </div>
+
+
+            <hr />
+            <div class="col-md-12">
+                <?php foreach($images->result() as $img) : ?>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <?=img($img->file)?>
+                            <div class="caption">
+                                <h3><?=$img->caption?></h3>
+                                <p><?=substr($img->description, 0,100)?>...</p>
+                                <p>
+                                    <?=anchor('gallery/edit/'.$img->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
+                                    <?=anchor('gallery/delete/'.$img->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+        <?php else : ?>
+            <div align="center">We don't have any image yet, go ahead and <?=anchor('gallery/add','add a new one')?>.</div>
+        <?php endif; ?>
 
 
         </div>
@@ -245,22 +242,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        demo.initChartist();
-
-        $.notify({
-            icon: 'pe-7s-gift',
-            message: "Welcome <b></b> Master Jedi admin"
-
-        },{
-            type: 'info',
-            timer: 4000
-        });
-
-    });
-</script>
 
 </html>

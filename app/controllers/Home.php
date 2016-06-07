@@ -24,6 +24,7 @@ class Home extends MY_Controller
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all(),
             'guest' =>'gallery/guest'
+
         );
 
 
