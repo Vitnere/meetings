@@ -1,13 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if($this->input->post()){
+    $caption       = set_value('caption');
+    $description    = set_value('description');
+} else {
+    $caption       = $image->caption;
+    $description    = $image->description;
+}
 ?>
 
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Gallery</title>
+    <title>Edit image</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -38,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="<?php echo base_url();?>assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue" data-image="<?php echo base_url();?>assets/img/sidebar-5.jpg">
 
         <!--
 
@@ -50,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Gallery
+                   Edit image
                 </a>
             </div>
 
@@ -80,6 +89,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Users</p>
                     </a>
                 </li>
+
+
             </ul>
         </div>
     </div>
@@ -94,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">BackEnd Admin</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -144,77 +155,96 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div class="content">
-        <!--line below bug, cant pull data from the db-->
-        <?php if($images->num_rows() > 0) : ?>
+            <h4>Update Image</h4>
 
-            <?php if($this->session->flashdata('message')) : ?>
-                <div class="alert alert-success" role="alert" align="center">
-                    <?=$this->session->flashdata('message')?>
-                </div>
-            <?php endif; ?>
 
-            <hr />
-            <div class="col-md-12">
-                <?php foreach($images->result() as $img) : ?>
-                    <div class="col-md-4">
-                        <div class="thumbnail">
-                            <?=img($img->file)?>
-                            <div class="caption">
-                                <h3><?=$img->caption?></h3>
-                                <p><?=substr($img->description, 0,100)?>...</p>
-                                <p>
-                                    <?=anchor('Admin/edit/'.$img->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
-                                    <?=anchor('Admin/delete/'.$img->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
-                                </p>
-                            </div>
-                        </div>
+                <?php if(validation_errors() || isset($error)) : ?>
+                    <div class="alert alert-danger" role="alert" align="center">
+                        <?=validation_errors()?>
+                        <?=(isset($error)?$error:'')?>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                <?php endif; ?>
+                <?=form_open_multipart('Admin/edit/'.$image->id)?>
 
-        <?php else : ?>
-            <div align="center">We don't have any image yet, go ahead and <?=anchor('Admin/add','add a new one')?>.</div>
-        <?php endif; ?>
+                <div class="form-group">
+                    <label for="userfile">Image File</label>
+                    <div class="row" style="margin-bottom:5px"><div class="col-xs-12 col-sm-6 col-md-3"><?=img(['src'=>$image->file,'width'=>'100%'])?></div></div>
+                    <input type="file" class="form-control" name="userfile">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+
+                    <?php
+
+                    $options = array(
+                        'participants' => 'participants',
+                        'organizers' => 'organizers',
+                        'co-organizers' => 'co-organizers',
+                        'supporters' => 'supporters',
+                        'location' => 'location',
+                    );
+
+                    $category = array('small', 'large');
+
+                    echo form_dropdown('category', $options, 'organizers');
+
+                    ?>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="caption">Caption</label>
+                    <input type="text" class="form-control" name="caption" value="<?=$caption?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description"><?=$description?></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <?=anchor('gallery','Cancel',['class'=>'btn btn-warning'])?>
+
+                </form>
 
         </div>
 
 
 
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <nav class="pull-left">
+                            <ul>
+                                <li>
+                                    <a href="<?php base_url();?>">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Company
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Portfolio
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <p class="copyright pull-right">
+                            &copy; 2016 <a href="http://nemanjakolar.bitballoon.com/">Nemanja Kolar</a>, web developer
+                    </div>
+                </footer>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="<?php base_url();?>">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; 2016 <a href="http://nemanjakolar.bitballoon.com/">Nemanja Kolar</a>, web developer
             </div>
-        </footer>
-
-    </div>
-</div>
+        </div>
 
 
 </body>
@@ -232,10 +262,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--  Notifications Plugin    -->
 <script src="<?php echo base_url();?>assets/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="<?php echo base_url();?>text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
+
+
 
 </html>

@@ -10,12 +10,6 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <!-- Gallery-->
-    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-    <link href="<?/*=base_url()*/?>assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?/*=base_url()*/?>assets/css/gallery.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
 
     <!-- Bootstrap core CSS     -->
     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -177,6 +171,8 @@
                         </div>
                     </div>
                 </div>
+
+
 
                 <div class="row">
                     <div class="col-md-4">
@@ -366,27 +362,9 @@
 <!--  Notifications Plugin    -->
 <script src="<?php echo base_url();?>assets/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="<?php echo base_url();?>text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
 
-        demo.initChartist();
-
-        $.notify({
-            icon: 'pe-7s-gift',
-            message: "Welcome <b></b> Master Jedi admin"
-
-        },{
-            type: 'info',
-            timer: 4000
-        });
-
-    });
-</script>
 
 </html>

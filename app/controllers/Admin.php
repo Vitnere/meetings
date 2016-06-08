@@ -7,6 +7,7 @@ class Admin extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Gallery_model');
+        $this->load->model('User_model');
     }
 
     public function home()
@@ -40,6 +41,15 @@ class Admin extends MY_Controller
         $this->load->view('admin/user',$data);
 
     }
+
+    public function get_user()/*get user data for user page*/
+    {
+        //load the method of model
+        $data['result']=$this->User_model->get_user();
+        //return the data in view
+        $this->load->view('admin/user', $data);
+    }
+
 
     public function add(){/*add new photo*/
         $rules =    [
@@ -132,7 +142,7 @@ class Admin extends MY_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('gallery/edit_image',['image'=>$image]);
+            $this->load->view('admin/edit_image',['image'=>$image]);
         }
         else
         {
@@ -152,7 +162,7 @@ class Admin extends MY_Controller
                 if ( ! $this->upload->do_upload())
                 {
                     $error = array('error' => $this->upload->display_errors());
-                    $this->load->view('gallery/edit_image',['image'=>$image,'error'=>$error]);
+                    $this->load->view('admin/edit_image',['image'=>$image,'error'=>$error]);
                 }
                 else
                 {
@@ -178,5 +188,7 @@ class Admin extends MY_Controller
         $this->session->set_flashdata('message','Image has been deleted..');
         redirect('Admin/gallery');
     }
+
+
 
 }

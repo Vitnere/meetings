@@ -148,12 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="content">
 
-            <h1>Add New Image</h1>
-
-            <div class="col-md-12">
-                <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
-                <br /><br />
-            </div>
+            <h4>Add New Image</h4>
 
             <div id="body">
                 <?php if(validation_errors() || isset($error)) : ?>
@@ -208,7 +203,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
 
-            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 
         </div>
 
