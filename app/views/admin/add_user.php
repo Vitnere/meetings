@@ -149,6 +149,12 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
+                                <?php if($this->session->flashdata('registered')) : ?>
+                                    <p class="alert alert-dismissable alert-success">
+                                        <?php echo $this->session->flashdata('registered');?>
+                                    </p>
+                                <?php endif; ?>
+
                                 <ul class="pagination">
                                     <li>
                                         <a href="<?php echo base_url();?>Admin/users" aria-label="Previous">
@@ -163,6 +169,7 @@
                                         </a>
                                     </li>
                                 </ul>
+
 
                             </div>
                             <div class="content">
@@ -242,7 +249,7 @@
                                         ?>
                                         <li><?php echo form_password($data); ?></li>
 
-                                        <!--Field: Admin role-->
+                                        <!--Field: Role-->
 
                                         <li><?php echo form_label('Role'); ?></li>
                                         <?php
@@ -272,6 +279,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col-md-4">
                         <p class="description text-center"> <br>
                             “Never tell me the odds.”  <br>

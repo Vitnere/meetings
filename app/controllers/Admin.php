@@ -74,7 +74,7 @@ class Admin extends MY_Controller
         {
             if($this->User_model->add_user())
             {
-                $this->session->set_flashdata('registered','You are now registered and can log in');
+                $this->session->set_flashdata('registered','You added new user');
                 redirect('admin/add_user');
             }
         }

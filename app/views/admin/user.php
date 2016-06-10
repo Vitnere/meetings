@@ -151,21 +151,22 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
+
+
                                 <ul class="pagination">
                                     <li>
-                                        <a href="<?php echo base_url();?>Admin/add_user" aria-label="Previous">
+                                        <a href="<?php echo base_url();?>Admin/users" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
-                                    <li><a href="<?php echo base_url();?>Admin/users"">Manage Users</a></li>
+                                    <li><a href="<?php echo base_url();?>Admin/users">Manage Users</a></li>
                                     <li><a href="<?php echo base_url();?>Admin/add_user">Add User</a></li>
                                     <li>
-                                        <a href="<?php echo base_url();?>Admin/add_user" aria-label="Next">
+                                        <a href="<?php echo base_url();?>Admin/users" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 </ul>
-
                             </div>
                             <div class="content">
 
