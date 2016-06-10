@@ -1,0 +1,1 @@
+INSERT INTO `categories` (`id`, `title`) VALUES ('1', 'ORGANIZERS'), ('2', 'CO-ORGANIZERS'), ('3', 'SUPPORTERS'), ('4', 'LOCATION');

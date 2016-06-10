@@ -170,11 +170,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php
 
                     $options = array(
-                        '1' => 'participants',
-                        '2' => 'organizers',
-                        '3' => 'co-organizers',
-                        '4' => 'supporters',
-                        '5' => 'location',
+                        '1' => 'organizers',
+                        '2' => 'co-organizers',
+                        '3' => 'supporters',
+                        '4' => 'location'
                     );
 
                     $category = array('small', 'large');

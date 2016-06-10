@@ -15,6 +15,12 @@ class Gallery_model extends CI_Model {
         return $row;
     }
 
+    public function find_cat($categories_id)
+    {
+        $row= $this->db->where('categories_id',$categories_id)->limit(1)->get('images');
+        return $row;
+    }
+
     public function create($data)
     {
         try{

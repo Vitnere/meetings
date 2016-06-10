@@ -144,6 +144,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div class="content">
+
+
         <!--line below bug, cant pull data from the db-->
         <?php if($images->num_rows() > 0) : ?>
 
