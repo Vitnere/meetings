@@ -9,6 +9,7 @@ class User extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Gallery_model');
         $this->load->model('User_model');
     }
 
@@ -79,16 +80,15 @@ class User extends MY_Controller
                     $this->load->view('admin/dashboard');
                 }
 
-
-                    else if($result->admin==2)
+                   /* else if($result->admin==2)
                     {
-                        echo ('super_user');
+                        echo ('super_user');*/
 
                         /*info data*/
-                       echo '<pre>';
+                       /* echo '<pre>';
                         print_r($this->session->userdata());
                         echo '<pre>';
-                    }
+                    }*/
 
                      else
                         {
@@ -123,8 +123,6 @@ class User extends MY_Controller
         redirect('home/index');
 
     }
-
-
 
 
 

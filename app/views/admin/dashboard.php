@@ -157,22 +157,7 @@
                         </div>
                     </div>
 
-                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Gallery</h4>
-                                <p class="category">arrange your photos</p>
-                            </div>
-                            <div class="content">
-                                <?=anchor('gallery/index','Go to gallery',['target' => '_blank','class'=>'btn btn-primary'])?>
-                                <br><br>
-                                <?=anchor ('gallery/add','Add a new image',['target' => '_blank','class'=>'btn btn-primary'])?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-
 
                 <div class="row">
                     <div class="col-md-4">

@@ -46,10 +46,10 @@ class Admin extends MY_Controller
     {
         //load the method of model
         $data['result']=$this->User_model->get_user();
+
         //return the data in view
         $this->load->view('admin/user', $data);
     }
-
 
     public function add(){/*add new photo*/
         $rules =    [
@@ -75,7 +75,7 @@ class Admin extends MY_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('Admin/add_image');
+            $this->load->view('admin/add_image');
         }
         else
         {
@@ -95,7 +95,7 @@ class Admin extends MY_Controller
             {
                 $error = array('error' => $this->upload->display_errors());
 
-                $this->load->view('gallery/add_image', $error);
+                $this->load->view('admin/add_image', $error);
             }
             else
             {
@@ -111,7 +111,7 @@ class Admin extends MY_Controller
 
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
-                redirect('Admin/gallery');
+                redirect('admin/gallery');
             }
         }
     }
@@ -178,7 +178,7 @@ class Admin extends MY_Controller
 
             $this->Gallery_model->update($id,$data);
             $this->session->set_flashdata('message','New image has been updated..');
-            redirect('Admin/gallery');
+            redirect('admin/gallery');
         }
     }
 
@@ -188,7 +188,5 @@ class Admin extends MY_Controller
         $this->session->set_flashdata('message','Image has been deleted..');
         redirect('Admin/gallery');
     }
-
-
 
 }

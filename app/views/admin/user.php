@@ -65,7 +65,6 @@
                         <p>Add photos</p>
                     </a>
                 </li>
-
                 <li>
                     <a href="<?php echo base_url();?>Admin/users">
                         <i class="pe-7s-news-paper"></i>
@@ -139,7 +138,9 @@
                               </ul>
                         </li>
                         <li>
-                            <a href="<?php echo base_url()?>User/logout">Log out</a>
+                            <a href="#">
+                                Log out
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -158,7 +159,8 @@
                             <div class="content">
                                 <p>Here you can add and delete users of the page and manage user roles.</p>
 
-                                <table border="1">
+
+                               <!-- <table border="1">
                                     <tbody>
                                     <tr>
                                         <th>first_name</th>
@@ -168,58 +170,46 @@
                                         <th>admin</th>
                                     </tr>
                                     <?php
-                                    foreach ($result as $row)
+/*                                    foreach ($result as $row)
                                     {
-                                        ?><tr>
+                                        */?><tr>
 
-                                        <td><?php echo $row->first_name;?></td>
-                                        <td><?php echo $row->last_name;?></td>
-                                        <td><?php echo $row->email;?></td>
-                                        <td><?php echo $row->username;?></td>
-                                        <td><?php echo $row->admin;?></td>
+                                        <td><?php /*echo $row->first_name;*/?></td>
+                                        <td><?php /*echo $row->last_name;*/?></td>
+                                        <td><?php /*echo $row->email;*/?></td>
+                                        <td><?php /*echo $row->username;*/?></td>
+                                        <td><?php /*echo $row->admin;*/?></td>
                                         </tr>
-                                    <?php }
-                                    ?>
+
+
+                                    <?php /*}
+                                    */?>
                                     </tbody>
-                                </table>
+                                </table>-->
+
+
+                                    <?php
+                                    if(!empty($result))
+                                    {
+                                        foreach($result as $user)
+                                        {
+                                             echo $user;
+                                        }
+                                    }
+                                    ?>
+
+
 
 
                             </div>
                         </div>
                     </div>
-
-
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="col-md-4">
-            <div class="card card-user">
-                <div class="image">
-                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                </div>
-                <div class="content">
-                    <div class="author">
-                        <a href="#">
-                            <img class="avatar border-gray" src="https://pbs.twimg.com/profile_images/677704050490662912/7s4Uxgxa.jpg" alt="..."/>
-
-                            <h4 class="title">Nemanja Kolar<br />
-                                <small>admin</small>
-                            </h4>
-                        </a>
+                    <div class="col-md-4">
+                        <p class="description text-center"> <br>
+                            “Never tell me the odds.”  <br>
+                            Han Solo"
+                        </p>
                     </div>
-                    <p class="description text-center"> <br>
-                        “Never tell me the odds.”  <br>
-                        Han Solo"
-                    </p>
-                </div>
-                <hr>
-                <div class="text-center">
-                    <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                    <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                    <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
 
                 </div>
             </div>

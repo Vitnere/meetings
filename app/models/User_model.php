@@ -23,6 +23,9 @@ class User_model extends CI_Model
             return $user;
         }
 
+
+
+
     }
 
     public function create_member()
@@ -46,15 +49,25 @@ class User_model extends CI_Model
     {
         //query
         $this->db->select('first_name,last_name,email,username, admin');
-        $query = $this->db->get('users');
+        $query=$this->db->get('users');
 
+        //return data
+        /*if ($query->num_rows() > 0) {
+            $result=$query->result();
+            return $result;
+        }*/
 
-        if ($query->num_rows() > 0) {
-            return $result = $query->result();
+        if($query->num_rows() > 0)
+        {
+            foreach ($query->result() as $row)
+            {
+                $data[] = $row;
+            }
+            return $data;
         }
 
-    }
 
+    }
 
 }
 
