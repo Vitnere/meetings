@@ -45,6 +45,24 @@ class User_model extends CI_Model
         return $insert;
     }
 
+    public function add_user()/*admin add user*/
+    {
+        $enc_password = hash('sha512',$this->input->post('password'));//pojacati sigurnost sifre
+
+        $data = array(
+
+            'first_name' => $this->input->post('first_name'),
+            'last_name'  => $this->input->post('last_name'),
+            'email'      => $this->input->post('email'),
+            'username'   => $this->input->post('username'),
+            'password'   => $enc_password,
+            'admin'       => $this->input->post('admin')
+        );
+
+        $insert = $this->db->insert('users', $data);
+        return $insert;
+    }
+
     public function get_user()
     {
         //query

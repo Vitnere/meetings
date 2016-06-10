@@ -21,9 +21,6 @@
     <link href="<?php echo base_url();?>assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="<?php echo base_url();?>assets/css/demo.css" rel="stylesheet" />
-
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -154,10 +151,24 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Edit Users</h4>
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="<?php echo base_url();?>Admin/add_user" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="<?php echo base_url();?>Admin/users"">Manage Users</a></li>
+                                    <li><a href="<?php echo base_url();?>Admin/add_user">Add User</a></li>
+                                    <li>
+                                        <a href="<?php echo base_url();?>Admin/add_user" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
                             </div>
                             <div class="content">
-                                <p>Here you can add and delete users of the page and manage user roles.</p>
+
 
 
                                <!-- <table border="1">
@@ -197,6 +208,8 @@
                                         }
                                     }
                                     ?>
+
+
 
 
 
