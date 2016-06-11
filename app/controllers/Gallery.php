@@ -105,7 +105,7 @@ class Gallery extends MY_Controller {
         ];
 
         $this->form_validation->set_rules($rules);
-        $image = $this->Gallery_model->find_cat($categories_id)->row();
+        $image=$this->Gallery_model->find($id)->row();
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -148,6 +148,7 @@ class Gallery extends MY_Controller {
             redirect('gallery');
         }
     }
+
 
     public function delete($id)/*delete photo*/
     {

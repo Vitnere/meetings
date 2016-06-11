@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <!--Uslov ako je categories_id jedan 3 ili 4 onda prikazati slike-->
-        <?php if($images->num_rows() > 0 && $categories_id=3 && 4) : ?>
+        <?php if($images->num_rows() > 0) : ?>
 
             <?php if($this->session->flashdata('message')) : ?>
                 <div class="alert alert-success" role="alert" align="center">

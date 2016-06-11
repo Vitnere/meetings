@@ -15,11 +15,18 @@ class Gallery_model extends CI_Model {
         return $row;
     }
 
-    public function find_cat($categories_id)
+    public function cat_id()
     {
-        $row= $this->db->where('categories_id',$categories_id)->limit(1)->get('images');
-        return $row;
+        $this->db->select('categories_id');
+        $result = $this->db->get('users');
+
+
+        if ($result->num_rows() > 0) {
+            $cat_id = $result->result();
+            return $cat_id;
+        }
     }
+
 
     public function create($data)
     {

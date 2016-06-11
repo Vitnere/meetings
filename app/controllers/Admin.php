@@ -163,6 +163,11 @@ class Admin extends MY_Controller
     public function edit($id){/*edit photo*/
         $rules =    [
             [
+                'field' => 'categories_id',
+                'label' => 'Category',
+                'rules' => 'required'
+            ],
+            [
                 'field' => 'caption',
                 'label' => 'Caption',
                 'rules' => 'required'
@@ -172,11 +177,6 @@ class Admin extends MY_Controller
                 'label' => 'Description',
                 'rules' => 'required'
             ],
-            [
-                'field' => 'category',
-                'label' => 'Category',
-                'rules' => 'required'
-            ]
         ];
 
         $this->form_validation->set_rules($rules);
@@ -194,9 +194,9 @@ class Admin extends MY_Controller
                 $config =   [
                     'upload_path'   => 'data/baners/',
                     'allowed_types' => 'gif|jpg|png|jpeg',
-                    'max_size'      => 100,
-                    'max_width'     => 1024,
-                    'max_height'    => 768
+                    'max_size'      => 1000,
+                    'max_width'     => 1920,
+                    'max_height'    => 1200
                 ];
 
                 $this->load->library('upload', $config);
