@@ -15,18 +15,49 @@ class Gallery_model extends CI_Model {
         return $row;
     }
 
-    public function cat_id()
+    public function add_cat($data)//insert new category
     {
-        $this->db->select('categories_id');
-        $result = $this->db->get('users');
-
-
-        if ($result->num_rows() > 0) {
-            $cat_id = $result->result();
-            return $cat_id;
+        try{
+            $this->db->insert('categories', $data);
+            return true;
+        }catch(Exception $e){
+            echo $e->getMessage();
         }
     }
 
+    public function get_cat()
+    {
+        $this->db->select('title');
+        $result = $this->db->get('categories');
+
+        if ($result->num_rows() > 0) {
+            $data=$result->first_row();
+            return $data;
+        }
+
+    }
+
+    public function find_cat()
+    {
+        //query
+       /* $this->db->select('id');
+        $result = $this->db->get('categories');
+
+
+        if ($result->num_rows() > 0) {
+                $cat_id=$result->first_row();
+                return $cat_id;
+        }*/
+        $this->db->select('categories_id');
+        $result = $this->db->get('images');
+
+        if ($result->num_rows() > 0) {
+            $id=$result->first_row();
+            return $id;
+        }
+
+
+    }
 
     public function create($data)
     {

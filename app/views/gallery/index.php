@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h1>Welcome master jedi.You can add new images to right side.</h1>
         </div>
 
-        <!--Uslov ako je categories_id jedan 3 ili 4 onda prikazati slike-->
+
         <?php if($images->num_rows() > 0) : ?>
 
             <?php if($this->session->flashdata('message')) : ?>
@@ -33,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <hr />
 
+            <?php if(serialize($images)==3 && 4) : ?>
             <div class="col-md-12">
                 <?php foreach($images->result() as $img) : ?>
                     <div class="col-md-4">
@@ -50,6 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 <?php endforeach; ?>
             </div>
+            <?php endif; ?>
+            <?php echo '<pre>';
+              print_r (serialize($images));
+             echo '<pre>';?>
 
 
         <?php else : ?>

@@ -67,6 +67,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo base_url();?>Admin/cattegories">
+                        <i class="pe-7s-graph"></i>
+                        <p>Cattegories</p>
+                    </a>
+                </li>
+                <li>
                     <a href="<?php echo base_url();?>Admin/users">
                         <i class="pe-7s-news-paper"></i>
                         <p>Users</p>

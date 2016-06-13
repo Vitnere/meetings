@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Gallery</title>
+    <title>Manage categories</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -35,6 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url();?>assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -50,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Gallery
+                    Manage categories
                 </a>
             </div>
 
@@ -86,6 +87,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Users</p>
                     </a>
                 </li>
+
+
             </ul>
         </div>
     </div>
@@ -152,42 +155,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="content">
 
 
-        <!--line below bug, cant pull data from the db-->
-        <?php if($images->num_rows() > 0) : ?>
 
-            <?php if($this->session->flashdata('message')) : ?>
-                <div class="alert alert-success" role="alert" align="center">
-                    <?=$this->session->flashdata('message')?>
-                </div>
-            <?php endif; ?>
+            <div id="body">
+                <?php if(validation_errors() || isset($error)) : ?>
+                    <div class="alert alert-danger" role="alert" align="center">
+                        <?=validation_errors()?>
+                        <?=(isset($error)?$error:'')?>
+                    </div>
+                <?php endif; ?>
 
-            <hr />
-            <div class="col-md-12">
-                <?php foreach($images->result() as $img) : ?>
-                    <div class="col-md-4">
-                        <div class="thumbnail">
-                            <?=img($img->file)?>
-                            <div class="caption">
-                                <h3><?=$img->caption?></h3>
-                                <p><?=substr($img->description, 0,100)?>...</p>
-                                <p>
-                                    <?=anchor('Admin/edit/'.$img->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
-                                    <?=anchor('Admin/delete/'.$img->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
-                                </p>
+                <?php if($this->session->flashdata('add')) : ?>
+                    <p class="alert alert-dismissable alert-success">
+                        <?php echo $this->session->flashdata('add');?>
+                    </p>
+                <?php endif; ?>
+
+                <?= form_open('Admin/insert_cat');?>
+
+                <p align="center">Manage your photo categories here</p>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Add</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Edit</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Delete</a></li>
+                </ul>
+
+
+
+                <div class="form-group"><!--category-->
+                    <br>
+                    <label for="title">New category</label>
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="form-group in collapse"><!--add cattegory-->
+                                <input type="text" class="form-control" name="title" value="Enter name">
                             </div>
                         </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Edit</h3>
+                            <p>Some content in menu 1.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Delete</h3>
+                            <p>Some content in menu 2.</p>
+                        </div>
+
                     </div>
-                <?php endforeach; ?>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Insert</button>
+
+                <? form_close();?>
+
             </div>
 
-        <?php else : ?>
-            <div align="center">We don't have any image yet, go ahead and <?=anchor('Admin/add','add a new one')?>.</div>
-        <?php endif; ?>
-
         </div>
-
-
-
 
 
         <footer class="footer">
@@ -247,3 +269,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
 
 </html>
+

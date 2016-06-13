@@ -12,8 +12,7 @@ class MY_Controller extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->load->model('user_model');
-        $this->load->model('get_model');
+        $this->load->model('User_model');
     }
 
     public function _show()

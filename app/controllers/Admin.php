@@ -32,6 +32,45 @@ class Admin extends MY_Controller
         $this->load->view('admin/gallery',$data);
     }
 
+    public function cattegories()
+    {
+        $data=array(
+            'cattegories'   => 'admin/cattegories',
+        );
+
+
+        $this->load->view('admin/cattegories',$data);
+    }
+
+    public function insert_cat()//insert new category
+    {
+        $rules =    [
+            [
+                'field' => 'title',
+                'label' => 'New category',
+                'rules' => 'required'
+            ]
+
+        ];
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('Admin/insert_cat');
+        }
+        else
+        {
+                $data = [
+                    "title"       => set_value("title"),
+                ];
+
+                $this->Gallery_model->add_cat($data);
+                $this->session->set_flashdata('add','New category has been added..');
+                redirect('admin/cattegories');
+            }
+        }
+
     public function users()
     {
         $data=array(

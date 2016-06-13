@@ -76,6 +76,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo base_url();?>Admin/cattegories">
+                        <i class="pe-7s-graph"></i>
+                        <p>Cattegories</p>
+                    </a>
+                </li>
+                <li>
                     <a href="<?php echo base_url();?>Admin/users">
                         <i class="pe-7s-news-paper"></i>
                         <p>Users</p>
@@ -157,33 +163,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?=(isset($error)?$error:'')?>
                     </div>
                 <?php endif; ?>
+
+
                 <?=form_open_multipart('Admin/add')?>
+
 
                 <div class="form-group"><!--choose image-->
                     <label for="userfile">Image File</label>
                     <input type="file" class="form-control" name="userfile">
                 </div>
 
-                <div class="form-group"><!--category select-->
+                <div class="form-group"><!--category-->
                     <label for="categories_id">Category</label>
+
+
 
                     <?php
 
-                    $options = array(
-                        '1' => 'organizers',
-                        '2' => 'co-organizers',
-                        '3' => 'supporters',
-                        '4' => 'location'
-                    );
+                                        $options = array(
+                                            '1' => 'organizers',
+                                            '2' => 'co-organizers',
+                                            '3' => 'supporters',
+                                            '4' => 'location'
+                                        );
 
-                    $category = array('small', 'large');
+                                        $category = array('small', 'large');
 
-                    echo form_dropdown('categories_id', $options, 'organizers');
+                                        echo form_dropdown('categories_id', $options, 'organizers');
 
-                    ?>
-
-
+                                        ?>&nbsp
+                    <a href="<?php echo base_url();?>Admin/cattegories">Manage cattegories</a>
                 </div>
+
+
 
                 <div class="form-group"><!--caption-->
                     <label for="caption">Caption</label>
@@ -200,8 +212,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 </form>
             </div>
-
-
 
         </div>
 

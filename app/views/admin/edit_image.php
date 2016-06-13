@@ -84,9 +84,9 @@ if($this->input->post()){
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url();?>Admin/edit">
+                    <a href="<?php echo base_url();?>Admin/cattegories">
                         <i class="pe-7s-graph"></i>
-                        <p>Edit photos</p>
+                        <p>Cattegories</p>
                     </a>
                 </li>
                 <li>
@@ -192,7 +192,7 @@ if($this->input->post()){
 
                 $category = array('small', 'large');
 
-                echo form_dropdown('categories_id', $options, 'organizers');
+                echo form_dropdown('categories_id', $options);
 
                 ?>
 

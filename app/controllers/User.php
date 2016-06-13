@@ -90,14 +90,9 @@ class User extends MY_Controller
                         echo '<pre>';
                     }*/
 
-                     else
+                    else
                         {
-                            echo ('user page');
-
-                            /*info data*/
-                            echo '<pre>';
-                            print_r($this->session->userdata());
-                            echo '<pre>';
+                            redirect('home/index');
                         }
 
                 $this->session->set_flashdata('login_success', 'You are now logged in');
