@@ -27,13 +27,10 @@ class Gallery_model extends CI_Model {
 
     public function get_cat()
     {
-        $this->db->select('title');
-        $result = $this->db->get('categories');
+        /*$this->db->select('title');*/
+        $data = $this->db->get('categories');
+        return $data->result();
 
-        if ($result->num_rows() > 0) {
-            $data=$result->first_row();
-            return $data;
-        }
 
     }
 

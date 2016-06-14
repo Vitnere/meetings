@@ -10,126 +10,26 @@ class Admin extends MY_Controller
         $this->load->model('User_model');
     }
 
-    public function home()
+    public function home()//load dashboard
     {
 
         $data=array(
-            'dahsboard'=>'admin/dashboard',
+            'content'=>'admin/dashboard',
         );
 
 
-        $this->load->view('admin/dashboard',$data);
+        $this->load->view('admin/main',$data);
     }
 
-    public function gallery()
+    public function gallery()//load gallery
     {
         $data=array(
             'images'   => $this->Gallery_model->all(),
-            'gallery'=>'admin/gallery'
+            'content'=>'admin/gallery'
+
         );
 
-
-        $this->load->view('admin/gallery',$data);
-    }
-
-    public function cattegories()
-    {
-        $data=array(
-            'cattegories'   => 'admin/cattegories',
-        );
-
-
-        $this->load->view('admin/cattegories',$data);
-    }
-
-    public function insert_cat()//insert new category
-    {
-        $rules =    [
-            [
-                'field' => 'title',
-                'label' => 'New category',
-                'rules' => 'required'
-            ]
-
-        ];
-
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run() == FALSE)
-        {
-            $this->load->view('Admin/insert_cat');
-        }
-        else
-        {
-                $data = [
-                    "title"       => set_value("title"),
-                ];
-
-                $this->Gallery_model->add_cat($data);
-                $this->session->set_flashdata('add','New category has been added..');
-                redirect('admin/cattegories');
-            }
-        }
-
-    public function users()
-    {
-        $data=array(
-          'users'=>'admin/user'
-        );
-
-        $this->load->view('admin/user',$data);
-
-    }
-
-
-    public function add_user()/*load add_user view*/
-    {
-        $data=array(
-            'users'=>'admin/add_user'
-        );
-
-        $this->load->view('admin/add_user',$data);
-
-    }
-
-    public function register()/*add new user from dashboard*/
-    {
-        /*validation rules*/
-        $this->form_validation->set_rules('first_name','First_Name', 'trim|required|max_length[50]|min_length[2]');
-        $this->form_validation->set_rules('last_name','Last_Name','trim|required|max_length[50]|min_length[2]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[100]|min_length[5]|valid_email');
-        $this->form_validation->set_rules('username','Username','trim|required|max_length[20]|min_length[4]|is_unique[users.username]');
-        $this->form_validation->set_rules('password','Password','trim|required|max_length[50]|min_length[8]');
-        $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[8]|matches[password]');
-        $this->form_validation->set_rules('admin','Role', 'trim|required');
-
-
-        if ($this->form_validation->run() == FALSE)
-        {
-            $this->load->view('Admin/register');
-
-        }
-        else
-        {
-            if($this->User_model->add_user())
-            {
-                $this->session->set_flashdata('registered','You added new user');
-                redirect('admin/add_user');
-            }
-        }
-    }
-
-
-
-
-
-    public function get_user()/*get user data for user page*/
-    {
-        //load the method of model
-        $data['result']=$this->User_model->get_user();
-
-        //return the data in view
-        $this->load->view('admin/user', $data);
+        $this->load->view('admin/main',$data);
     }
 
     public function add(){/*add new photo*/
@@ -268,6 +168,110 @@ class Admin extends MY_Controller
         $this->Gallery_model->delete($id);
         $this->session->set_flashdata('message','Image has been deleted..');
         redirect('Admin/gallery');
+    }
+
+    public function cattegories()//load cattegories
+    {
+        $data=array(
+            'content'   => 'admin/cattegories',
+        );
+
+        $this->load->view('admin/cattegories',$data);
+    }
+
+    public function insert_cat()//insert new category
+    {
+        $rules =    [
+            [
+                'field' => 'title',
+                'label' => 'New category',
+                'rules' => 'required'
+            ]
+
+        ];
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('Admin/insert_cat');
+        }
+        else
+        {
+                $data = [
+                    "title"       => set_value("title"),
+                ];
+
+                $this->Gallery_model->add_cat($data);
+                $this->session->set_flashdata('add','New category has been added..');
+                redirect('admin/cattegories');
+            }
+        }
+
+    public function get_cat()
+    {
+        $data = $this->Gallery_model->get_cat();
+        $this->load->view('admin/cattegories',$data);
+
+    }
+
+    public function users()//load users
+    {
+        $data=array(
+          'content'=>'admin/user'
+        );
+
+        $this->load->view('admin/main',$data);
+
+    }
+
+
+    public function add_user()/*load add_user view*/
+    {
+        $data=array(
+            'content'=>'admin/add_user'
+        );
+
+        $this->load->view('admin/main',$data);
+
+    }
+
+    public function register()/*add new user from dashboard*/
+    {
+        /*validation rules*/
+        $this->form_validation->set_rules('first_name','First_Name', 'trim|required|max_length[50]|min_length[2]');
+        $this->form_validation->set_rules('last_name','Last_Name','trim|required|max_length[50]|min_length[2]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[100]|min_length[5]|valid_email');
+        $this->form_validation->set_rules('username','Username','trim|required|max_length[20]|min_length[4]|is_unique[users.username]');
+        $this->form_validation->set_rules('password','Password','trim|required|max_length[50]|min_length[8]');
+        $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[8]|matches[password]');
+        $this->form_validation->set_rules('admin','Role', 'trim|required');
+
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('Admin/register');
+
+        }
+        else
+        {
+            if($this->User_model->add_user())
+            {
+                $this->session->set_flashdata('registered','You added new user');
+                redirect('admin/add_user');
+            }
+        }
+    }
+
+
+
+    public function get_user()/*get user data for user page*/
+    {
+        //load the method of model
+        $data['result']=$this->User_model->get_user();
+
+        //return the data in view
+        $this->load->view('admin/user', $data);
     }
 
 }

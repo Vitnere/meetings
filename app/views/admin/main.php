@@ -1,22 +1,14 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Manage categories</title>
+    <title>Admin</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
-    <!-- Gallery-->
-    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-    <link href="<?=base_url();?>assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?=base_url();?>assets/css/gallery.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
 
     <!-- Bootstrap core CSS     -->
@@ -35,11 +27,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url();?>assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
-
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="<?php echo base_url();?>assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue" data-image="<?php echo base_url();?>assets/img/sidebar-5.jpg">
 
         <!--
 
@@ -51,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Manage categories
+                    Admin
                 </a>
             </div>
 
@@ -103,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">BackEnd Admin</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -153,109 +144,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div class="content">
-
-
-
-            <div id="body">
-                <?php if(validation_errors() || isset($error)) : ?>
-                    <div class="alert alert-danger" role="alert" align="center">
-                        <?=validation_errors()?>
-                        <?=(isset($error)?$error:'')?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if($this->session->flashdata('add')) : ?>
-                    <p class="alert alert-dismissable alert-success">
-                        <?php echo $this->session->flashdata('add');?>
-                    </p>
-                <?php endif; ?>
-
-                <?= form_open('Admin/insert_cat');?>
-
-                <p align="center">Manage your photo categories here</p>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">Add</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Edit</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Delete</a></li>
-                </ul>
-
-
-
-                <div class="form-group"><!--category-->
-                    <br>
-                    <label for="title">New category</label>
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
-                            <div class="form-group in collapse"><!--add cattegory-->
-                                <input type="text" class="form-control" name="title" value="Enter name">
-                                <br>
-                                <button type="submit" class="btn btn-primary">Insert</button>
-                            </div>
-                        </div>
-                        <div id="menu1" class="tab-pane fade">
-                            <h3>Edit</h3>
-                           <table>
-                               <?php foreach($data as $row) { ?>
-                                   <tr>
-                                       <td>
-                                           <?php echo $row->title; ?>
-                                       </td>
-
-                                   </tr>
-                               <?php }  ?>
-                           </table>
-                        </div>
-                        <div id="menu2" class="tab-pane fade">
-                            <h3>Delete</h3>
-                            <p>Some content in menu 2.</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <? form_close();?>
-
-            </div>
-
+        <?php $this->load->view($content);?>
         </div>
 
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="<?php base_url();?>">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; 2016 <a href="http://nemanjakolar.bitballoon.com/">Nemanja Kolar</a>, web developer
-            </div>
-        </footer>
 
-    </div>
-</div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <nav class="pull-left">
+                            <ul>
+                                <li>
+                                    <a href="<?php base_url();?>">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Company
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Portfolio
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <p class="copyright pull-right">
+                            &copy; 2016 <a href="http://nemanjakolar.bitballoon.com/">Nemanja Kolar</a>, web developer
+                    </div>
+                </footer>
+
+            </div>
+        </div>
 
 
 </body>
@@ -273,11 +199,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--  Notifications Plugin    -->
 <script src="<?php echo base_url();?>assets/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="<?php echo base_url();?>text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
 
-</html>
 
+
+</html>
