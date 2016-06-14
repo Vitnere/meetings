@@ -176,7 +176,7 @@ class Admin extends MY_Controller
             'content'   => 'admin/cattegories',
         );
 
-        $this->load->view('admin/cattegories',$data);
+        $this->load->view('admin/main',$data);
     }
 
     public function insert_cat()//insert new category
