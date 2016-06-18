@@ -14,7 +14,7 @@ class Admin extends MY_Controller
     {
 
         $data=array(
-            'content'=>'admin/dashboard',
+            'content'=>'admin/dashboard'
         );
 
 
@@ -174,6 +174,7 @@ class Admin extends MY_Controller
     {
         $data=array(
             'content'   => 'admin/cattegories',
+            'cat'   => $this->Gallery_model->find_cat(),
         );
 
         $this->load->view('admin/main',$data);
@@ -208,12 +209,7 @@ class Admin extends MY_Controller
             }
         }
 
-    public function get_cat()
-    {
-        $data = $this->Gallery_model->get_cat();
-        $this->load->view('admin/cattegories',$data);
 
-    }
 
     public function users()//load users
     {

@@ -23,9 +23,6 @@ class User_model extends CI_Model
             return $user;
         }
 
-
-
-
     }
 
     public function create_member()

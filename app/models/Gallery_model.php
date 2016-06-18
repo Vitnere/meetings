@@ -1,5 +1,6 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Gallery_model extends CI_Model {
 
@@ -25,36 +26,14 @@ class Gallery_model extends CI_Model {
         }
     }
 
-    public function get_cat()
-    {
-        /*$this->db->select('title');*/
-        $data = $this->db->get('categories');
-        return $data->result();
-
-
-    }
 
     public function find_cat()
     {
-        //query
-       /* $this->db->select('id');
+        $this->db->select('id,title');
         $result = $this->db->get('categories');
-
-
-        if ($result->num_rows() > 0) {
-                $cat_id=$result->first_row();
-                return $cat_id;
-        }*/
-        $this->db->select('categories_id');
-        $result = $this->db->get('images');
-
-        if ($result->num_rows() > 0) {
-            $id=$result->first_row();
-            return $id;
-        }
-
-
+        return $result->result();
     }
+
 
     public function create($data)
     {
