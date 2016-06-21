@@ -41,8 +41,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>id</td>
-                                <td align="center">title</td>
+                                <th>id</th>
+                                <th align="center">title</th>
                                 <br>
                             </tr>
                         </thead>

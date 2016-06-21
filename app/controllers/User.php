@@ -77,7 +77,12 @@ class User extends MY_Controller
 
                     if($result->admin==1)
                 {
-                    $this->load->view('admin/main');
+
+                    $data=array(
+                        'content'=>'admin/dashboard'
+                    );
+
+                    $this->load->view('admin/main',$data);
                 }
 
                    /* else if($result->admin==2)

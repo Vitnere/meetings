@@ -228,7 +228,8 @@ class Admin extends MY_Controller
     public function users()//load users
     {
         $data=array(
-          'content'=>'admin/user'
+          'content'=>'admin/user',
+            'user'=>$this->User_model->find_user()
         );
 
         $this->load->view('admin/main',$data);
@@ -275,13 +276,6 @@ class Admin extends MY_Controller
 
 
 
-    public function get_user()/*get user data for user page*/
-    {
-        //load the method of model
-        $data['result']=$this->User_model->get_user();
 
-        //return the data in view
-        $this->load->view('admin/user', $data);
-    }
 
 }

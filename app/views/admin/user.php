@@ -1,7 +1,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="header">
 
@@ -23,21 +23,38 @@
                     </div>
                     <div class="content">
 
+                        <table id="tbuser">
+                            <thead>
+                            <tr>
+                                <th>First name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Admin</th>
+                                <br>
+                            </tr>
+                            </thead>
 
-
-
-
-
-
-
-
-
-
+                            <tbody>
+                            <!-- fetch data from users table into user view-->
+                            <?php foreach($user as $row){ ?>
+                                <tr>
+                                    <td><?php print_r ($row->first_name); ?></td>
+                                    <td><?php print_r ($row->last_name); ?></td>
+                                    <td><?php print_r ($row->username); ?></td>
+                                    <td><?php print_r ($row->admin); ?></td>
+                                    <!-- <p align="right">
+                                        <?/*=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])*/?>
+                                        <?/*=anchor('Admin/delete/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])*/?>
+                                        </p>-->
+                                </tr>
+                            <?php }?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <p class="description text-center"> <br>
+            <div class="col-md-12">
+                <p align="center"> <br>
                     “Never tell me the odds.”  <br>
                     Han Solo"
                 </p>

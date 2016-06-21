@@ -1,7 +1,6 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+
 
 class User_model extends CI_Model
 {
@@ -60,28 +59,11 @@ class User_model extends CI_Model
         return $insert;
     }
 
-    public function get_user()
+    public function find_user()
     {
-        //query
-        $this->db->select('first_name,last_name,email,username, admin');
-        $query=$this->db->get('users');
-
-        //return data
-        /*if ($query->num_rows() > 0) {
-            $result=$query->result();
-            return $result;
-        }*/
-
-        if($query->num_rows() > 0)
-        {
-            foreach ($query->result() as $row)
-            {
-                $data[] = $row;
-            }
-            return $data;
-        }
-
-
+        $this->db->select('first_name,last_name,username,admin');
+        $result = $this->db->get('users');
+        return $result->result();
     }
 
 }
