@@ -113,11 +113,6 @@ class Admin extends MY_Controller
     public function edit($id){/*edit photo*/
         $rules =    [
             [
-                'field' => 'categories_id',
-                'label' => 'Category',
-                'rules' => 'required'
-            ],
-            [
                 'field' => 'caption',
                 'label' => 'Caption',
                 'rules' => 'required'
@@ -132,7 +127,14 @@ class Admin extends MY_Controller
         $this->form_validation->set_rules($rules);
         $image = $this->Gallery_model->find($id)->row();
 
+        /*HINT:Category update bug, need fixing*/
+        $data=array(
+            'cat'   => $this->Gallery_model->find_cat(),
+        );
+
+
         if ($this->form_validation->run() == FALSE)
+
         {
             $this->load->view('admin/edit_image',['image'=>$image]);
         }
@@ -163,6 +165,7 @@ class Admin extends MY_Controller
                     unlink($image->file);
                 }
             }
+
             $data['categories_id']   = set_value("categories_id");
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');

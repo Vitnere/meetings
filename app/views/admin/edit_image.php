@@ -181,20 +181,17 @@ if($this->input->post()){
             <div class="form-group"><!--category select-->
                 <label for="categories_id">Category</label>
 
-                <?php
+                <select name="categories_id" >
+                    <?php foreach($cat as $row){ ?><!--dynamic dropdown-->
 
-                $options = array(
-                    '1' => 'organizers',
-                    '2' => 'co-organizers',
-                    '3' => 'supporters',
-                    '4' => 'location'
-                );
+                    <option label="<?php echo $row->title;?>"
+                            value="<?php echo $row->id; ?>">
+                        <?php echo $row->title;?>
+                    </option>
+                    <?php }?>
 
-                $category = array('small', 'large');
-
-                echo form_dropdown('categories_id', $options);
-
-                ?>
+                </select>&nbsp
+                <a href="<?php echo base_url();?>Admin/cattegories">Manage cattegories</a>
 
 
             </div>

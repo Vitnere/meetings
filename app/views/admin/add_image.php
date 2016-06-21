@@ -178,7 +178,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                     <select name="categories_id" >
-                    <?php foreach($cat as $row){ ?><!--dinamic dropdown-->
+                    <?php foreach($cat as $row){ ?><!--dynamic dropdown-->
 
                         <option label="<?php echo $row->title;?>"
                                 value="<?php echo $row->id; ?>">

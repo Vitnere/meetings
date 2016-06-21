@@ -25,43 +25,8 @@
 
 
 
-                        <!-- <table border="1">
-                                    <tbody>
-                                    <tr>
-                                        <th>first_name</th>
-                                        <th>last_name</th>
-                                        <th>email</th>
-                                        <th>username</th>
-                                        <th>admin</th>
-                                    </tr>
-                                    <?php
-                        /*                                    foreach ($result as $row)
-                                                            {
-                                                                */?><tr>
-
-                                        <td><?php /*echo $row->first_name;*/?></td>
-                                        <td><?php /*echo $row->last_name;*/?></td>
-                                        <td><?php /*echo $row->email;*/?></td>
-                                        <td><?php /*echo $row->username;*/?></td>
-                                        <td><?php /*echo $row->admin;*/?></td>
-                                        </tr>
 
 
-                                    <?php /*}
-                                    */?>
-                                    </tbody>
-                                </table>-->
-
-
-                        <?php
-                        if(!empty($result))
-                        {
-                            foreach($result as $user)
-                            {
-                                echo $user;
-                            }
-                        }
-                        ?>
 
 
 
