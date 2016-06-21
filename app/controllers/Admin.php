@@ -33,12 +33,11 @@ class Admin extends MY_Controller
     }
 
     public function add(){/*add new photo*/
+
+
+
+
         $rules =    [
-            [
-                'field' => 'categories_id',
-                'label' => 'Category',
-                'rules' => 'required'
-            ],
             [
                 'field' => 'caption',
                 'label' => 'Caption',
@@ -54,9 +53,14 @@ class Admin extends MY_Controller
 
         $this->form_validation->set_rules($rules);
 
+        $data=array(
+            'content'   => 'admin/add_image',
+            'cat'   => $this->Gallery_model->find_cat(),
+        );
+
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('admin/add_image');
+            $this->load->view('admin/add_image',$data);
         }
         else
         {
@@ -80,19 +84,26 @@ class Admin extends MY_Controller
             }
             else
             {
+
+
+
                 $file = $this->upload->data();
                 //print_r($file);
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
                     "categories_id"       => set_value("categories_id"),
                     'caption'      => set_value('caption'),
-                    'description'   => set_value('description')
+                    'description'   => set_value('description'),
 
                 ];
+
+
 
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('admin/gallery');
+
+
             }
         }
     }
