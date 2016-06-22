@@ -127,9 +127,9 @@ class Admin extends MY_Controller
         $this->form_validation->set_rules($rules);
         $image = $this->Gallery_model->find($id)->row();
 
-        /*HINT:Category update bug, need fixing*/
+
         $data=array(
-            'cat'   => $this->Gallery_model->find_cat(),
+            'categories_id'   => $this->Gallery_model->find_cat()
         );
 
 

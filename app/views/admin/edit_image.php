@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if($this->input->post()){
     $caption       = set_value('caption');
     $description    = set_value('description');
+    $categories_id = set_value('categories_id');
 } else {
     $caption       = $image->caption;
     $description    = $image->description;
+    $categories_id = $this->Gallery_model->find_cat();
 }
 ?>
 
@@ -182,7 +184,7 @@ if($this->input->post()){
                 <label for="categories_id">Category</label>
 
                 <select name="categories_id" >
-                    <?php foreach($cat as $row){ ?><!--dynamic dropdown-->
+                    <?php foreach($categories_id as $row){ ?><!--dynamic dropdown-->
 
                     <option label="<?php echo $row->title;?>"
                             value="<?php echo $row->id; ?>">
