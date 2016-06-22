@@ -68,4 +68,17 @@ class Gallery_model extends CI_Model {
         }
     }
 
+    public function del_cat($id)
+    {
+        try {
+            $this->db->where('id',$id)->delete('categories');
+            return true;
+        }
+
+            //catch exception
+        catch(Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }

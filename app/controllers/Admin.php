@@ -223,6 +223,13 @@ class Admin extends MY_Controller
             }
         }
 
+    public function del_cat($id)/*delete photo*/
+    {
+        $this->Gallery_model->del_cat($id);
+        $this->session->set_flashdata('delete','Category has been deleted..');
+        redirect('Admin/cattegories');
+    }
+
 
 
     public function users()//load users

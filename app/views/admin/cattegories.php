@@ -13,14 +13,15 @@
             </p>
         <?php endif; ?>
 
+      <?php if($this->session->flashdata('delete')) : ?>
+          <p class="alert alert-dismissable alert-success">
+              <?php echo $this->session->flashdata('delete');?>
+          </p>
+      <?php endif; ?>
+
         <?= form_open('Admin/insert_cat');?>
 
         <p align="center">Manage your photo categories here</p>
-       <!-- <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Add</a></li>
-            <li><a data-toggle="tab" href="#menu1">Edit</a></li>
-            <!--<li><a data-toggle="tab" href="#menu2">Delete</a></li>-->
-       <!-- </ul>-->
 
         <div class="form-group"><!--category-->
             <br>
@@ -38,10 +39,10 @@
 
 
                 <div>
-                    <table>
+                    <table id="tbuser">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th>id</th>&nbsp
                                 <th align="center">title</th>
                                 <br>
                             </tr>
@@ -50,14 +51,18 @@
                         <tbody>
                             <?php foreach($cat as $row){ ?>
                                 <tr>
+                                    <div class="col-md-12">
                                     <td><?php print_r ($row->id); ?></td>
+                                    </div>
 
-                                    <div class="col-lg-8">
-                                    <td>&nbsp<?php print_r ($row->title); ?>
-                                       <!-- <p align="right">
-                                        <?/*=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])*/?>
-                                        <?/*=anchor('Admin/delete/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])*/?>
-                                        </p>-->
+
+                                    <div class="col-md-12">
+                                    <td><br><?php print_r ($row->title); ?>
+                                        &nbsp;&nbsp;
+                                    <span id="right">
+                                        <?=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
+                                        <?=anchor('Admin/del_cat/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
+                                    </span>
                                     </td>
                                     </div>
                                 </tr>
@@ -66,11 +71,6 @@
 
                     </table>
 
-
-                   <!-- <div id="menu2" class="tab-pane fade">
-                    <h3>Delete</h3>
-                    <p>Some content in menu 2.</p>
-                </div>-->
             </div>
         </div>
 
