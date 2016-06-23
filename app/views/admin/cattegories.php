@@ -19,6 +19,12 @@
           </p>
       <?php endif; ?>
 
+      <?php if($this->session->flashdata('update')) : ?>
+          <p class="alert alert-dismissable alert-success">
+              <?php echo $this->session->flashdata('update');?>
+          </p>
+      <?php endif; ?>
+
         <?= form_open('Admin/insert_cat');?>
 
         <p align="center">Manage your photo categories here</p>
@@ -60,7 +66,7 @@
                                     <td><br><?php print_r ($row->title); ?>
                                         &nbsp;&nbsp;
                                     <span id="right">
-                                        <?=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
+                                        <?=anchor('Admin/edit_cat/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
                                         <?=anchor('Admin/del_cat/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
                                     </span>
                                     </td>
