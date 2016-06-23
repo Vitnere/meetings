@@ -284,6 +284,13 @@ class Admin extends MY_Controller
 
     }
 
+    public function del_user($id)/*delete user from db*/
+    {
+        $this->User_model->del_user($id);
+        $this->session->set_flashdata('delete','User has been deleted..');
+        redirect('Admin/users');
+    }
+
     public function register()/*add new user from dashboard*/
     {
         /*validation rules*/
@@ -298,7 +305,8 @@ class Admin extends MY_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('Admin/register');
+            $this->load->view('admin/add_user');
+
 
         }
         else

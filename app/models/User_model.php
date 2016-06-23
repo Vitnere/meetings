@@ -61,11 +61,25 @@ class User_model extends CI_Model
 
     public function find_user()
     {
-        $this->db->select('first_name,last_name,username,admin');
+        $this->db->select('id,first_name,last_name,username,admin');
         $result = $this->db->get('users');
         return $result->result();
     }
 
+    public function del_user($id)
+    {
+        try {
+            $this->db->where('id',$id)->delete('users');
+            return true;
+        }
+
+            //catch exception
+        catch(Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }
+
 
 ?>

@@ -5,6 +5,12 @@
                 <div class="card">
                     <div class="header">
 
+                        <?php if($this->session->flashdata('delete')) : ?>
+                            <p class="alert alert-dismissable alert-success">
+                                <?php echo $this->session->flashdata('delete');?>
+                            </p>
+                        <?php endif; ?>
+
 
                         <ul class="pagination">
                             <li>
@@ -38,14 +44,17 @@
                             <!-- fetch data from users table into user view-->
                             <?php foreach($user as $row){ ?>
                                 <tr>
+                                    <div class="col-md-12">
                                     <td><?php print_r ($row->first_name); ?></td>
                                     <td><?php print_r ($row->last_name); ?></td>
                                     <td><?php print_r ($row->username); ?></td>
-                                    <td><?php print_r ($row->admin); ?></td>
-                                    <!-- <p align="right">
-                                        <?/*=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])*/?>
-                                        <?/*=anchor('Admin/delete/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])*/?>
-                                        </p>-->
+                                    <td><?php print_r ($row->admin); ?>
+                                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                   <span id="right">
+                                        <?=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
+                                        <?=anchor('Admin/del_user/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
+                                        </span></td>
+                                    </div>
                                 </tr>
                             <?php }?>
                             </tbody>
