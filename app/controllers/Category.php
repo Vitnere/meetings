@@ -49,15 +49,13 @@ class Category extends MY_Controller
         ];
 
         $this->form_validation->set_rules($rules);
-        $title=$this->Category_model->rename_cat($id)->row();
+        $category=$this->Category_model->rename_cat($id)->row();
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('admin/edit_cat', ['title'=>$title]);
+            $this->load->view('admin/edit_cat', ['category'=>$category]);
         } else {
-            $data=[
-                "title"=>set_value("title"),
-            ];
+            $data['title']   = set_value("title");
 
             $this->Category_model->update_cat($id, $data);
             $this->session->set_flashdata('update', 'Category has been updated..');

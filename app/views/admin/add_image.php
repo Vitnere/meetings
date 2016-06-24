@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="<?php echo base_url();?>assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
     <!-- Gallery-->
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <link href="<?=base_url();?>assets/css/bootstrap.css" rel="stylesheet">
@@ -24,9 +27,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url();?>assets/css/animate.min.css" rel="stylesheet"/>
-
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="<?php echo base_url();?>assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
 
     <!--     Fonts and icons     -->

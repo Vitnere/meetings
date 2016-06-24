@@ -29,16 +29,14 @@ if($this->input->post()){
     <link href="<?=base_url();?>assets/css/gallery.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="<?php echo base_url();?>assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
     <!-- Bootstrap core CSS     -->
     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url();?>assets/css/animate.min.css" rel="stylesheet"/>
-
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="<?php echo base_url();?>assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
