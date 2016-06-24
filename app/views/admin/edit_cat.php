@@ -169,7 +169,7 @@ if($this->input->post()){
                     <?=(isset($error)?$error:'')?>
                 </div>
             <?php endif; ?>
-            <?=form_open_multipart('Admin/edit_cat/'.$title)?>
+            <?=form_open_multipart('Category/edit_cat/'.$title)?>
 
 
             <div class="form-group">

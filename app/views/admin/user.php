@@ -51,8 +51,7 @@
                                     <td><?php print_r ($row->admin); ?>
                                         &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                    <span id="right">
-                                        <?=anchor('Admin/edit/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
-                                        <?=anchor('Admin/del_user/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
+                                    <?=anchor('Admin/del_user/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
                                         </span></td>
                                     </div>
                                 </tr>

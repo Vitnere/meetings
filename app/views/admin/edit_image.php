@@ -7,7 +7,7 @@ if($this->input->post()){
 } else {
     $caption       = $image->caption;
     $description    = $image->description;
-    $categories_id = $this->Gallery_model->find_cat();
+    $categories_id = $this->Category_model->find_cat();
 }
 ?>
 

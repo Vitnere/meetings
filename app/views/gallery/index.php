@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <hr />
 
-            <?php if(serialize($images)==3 && 4) : ?>
+
             <div class="col-md-12">
                 <?php foreach($images->result() as $img) : ?>
                     <div class="col-md-4">
@@ -51,10 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 <?php endforeach; ?>
             </div>
-            <?php endif; ?>
-            <?php echo '<pre>';
-              print_r (serialize($images));
-             echo '<pre>';?>
+
+
 
 
         <?php else : ?>

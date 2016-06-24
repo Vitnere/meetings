@@ -59,6 +59,7 @@ class User_model extends CI_Model
         return $insert;
     }
 
+
     public function find_user()
     {
         $this->db->select('id,first_name,last_name,username,admin');

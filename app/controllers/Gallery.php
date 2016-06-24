@@ -40,9 +40,15 @@ class Gallery extends MY_Controller {
 
         $this->form_validation->set_rules($rules);
 
+        $data=array(
+            'cat'   => $this->Gallery_model->find_cat(),
+        );
+
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('gallery/add_image');
+
+                $this->load->view('gallery/add_image', $data);
+
         }
         else
         {
@@ -79,6 +85,7 @@ class Gallery extends MY_Controller {
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('gallery');
+
             }
         }
     }
@@ -88,8 +95,8 @@ class Gallery extends MY_Controller {
     public function edit($id){/*edit photo*/
         $rules =    [
             [
-                'field' => 'caption',
-                'label' => 'Caption',
+                'field' => 'categories_id',
+                'label' => 'Category',
                 'rules' => 'required'
             ],
             [
@@ -105,7 +112,11 @@ class Gallery extends MY_Controller {
         ];
 
         $this->form_validation->set_rules($rules);
-        $image=$this->Gallery_model->find_cat();
+        $image = $this->Gallery_model->find($id)->row();
+
+        $data=array(
+            'categories_id'   => $this->Gallery_model->find_cat()
+        );
 
 
         if ($this->form_validation->run() == FALSE)

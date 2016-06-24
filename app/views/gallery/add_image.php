@@ -96,22 +96,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="file" class="form-control" name="userfile">
         </div>
 
-        <div class="form-group"><!--category select-->
+        <div class="form-group"><!--category-->
             <label for="categories_id">Category</label>
 
-                    <?php
 
-                    $options = array(
-                        '3' => 'supporters',
-                        '4' => 'location',
-                    );
+            <select name="categories_id" >
+                <?php foreach($cat as $row){ ?><!--dynamic dropdown-->
 
-                    $category = array('small', 'large');
+                <option label="<?php echo $row->title;?>"
+                        value="<?php echo $row->id; ?>">
+                    <?php echo $row->title;?>
+                </option>
+                <?php }?>
 
-                    echo form_dropdown('categories_id', $options, 'organizers');
 
-                    ?>
-
+            </select>&nbsp
 
         </div>
 
