@@ -100,6 +100,16 @@
 
 <div>
     <h3 class="svgbg">ORGANIZERS</h3>
+    <?php foreach($images->result() as $img) : ?>
+        <div>
+            <div class="thumbnail">
+                <?php if($img->categories_id=6){?>
+                <?=img($img->file)?>
+                <?php }?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
 
 
     <h3 class="svgbg">CO-ORGANIZERS</h3>
@@ -111,14 +121,8 @@
     <h3 class="svgbg">LOCATION</h3>
 
 
+
 </div>
 
 
 
-<?php foreach($images->result() as $img) : ?>
-    <div>
-        <div class="thumbnail">
-            <?=img($img->file)?>
-        </div>
-    </div>
-<?php endforeach; ?>
