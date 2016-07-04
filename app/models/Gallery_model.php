@@ -4,7 +4,13 @@ if (!defined('BASEPATH'))
 
 class Gallery_model extends CI_Model {
 
-    public function all()
+    public function all($user_id)
+    {
+         $row= $this->db->where('user_id',$user_id)->limit(25)->get('images');
+        return $row;
+    }
+
+    public function admin_all()
     {
         $result = $this->db->get('images');
         return $result;

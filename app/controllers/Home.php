@@ -15,14 +15,17 @@ class Home extends MY_Controller
         $this->load->model('Gallery_model');
     }
 
+
     public function index()//Show home page
     {
+        $user_id = $this->session->userdata('user_id');
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->all($user_id),
             'guest' =>'gallery/guest'
 
         );

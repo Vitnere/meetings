@@ -6,15 +6,17 @@ class Gallery extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('Gallery_model');
+        $this->load->model('Category_model');
     }
 
     public function index()
     {
+        $user_id = $this->session->userdata('user_id');
         $data = [
-            'images'   => $this->Gallery_model->all()
+            'images'   => $this->Gallery_model->all($user_id)
         ];
-        $this->load->view('gallery/index', $data);
 
+        $this->load->view('gallery/index', $data);
 
     }
 
@@ -41,7 +43,7 @@ class Gallery extends MY_Controller {
         $this->form_validation->set_rules($rules);
 
         $data=array(
-            'cat'   => $this->Gallery_model->find_cat(),
+            'cat'   => $this->Category_model->find_cat(),
         );
 
         if ($this->form_validation->run() == FALSE)
@@ -78,8 +80,8 @@ class Gallery extends MY_Controller {
                     'file'          => 'data/baners/' . $file['file_name'],
                     "categories_id"       => set_value("categories_id"),
                     'caption'      => set_value('caption'),
-                    'description'   => set_value('description')
-
+                    'description'   => set_value('description'),
+                    'user_id' => $this->session->userdata('user_id')
                 ];
                 
                 $this->Gallery_model->create($data);
@@ -112,10 +114,11 @@ class Gallery extends MY_Controller {
         ];
 
         $this->form_validation->set_rules($rules);
-        $image = $this->Gallery_model->find($id)->row();
+        $image=$this->Gallery_model->find($id)->row();
+
 
         $data=array(
-            'categories_id'   => $this->Gallery_model->find_cat()
+            'categories_id'   => $this->Category_model->find_cat()
         );
 
 

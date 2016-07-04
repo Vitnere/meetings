@@ -27,7 +27,7 @@ class Admin extends MY_Controller
     public function gallery()//load gallery
     {
         $data=array(
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->admin_all(),
             'content'=>'admin/gallery'
 
         );

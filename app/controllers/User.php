@@ -85,19 +85,12 @@ class User extends MY_Controller
                     $this->load->view('admin/main',$data);
                 }
 
-                   /* else if($result->admin==2)
-                    {
-                        echo ('super_user');*/
-
-                        /*info data*/
-                       /* echo '<pre>';
-                        print_r($this->session->userdata());
-                        echo '<pre>';
-                    }*/
-
                     else
                         {
-                            redirect('home/index');
+                            $data=array(
+                              'content'=>'gallery/index'
+                            );
+                            redirect('home/index',$data);
                         }
 
                 $this->session->set_flashdata('login_success', 'You are now logged in');
@@ -123,18 +116,6 @@ class User extends MY_Controller
         redirect('home/index');
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 ?>
