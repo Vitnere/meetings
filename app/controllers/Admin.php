@@ -38,6 +38,11 @@ class Admin extends MY_Controller
     public function add(){/*add new photo*/
         $rules =    [
             [
+                'field' => 'categories_id',
+                'label' => 'Category',
+                'rules' => 'required'
+            ],
+            [
                 'field' => 'caption',
                 'label' => 'Caption',
                 'rules' => 'required'
@@ -111,6 +116,11 @@ class Admin extends MY_Controller
 
     public function edit($id){/*edit photo*/
         $rules =    [
+            [
+                'field' => 'categories_id',
+                'label' => 'Category',
+                'rules' => 'required'
+            ],
             [
                 'field' => 'caption',
                 'label' => 'Caption',

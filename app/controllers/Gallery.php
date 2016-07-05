@@ -89,7 +89,7 @@ class Gallery extends MY_Controller {
                 
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
-                redirect('gallery');
+                redirect('home/index');
 
             }
         }
@@ -105,15 +105,15 @@ class Gallery extends MY_Controller {
                 'rules' => 'required'
             ],
             [
+                'field' => 'caption',
+                'label' => 'Caption',
+                'rules' => 'required'
+            ],
+            [
                 'field' => 'description',
                 'label' => 'Description',
                 'rules' => 'required'
             ],
-            [
-                'field' => 'category',
-                'label' => 'Category',
-                'rules' => 'required'
-            ]
         ];
 
         $this->form_validation->set_rules($rules);
@@ -156,14 +156,15 @@ class Gallery extends MY_Controller {
                     unlink($image->file);
                 }
             }
-            $data['categories_id']   = set_value("categories_id");
+
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');
+            $data['categories_id']   = set_value("categories_id");
 
 
             $this->Gallery_model->update($id,$data);
             $this->session->set_flashdata('message','New image has been updated..');
-            redirect('gallery');
+            redirect('home/index');
         }
     }
 
@@ -172,6 +173,6 @@ class Gallery extends MY_Controller {
     {
         $this->Gallery_model->delete($id);
         $this->session->set_flashdata('message','Image has been deleted..');
-        redirect('gallery');
+        redirect('home/index');
     }
 }
