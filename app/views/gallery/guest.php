@@ -100,7 +100,7 @@
 
 <div>
     <h3 class="svgbg">ORGANIZERS</h3>
-    <?php foreach($images->result() as $img) : ?>
+    <?php foreach($r_images->result() as $img) : ?>
         <div>
             <?php if($img->categories_id==10) {?>
             <div class="thumbnail">
@@ -111,7 +111,7 @@
     <?php endforeach; ?>
 
     <h3 class="svgbg">CO-ORGANIZERS</h3>
-    <?php foreach($images->result() as $img) : ?>
+    <?php foreach($r_images->result() as $img) : ?>
         <div>
         <?php if($img->categories_id==11) {?>
             <div class="thumbnail">
@@ -122,9 +122,9 @@
     <?php endforeach; ?>
 
     <h3 class="svgbg">SUPPORTERS</h3>
-    <?php foreach($images->result() as $img) : ?>
+    <?php foreach($r_images->result() as $img) : ?>
         <div>
-        <?php if($img->categories_id==12) {?>
+        <?php if($img->categories_id==13) {?>
             <div class="thumbnail">
                 <?=img($img->file)?>
             </div>
@@ -133,9 +133,9 @@
     <?php endforeach; ?>
 
     <h3 class="svgbg">LOCATION</h3>
-    <?php foreach($images->result() as $img) : ?>
+    <?php foreach($r_images->result() as $img) : ?>
         <div>
-        <?php if($img->categories_id==13) {?>
+        <?php if($img->categories_id==12) {?>
             <div class="thumbnail">
                 <?=img($img->file)?>
             </div>
