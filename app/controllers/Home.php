@@ -37,12 +37,15 @@ class Home extends MY_Controller
 
     public function show_second()//show "how it works"
     {
+        $user_id = $this->session->userdata('user_id');
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->all($user_id),
+            'r_images'   => $this->Gallery_model->admin_all(),
             'guest' =>'gallery/guest'
         );
 
@@ -52,12 +55,15 @@ class Home extends MY_Controller
 
     public function show_third()//show "BILATERAL MEETINGS - HOW IT WORKS"
     {
+        $user_id = $this->session->userdata('user_id');
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->all($user_id),
+            'r_images'   => $this->Gallery_model->admin_all(),
             'guest' =>'gallery/guest'
         );
 
@@ -67,12 +73,15 @@ class Home extends MY_Controller
 
     public function show_fourth()//show "programme"
     {
+        $user_id = $this->session->userdata('user_id');
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->all($user_id),
+            'r_images'   => $this->Gallery_model->admin_all(),
             'guest' =>'gallery/guest'
         );
 
@@ -82,12 +91,15 @@ class Home extends MY_Controller
 
     public function show_fifth()//show "FAQ"
     {
+        $user_id = $this->session->userdata('user_id');
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->all($user_id),
+            'r_images'   => $this->Gallery_model->admin_all(),
             'guest' =>'gallery/guest'
         );
 
@@ -97,12 +109,15 @@ class Home extends MY_Controller
 
     public function show_sixth() //show "contact"
     {
+        $user_id = $this->session->userdata('user_id');
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all(),
+            'images'   => $this->Gallery_model->all($user_id),
+            'r_images'   => $this->Gallery_model->admin_all(),
             'guest' =>'gallery/guest'
         );
 
