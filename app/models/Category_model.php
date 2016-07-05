@@ -5,6 +5,7 @@ if (!defined('BASEPATH'))
 class Category_model extends CI_Model {
 
 
+
     public function add_cat($data)//insert new category
     {
         try{

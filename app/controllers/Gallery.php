@@ -11,7 +11,10 @@ class Gallery extends MY_Controller {
 
     public function index()
     {
+
+
         $user_id = $this->session->userdata('user_id');
+
         $data = [
             'images'   => $this->Gallery_model->all($user_id)
         ];

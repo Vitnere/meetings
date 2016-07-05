@@ -93,7 +93,7 @@ class Admin extends MY_Controller
                     "categories_id"       => set_value("categories_id"),
                     'caption'      => set_value('caption'),
                     'description'   => set_value('description'),
-
+                    "user_id" => $this->session->userdata('user_id')
                 ];
 
 

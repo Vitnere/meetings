@@ -30,6 +30,7 @@ class Category extends MY_Controller
         } else {
             $data=[
                 "title"=>set_value("title"),
+                "user_id" => $this->session->userdata('user_id')
             ];
 
             $this->Category_model->add_cat($data);

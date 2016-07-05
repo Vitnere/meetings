@@ -100,15 +100,18 @@
 
 <div>
     <h3 class="svgbg">ORGANIZERS</h3>
+
+
     <?php foreach($images->result() as $img) : ?>
         <div>
+            <?php if(img($img->categories_id)==4) {?>
             <div class="thumbnail">
-                <?php if($img->categories_id=6){?>
                 <?=img($img->file)?>
-                <?php }?>
             </div>
         </div>
+            <?php } ?>
     <?php endforeach; ?>
+
 
 
 
