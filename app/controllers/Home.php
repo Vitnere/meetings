@@ -45,7 +45,7 @@ class Home extends MY_Controller
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->admin_all(),
+            'r_images'   => $this->Gallery_model->filter_cat(),
             'guest' =>'gallery/guest'
         );
 
