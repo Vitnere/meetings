@@ -20,13 +20,15 @@ class Home extends MY_Controller
     {
         $user_id = $this->session->userdata('user_id');
 
+
+
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->admin_all(),
+            'r_images'   => $this->Gallery_model->org_filter(),
             'guest' =>'gallery/guest'
         );
 
@@ -45,7 +47,7 @@ class Home extends MY_Controller
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->filter_cat(),
+            'r_images'   => $this->Gallery_model->org_filter()->first_row(),
             'guest' =>'gallery/guest'
         );
 

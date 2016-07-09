@@ -99,7 +99,7 @@
 </div>
 
 <div>
-    <h3 class="svgbg">ORGANIZERS</h3>
+    <h3 class="svgbg">ORGANIZERS</h3><!--name of the first category-->
     <?php foreach($r_images->result() as $img) : ?>
         <div>
             <div class="thumbnail">

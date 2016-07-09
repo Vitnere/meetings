@@ -31,6 +31,8 @@ class Category_model extends CI_Model {
         return $row;
     }
 
+
+
     public function update_cat($id,$data)/*update category*/
     {
         try{

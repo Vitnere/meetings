@@ -16,15 +16,16 @@ class Gallery_model extends CI_Model {
         return $result;
     }
 
-    public function filter_cat()//filter categories
+    public function org_filter()//filter categories
     {
-        $this->db->select('*');
-        $this->db->from('images');
-        $this->db->join('categories','images.categories_id = categories.id','inner');//join tables based  on the foreign key
-        $this->db->where('images.categories_id',2);//set filter
-        $query = $this->db->get();//get data
+        $this->db->select('i.file,i.categories_id,c.id,c.title',false);
+        $this->db->from('images as i');
+        $this->db->join('categories as c','i.categories_id = c.id','inner');//join tables based on the foreign key
+        $this->db->where('c.title','organizers');//set filter
+        $query = $this->db->get();//get data*/
         return $query;
     }
+
 
     public function find($id)
     {
