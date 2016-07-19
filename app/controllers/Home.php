@@ -13,14 +13,17 @@ class Home extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Gallery_model');
+        $this->load->model('Category_model');
     }
 
 
     public function index()//Show home page
     {
         $user_id = $this->session->userdata('user_id');
+        $category = $this->Category_model->get_category();
 
 
+        //$category = $this->Category_model->get_category();
 
         $data=array(
             'content'=>'pages/home',
@@ -28,10 +31,13 @@ class Home extends MY_Controller
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->org_filter(),
             'guest' =>'gallery/guest'
         );
 
+        foreach ($category as $key => $value) {
+            $data['category'][$key]['title']=$value->title;
+            $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
+            }
 
         $this->load->view('layouts/main', $data);
 

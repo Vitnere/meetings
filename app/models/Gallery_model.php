@@ -16,14 +16,11 @@ class Gallery_model extends CI_Model {
         return $result;
     }
 
-    public function org_filter()//filter categories
+    public function filter_by_category($categoryId)//filter categories
     {
-        $this->db->select('i.file,i.categories_id,c.id,c.title',false);
-        $this->db->from('images as i');
-        $this->db->join('categories as c','i.categories_id = c.id','inner');//join tables based on the foreign key
-        $this->db->where('c.title','organizers');//set filter
-        $query = $this->db->get();//get data*/
-        return $query;
+        $q =  "SELECT * FROM images INNER JOIN categories on images.categories_id = categories.id WHERE categories.id =".$categoryId;
+        $q = $this->db->query($q)->result();
+        return $q;
     }
 
 

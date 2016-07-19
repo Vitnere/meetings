@@ -99,41 +99,16 @@
 </div>
 
 <div>
-    <h3 class="svgbg">ORGANIZERS</h3><!--name of the first category-->
-    <?php foreach($r_images->result() as $img) : ?>
+    <?php foreach($category as $img) :?>
         <div>
-            <div class="thumbnail">
-                <?=img($img->file)?>
-            </div>
+            <?php echo " ".$img['title'];?>  <br>
+            <?php foreach($img['r_images'] as $imgage) :?>
+                <div class="thumbnail">
+                    <?=img($imgage->file)?> <br>
+                </div>
+            <?php endforeach; ?>
         </div>
     <?php endforeach; ?>
-
-    <h3 class="svgbg">CO-ORGANIZERS</h3>
-   <!-- <?php /*foreach($r_images->second_row() as $img) : */?>
-        <div>
-            <div class="thumbnail">
-                <?/*=img($img->file)*/?>
-            </div>
-            </div>
-    --><?php /*endforeach; */?>
-
-   <!-- <h3 class="svgbg">SUPPORTERS</h3>
-    <?php /*foreach($r_images->result() as $img) : */?>
-        <div>
-            <div class="thumbnail">
-                <?/*=img($img->file)*/?>
-            </div>
-            </div>
-    <?php /*endforeach; */?>
-
-    <h3 class="svgbg">LOCATION</h3>
-    <?php /*foreach($r_images->result() as $img) : */?>
-        <div>
-            <div class="thumbnail">
-                <?/*=img($img->file)*/?>
-            </div>
-        </div>
-    --><?php /*endforeach; */?>
 </div>
 
 
