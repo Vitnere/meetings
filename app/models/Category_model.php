@@ -56,7 +56,6 @@ class Category_model extends CI_Model {
         }
     }
 
-    //Model Category
     public function get_category(){
         $q = "select * from categories";
         $rs = $this->db->query($q);

@@ -59,6 +59,21 @@
                 </li>
 
                 <li>
+                    <a href="<?php echo base_url();?>Event/home_event">
+                        <i class="pe-7s-graph"></i>
+                        <p>Events</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo base_url();?>Event/show">
+                        <i class="pe-7s-graph"></i>
+                        <p>Add Event</p>
+                    </a>
+                </li>
+
+
+                <li>
                     <a href="<?php echo base_url();?>Admin/gallery">
                         <i class="pe-7s-note2"></i>
                         <p>Gallery</p>

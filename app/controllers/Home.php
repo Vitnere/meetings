@@ -22,9 +22,6 @@ class Home extends MY_Controller
         $user_id = $this->session->userdata('user_id');
         $category = $this->Category_model->get_category();
 
-
-        //$category = $this->Category_model->get_category();
-
         $data=array(
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
