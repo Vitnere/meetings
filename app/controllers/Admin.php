@@ -136,16 +136,15 @@ class Admin extends MY_Controller
         $this->form_validation->set_rules($rules);
         $image = $this->Gallery_model->find($id)->row();
 
-
-        $data=array(
-            'categories_id'   => $this->Category_model->find_cat()
-        );
-
-
         if ($this->form_validation->run() == FALSE)
 
         {
-            $this->load->view('admin/edit_image',['image'=>$image]);
+            $data=array(
+                'content'=>'admin/edit_image',
+                'image'=>$this->Gallery_model->find($id)->row(),
+                'categories_id'   => $this->Category_model->find_cat()
+            );
+            $this->load->view('admin/main',$data);
         }
         else
         {

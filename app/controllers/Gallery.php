@@ -115,19 +115,17 @@ class Gallery extends MY_Controller {
                 'rules' => 'required'
             ],
         ];
-
         $this->form_validation->set_rules($rules);
-        $image=$this->Gallery_model->find($id)->row();
-
-
-        $data=array(
-            'categories_id'   => $this->Category_model->find_cat()
-        );
-
+       $image=$this->Gallery_model->find($id)->row();
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('gallery/edit_image',['image'=>$image]);
+            $data=array(
+                'content'=>'admin/edit_image',
+                'image'=>$this->Gallery_model->find($id)->row(),
+                'categories_id'   => $this->Category_model->find_cat()
+            );
+            $this->load->view('admin/main',$data);
         }
         else
         {
@@ -156,11 +154,9 @@ class Gallery extends MY_Controller {
                     unlink($image->file);
                 }
             }
-
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');
             $data['categories_id']   = set_value("categories_id");
-
 
             $this->Gallery_model->update($id,$data);
             $this->session->set_flashdata('message','New image has been updated..');
