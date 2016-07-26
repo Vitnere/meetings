@@ -1,10 +1,3 @@
-<?php if($this->session->flashdata('add')) : ?>
-    <p class="alert alert-dismissable alert-success">
-        <?php echo $this->session->flashdata('add');?>
-    </p>
-<?php endif; ?>
-
-
 <div class="col-md-4">
 <h1>Add new event</h1>
     <?php echo form_open('Event/insert_event'); ?>
