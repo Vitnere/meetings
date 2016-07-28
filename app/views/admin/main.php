@@ -36,12 +36,9 @@
 <div class="wrapper">
     <div class="sidebar" data-color="blue" data-image="<?php echo base_url();?>assets/img/sidebar-5.jpg">
 
-        <!--
-
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
+        <!--Tip 1: you can change the color of the sidebar using:
+        data-color="blue | azure | green | orange | red | purple"
+            Tip 2: you can also add an image using data-image tag-->
 
         <div class="sidebar-wrapper">
             <div class="logo">
@@ -66,25 +63,12 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url();?>Event/show">
-                        <i class="pe-7s-graph"></i>
-                        <p>Add Event</p>
-                    </a>
-                </li>
-
-
-                <li>
                     <a href="<?php echo base_url();?>Admin/gallery">
                         <i class="pe-7s-note2"></i>
                         <p>Gallery</p>
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo base_url();?>Admin/add">
-                        <i class="pe-7s-graph"></i>
-                        <p>Add photos</p>
-                    </a>
-                </li>
+
                 <li>
                     <a href="<?php echo base_url();?>Admin/cattegories">
                         <i class="pe-7s-graph"></i>
@@ -132,7 +116,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                                <button class="btn btn-primary"><a  target="_blank" href="<?php echo base_url()?>">Preview</a></button>
+                                <button id="btn_white" class="btn btn-primary"><a target="_blank" href="<?php echo base_url()?>">Preview</a></button>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

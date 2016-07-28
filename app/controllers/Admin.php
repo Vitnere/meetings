@@ -17,8 +17,6 @@ class Admin extends MY_Controller
         $data=array(
             'content'=>'admin/dashboard'
         );
-
-
         $this->load->view('admin/main',$data);
     }
 
@@ -52,19 +50,17 @@ class Admin extends MY_Controller
                 'label' => 'Description',
                 'rules' => 'required'
             ]
-
         ];
-
         $this->form_validation->set_rules($rules);
-
-        $data=array(
-            'content'   => 'admin/add_image',
-            'cat'   => $this->Category_model->find_cat(),
-        );
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('admin/add_image',$data);
+            $data=array(
+                'content'   => 'admin/add_image',
+                'cat'   => $this->Category_model->find_cat(),
+            );
+            $this->load->view('admin/main',$data);
+           /* $this->load->view('admin/add_image',$data);*/
         }
         else
         {
@@ -88,11 +84,7 @@ class Admin extends MY_Controller
             }
             else
             {
-
-
-
                 $file = $this->upload->data();
-                //print_r($file);
                 $data = [
                     'file'          => 'data/baners/' . $file['file_name'],
                     "categories_id"       => set_value("categories_id"),
@@ -101,18 +93,12 @@ class Admin extends MY_Controller
                     "user_id" => $this->session->userdata('user_id')
                 ];
 
-
-
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('admin/gallery');
-
-
             }
         }
     }
-
-
 
     public function edit($id){/*edit photo*/
         $rules =    [
@@ -173,11 +159,9 @@ class Admin extends MY_Controller
                     unlink($image->file);
                 }
             }
-
             $data['categories_id']   = set_value("categories_id");
             $data['caption']      = set_value('caption');
             $data['description']   = set_value('description');
-
 
             $this->Gallery_model->update($id,$data);
             $this->session->set_flashdata('message','Image has been updated..');
@@ -203,7 +187,6 @@ class Admin extends MY_Controller
         $this->load->view('admin/main',$data);
     }
 
-
     public function users()//load users
     {
         $data=array(
@@ -215,7 +198,6 @@ class Admin extends MY_Controller
 
     }
 
-
     public function add_user()/*load add_user view*/
     {
         $data=array(
@@ -225,7 +207,6 @@ class Admin extends MY_Controller
         $this->load->view('admin/main',$data);
 
     }
-
 
     public function register()/*add new user from dashboard*/
     {
@@ -238,12 +219,9 @@ class Admin extends MY_Controller
         $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[8]|matches[password]');
         $this->form_validation->set_rules('admin','Role', 'trim|required');
 
-
         if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('admin/add_user');
-
-
         }
         else
         {
@@ -261,5 +239,4 @@ class Admin extends MY_Controller
         $this->session->set_flashdata('delete','User has been deleted..');
         redirect('Admin/users');
     }
-
 }

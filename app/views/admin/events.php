@@ -16,6 +16,9 @@
     </p>
 <?php endif; ?>
 
+<button id="btn_white" type="submit" class="btn btn-primary">
+    <a href="<?php echo base_url();?>Event/show">Add new</a>
+</button>
 <table id="tbuser">
     <thead>
     <tr>
@@ -25,7 +28,6 @@
     </tr>
     </thead>
     <tbody>
-    <!-- fetch data from events table into event view-->
     <?php foreach($event as $row){ ?>
         <tr>
             <div class="col-md-12">
