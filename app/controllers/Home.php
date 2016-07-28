@@ -8,6 +8,7 @@ class Home extends MY_Controller
         parent::__construct();
         $this->load->model('Gallery_model');
         $this->load->model('Category_model');
+        $this->load->model('Event_model');
     }
 
 
@@ -16,13 +17,16 @@ class Home extends MY_Controller
         $user_id = $this->session->userdata('user_id');
         $category = $this->Category_model->get_category();
 
+
         $data=array(
             'guest' =>'gallery/guest',
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all($user_id)
+            'images'   => $this->Gallery_model->all($user_id),
+            'count_events'=>$this->Event_model->count_events(),
+            'event'=>$this->Event_model->get_events(),
 
         );
 

@@ -1,7 +1,58 @@
-<div>
-    <h3 class="svgbg">Events</h3>
+<div class="row">
+        <h3 class="svgbg">Events&nbsp</h3>
+    <!-- Button trigger modal -->
+    <a type="button" data-toggle="modal" href="#myModal1">
+        <ul>
+            <li><span style="font-size:13px;">See all events</span>&nbsp&nbsp&nbsp<?php echo $count_events; ?></li>
+        </ul>
+    </a>
 
-</div>
+    <!-- Events Modal -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Events</h4>
+                </div>
+                <div class="modal-body">
+                    <table id="tbuser">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($event as $row){ ?>
+                            <tr>
+                                <div class="col-md-12">
+                                    <td><?php print_r ($row->title); ?></td>
+                                    <td><?php print_r ($row->description); ?></td>
+                                    <td><?php print_r ($row->date); ?></td>
+                                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                    <td>
+                       <!--<span id="right">
+                           <?/*=anchor('Event/edit_event/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])*/?>
+                           <?/*=anchor('Event/delete_event/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])*/?>
+                       </span>-->
+                                    </td>
+                                </div>
+                            </tr>
+                        <?php }?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!--row close-->
 
 <div class="secondary-section gray">
     <h3 class="svgbg">Bilateral Talks</h3>

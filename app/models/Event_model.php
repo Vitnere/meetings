@@ -51,6 +51,11 @@ class Event_model extends CI_Model
         }
     }
 
+    public function count_events(){
+        $table_row_count = $this->db->count_all('events');
+        return $table_row_count;
+    }
+
 
 
 
