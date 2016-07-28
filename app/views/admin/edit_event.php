@@ -4,18 +4,14 @@ if($this->input->post()){
     $title          = set_value('title');
     $description    = set_value('description');
     $date           = set_value('date');
-
 } else {
-    $title          = $eve->title;
-    $description    = $eve->description;
-    $date           = $eve->date;
+    $title          = $event->title;
+    $description    = $event->description;
+    $date           = $event->date;
 }
 ?>
 
-
-
-
-<?=form_open_multipart('Event/edit_event/'.$eve->id)?>
+<?=form_open_multipart('Event/edit_event/'.$event->id)?>
 <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" name="title" value="<?=$title?>">
@@ -23,7 +19,7 @@ if($this->input->post()){
 
 <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" class="form-control" name="title" value="<?=$description?>">
+    <input type="text" class="form-control" name="description" value="<?=$description?>">
 </div>
 
 <div class="form-group">

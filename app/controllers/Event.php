@@ -18,14 +18,14 @@ class Event extends MY_Controller
         $this->load->view('admin/main',$data);
     }
 
-    public function show(){//add new event
+    public function show(){//show add new event page
         $data=array(
             'content'=>'admin/add_events',
         );
         $this->load->view('admin/main',$data);
     }
 
-    public function insert_event()//insert event
+    public function insert_event()//add new event
     {
         $rules=[
             [
@@ -56,7 +56,7 @@ class Event extends MY_Controller
         }
     }
 
-    public function edit_event($id)/*edit category*/
+    public function edit_event($id)/*edit event*/
     {
         $rules=[
             [
@@ -70,13 +70,12 @@ class Event extends MY_Controller
                 'rules'=>'required'
             ]
         ];
-
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() == FALSE) {
            $data=array(
                 'content'=>'admin/edit_event',
-                'eve'=>$this->Event_model->rename_event($id)->row(),
+                'event'=>$this->Event_model->rename_event($id)->row(),
             );
             $this->load->view('admin/main',$data);
         } else {
@@ -92,7 +91,7 @@ class Event extends MY_Controller
         }
     }
 
-    public function delete_event($id)/*delete category*/
+    public function delete_event($id)/*delete event*/
     {
         $this->Event_model->delete_event($id);
         $this->session->set_flashdata('delete','Event has been deleted..');
