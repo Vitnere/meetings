@@ -193,15 +193,7 @@
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="<?php echo base_url();?>assets/js/bootstrap-checkbox-radio-switch.js"></script>
 
-<!--  Charts Plugin -->
-<script src="<?php echo base_url();?>assets/js/chartist.min.js"></script>
-
 <!--  Notifications Plugin    -->
 <script src="<?php echo base_url();?>assets/js/bootstrap-notify.js"></script>
-
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="<?php echo base_url();?>assets/js/light-bootstrap-dashboard.js"></script>
-
-
 
 </html>

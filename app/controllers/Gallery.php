@@ -11,8 +11,6 @@ class Gallery extends MY_Controller {
 
     public function index()
     {
-
-
         $user_id = $this->session->userdata('user_id');
 
         $data = [
@@ -95,8 +93,6 @@ class Gallery extends MY_Controller {
         }
     }
 
-    
-
     public function edit($id){/*edit photo*/
         $rules =    [
             [
@@ -120,12 +116,7 @@ class Gallery extends MY_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
-            $data=array(
-                'content'=>'admin/edit_image',
-                'image'=>$this->Gallery_model->find($id)->row(),
-                'categories_id'   => $this->Category_model->find_cat()
-            );
-            $this->load->view('admin/main',$data);
+            $this->load->view('gallery/edit_image',['image'=>$image]);
         }
         else
         {

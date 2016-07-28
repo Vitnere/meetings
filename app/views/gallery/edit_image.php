@@ -11,21 +11,17 @@ if($this->input->post()){
 }
 ?>
 <head>
-    <meta charset="utf-8">
-
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/gallery.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
 </head>
 
 <div id="container">
     <h1>Update Image</h1>
 
-    <div class="col-md-12" align="center">
-        <a class="btn btn-primary" href="<?php echo base_url()?>">Index</a>
-        <?=anchor('gallery/add','Add a new image',['class'=>'btn btn-primary'])?>
+    <div class="col-md-12" align="left">
+        <a class="btn btn-primary" href="<?php echo base_url()?>">Back</a>
         <br /><br />
     </div>
 

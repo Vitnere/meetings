@@ -1,3 +1,8 @@
+<div>
+    <h3 class="svgbg">Events</h3>
+
+</div>
+
 <div class="secondary-section gray">
     <h3 class="svgbg">Bilateral Talks</h3>
     <div class="secondary-content">

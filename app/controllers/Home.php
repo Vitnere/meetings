@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Vitnere
- * Date: 20-Mar-16
- * Time: 9:16 AM
- */
 
 class Home extends MY_Controller
 {
@@ -23,12 +17,13 @@ class Home extends MY_Controller
         $category = $this->Category_model->get_category();
 
         $data=array(
+            'guest' =>'gallery/guest',
             'content'=>'pages/home',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
-            'images'   => $this->Gallery_model->all($user_id),
-            'guest' =>'gallery/guest'
+            'images'   => $this->Gallery_model->all($user_id)
+
         );
 
         foreach ($category as $key => $value) {
