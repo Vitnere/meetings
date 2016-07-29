@@ -13,7 +13,6 @@ class Admin extends MY_Controller
 
     public function home()//load dashboard
     {
-
         $data=array(
             'content'=>'admin/dashboard'
         );
@@ -27,9 +26,7 @@ class Admin extends MY_Controller
         $data=array(
             'images'   => $this->Gallery_model->admin_all(),
             'content'=>'admin/gallery'
-
         );
-
         $this->load->view('admin/main',$data);
     }
 
@@ -60,11 +57,9 @@ class Admin extends MY_Controller
                 'cat'   => $this->Category_model->find_cat(),
             );
             $this->load->view('admin/main',$data);
-           /* $this->load->view('admin/add_image',$data);*/
         }
         else
         {
-
             /* Start Uploading File */
             $config =   [
                 'upload_path'   => './data/baners/',
@@ -73,13 +68,11 @@ class Admin extends MY_Controller
                 'max_width'     => 1024,
                 'max_height'    => 768
             ];
-
             $this->load->library('upload', $config);
 
             if ( ! $this->upload->do_upload())
             {
                 $error = array('error' => $this->upload->display_errors());
-
                 $this->load->view('admin/add_image', $error);
             }
             else
@@ -92,7 +85,6 @@ class Admin extends MY_Controller
                     'description'   => set_value('description'),
                     "user_id" => $this->session->userdata('user_id')
                 ];
-
                 $this->Gallery_model->create($data);
                 $this->session->set_flashdata('message','New image has been added..');
                 redirect('admin/gallery');
@@ -118,12 +110,10 @@ class Admin extends MY_Controller
                 'rules' => 'required'
             ],
         ];
-
         $this->form_validation->set_rules($rules);
         $image = $this->Gallery_model->find($id)->row();
 
         if ($this->form_validation->run() == FALSE)
-
         {
             $data=array(
                 'content'=>'admin/edit_image',
@@ -144,9 +134,7 @@ class Admin extends MY_Controller
                     'max_width'     => 1920,
                     'max_height'    => 1200
                 ];
-
                 $this->load->library('upload', $config);
-
                 if ( ! $this->upload->do_upload())
                 {
                     $error = array('error' => $this->upload->display_errors());
@@ -183,7 +171,6 @@ class Admin extends MY_Controller
             'content'   => 'admin/cattegories',
             'cat'   => $this->Category_model->find_cat(),
         );
-
         $this->load->view('admin/main',$data);
     }
 
@@ -193,9 +180,7 @@ class Admin extends MY_Controller
           'content'=>'admin/user',
             'user'=>$this->User_model->find_user()
         );
-
         $this->load->view('admin/main',$data);
-
     }
 
     public function add_user()/*load add_user view*/
@@ -203,9 +188,7 @@ class Admin extends MY_Controller
         $data=array(
             'content'=>'admin/add_user'
         );
-
         $this->load->view('admin/main',$data);
-
     }
 
     public function register()/*add new user from dashboard*/

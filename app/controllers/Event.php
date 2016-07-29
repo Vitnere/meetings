@@ -98,5 +98,56 @@ class Event extends MY_Controller
         redirect('Event/home_event');
     }
 
+    public function invite($id){//invite to event
+        $this->load->library('email');
+        $rules =    [
+            [
+                'field' => 'name',
+                'label' => 'Name',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'sender',
+                'label' => 'Sender',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'receiver',
+                'label' => 'Receiver',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'message',
+                'label' => 'Invitation',
+                'rules' => 'required'
+            ]
+        ];
+        $this->form_validation->set_rules($rules);
 
+        if ($this->form_validation->run() == FALSE)
+        {
+            $data=array(
+                'content'=>'admin/invite',
+                'event'=>$this->Event_model->rename_event($id)->row()
+            );
+            $this->load->view('admin/main',$data);
+        }
+        else
+        {
+
+            $this->email->from($this->input->post('sender'),$this->input->post('name'));
+            $this->email->to($this->input->post('receiver'));
+            $this->email->subject('Invite');
+            $this->email->message($this->input->post('message'));
+
+            if( $this->email->send() )
+            {
+               $this->session->set_flashdata('invite','You send invite');
+                redirect('Event/home_event');
+            }
+            else {
+                echo $this->email->print_debugger();
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <div class="col-md-4">
-<h1>Add new event</h1>
+<h3>Add new event</h3>
     <?php echo form_open('Event/insert_event'); ?>
 <!--Field: title-->
 <div>
@@ -36,7 +36,7 @@
 <?php $data = array("value" => "submit",
     "name"  => "update",
     "class" => "btn btn-primary"); ?>
-<div>
+<div><br>
     <?php echo form_submit($data); ?>
 </div>
 <?php echo form_close(); ?>

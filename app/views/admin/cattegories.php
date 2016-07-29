@@ -35,7 +35,7 @@
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <div class="form-group in collapse"><!--add cattegory-->
-                        <input type="text" class="form-control" name="title" value="Enter name">
+                        <input type="text" class="form-control" name="title" placeholder="Enter name">
                         <br>
                         <button type="submit" class="btn btn-primary">Insert</button>
                     </div>

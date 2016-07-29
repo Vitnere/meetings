@@ -33,10 +33,9 @@
                                     <td><?php print_r ($row->date); ?></td>
                                     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                     <td>
-                       <!--<span id="right">
-                           <?/*=anchor('Event/edit_event/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])*/?>
-                           <?/*=anchor('Event/delete_event/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])*/?>
-                       </span>-->
+                       <span id="right">
+                           <?=anchor('Event/edit_event/'.$row->id,'Invite',['class'=>'btn btn-success', 'role'=>'button'])?>
+                       </span>
                                     </td>
                                 </div>
                             </tr>

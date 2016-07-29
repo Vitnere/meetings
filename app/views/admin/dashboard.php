@@ -15,8 +15,7 @@
                 </div>
             </div>
 
-        </div>
-
+        </div><!--row close-->
         <div class="row">
             <div class="col-md-4">
                 <div class="card ">
@@ -31,7 +30,6 @@
             </div>
 
 
-        </div>
-
-    </div>
-</div>
+        </div><!--row close-->
+    </div><!-- container-fluid close-->
+</div><!-- content close-->

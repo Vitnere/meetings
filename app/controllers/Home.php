@@ -17,7 +17,6 @@ class Home extends MY_Controller
         $user_id = $this->session->userdata('user_id');
         $category = $this->Category_model->get_category();
 
-
         $data=array(
             'guest' =>'gallery/guest',
             'content'=>'pages/home',
@@ -27,14 +26,12 @@ class Home extends MY_Controller
             'images'   => $this->Gallery_model->all($user_id),
             'count_events'=>$this->Event_model->count_events(),
             'event'=>$this->Event_model->get_events(),
-
         );
 
         foreach ($category as $key => $value) {
             $data['category'][$key]['title']=$value->title;
             $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
             }
-
         $this->load->view('layouts/main', $data);
 
     }
@@ -42,92 +39,117 @@ class Home extends MY_Controller
     public function show_second()//show "how it works"
     {
         $user_id = $this->session->userdata('user_id');
+        $category = $this->Category_model->get_category();
 
         $data=array(
-            'content'=>'pages/home',
+            'content'=>'pages/second',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->org_filter()->first_row(),
-            'guest' =>'gallery/guest'
+            'guest' =>'gallery/guest',
+             'count_events'=>$this->Event_model->count_events(),
+            'event'=>$this->Event_model->get_events(),
         );
 
-        $data['content']='pages/second';
+        foreach ($category as $key => $value) {
+            $data['category'][$key]['title']=$value->title;
+            $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
+        }
         $this->load->view('layouts/main', $data);
     }
 
     public function show_third()//show "BILATERAL MEETINGS - HOW IT WORKS"
     {
         $user_id = $this->session->userdata('user_id');
+        $category = $this->Category_model->get_category();
 
         $data=array(
-            'content'=>'pages/home',
+            'content'=>'pages/third',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->admin_all(),
-            'guest' =>'gallery/guest'
+            'guest' =>'gallery/guest',
+            'count_events'=>$this->Event_model->count_events(),
+            'event'=>$this->Event_model->get_events(),
         );
 
-        $data['content']='pages/third';
+        foreach ($category as $key => $value) {
+            $data['category'][$key]['title']=$value->title;
+            $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
+        }
         $this->load->view('layouts/main', $data);
     }
 
     public function show_fourth()//show "programme"
     {
         $user_id = $this->session->userdata('user_id');
+        $category = $this->Category_model->get_category();
 
         $data=array(
-            'content'=>'pages/home',
+            'content'=>'pages/fourth',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->admin_all(),
-            'guest' =>'gallery/guest'
+            'guest' =>'gallery/guest',
+            'count_events'=>$this->Event_model->count_events(),
+            'event'=>$this->Event_model->get_events(),
         );
 
-        $data['content']='pages/fourth';
+        foreach ($category as $key => $value) {
+            $data['category'][$key]['title']=$value->title;
+            $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
+        }
         $this->load->view('layouts/main', $data);
     }
 
     public function show_fifth()//show "FAQ"
     {
         $user_id = $this->session->userdata('user_id');
+        $category = $this->Category_model->get_category();
 
         $data=array(
-            'content'=>'pages/home',
+            'content'=>'pages/fifth',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->admin_all(),
-            'guest' =>'gallery/guest'
+            'guest' =>'gallery/guest',
+            'count_events'=>$this->Event_model->count_events(),
+            'event'=>$this->Event_model->get_events(),
         );
 
-        $data['content']='pages/fifth';
+        foreach ($category as $key => $value) {
+            $data['category'][$key]['title']=$value->title;
+            $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
+        }
+
         $this->load->view('layouts/main', $data);
     }
 
     public function show_sixth() //show "contact"
     {
         $user_id = $this->session->userdata('user_id');
+        $category = $this->Category_model->get_category();
 
         $data=array(
-            'content'=>'pages/home',
+            'content'=>'pages/sixth',
             'pic'=>'pictures/pform',
             'foot'=>'layouts/footer',
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
-            'r_images'   => $this->Gallery_model->admin_all(),
-            'guest' =>'gallery/guest'
+            'guest' =>'gallery/guest',
+            'count_events'=>$this->Event_model->count_events(),
+            'event'=>$this->Event_model->get_events(),
         );
 
-        $data['content']='pages/sixth';
+        foreach ($category as $key => $value) {
+            $data['category'][$key]['title']=$value->title;
+            $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
+        }
         $this->load->view('layouts/main', $data);
     }
-
 }
 ?>
