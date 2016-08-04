@@ -1,0 +1,1 @@
+ALTER TABLE `events`  ADD `username` TEXT NOT NULL  AFTER `date`;

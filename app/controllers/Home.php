@@ -2,7 +2,6 @@
 
 class Home extends MY_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -11,10 +10,10 @@ class Home extends MY_Controller
         $this->load->model('Event_model');
     }
 
-
     public function index()//Show home page
     {
         $user_id = $this->session->userdata('user_id');
+        $username = $this->session->userdata('username');
         $category = $this->Category_model->get_category();
 
         $data=array(
@@ -25,7 +24,7 @@ class Home extends MY_Controller
             'gallery'=>'gallery/index',
             'images'   => $this->Gallery_model->all($user_id),
             'count_events'=>$this->Event_model->count_events(),
-            'event'=>$this->Event_model->get_events(),
+            'event'=>$this->Event_model->user_get_events($username),
         );
 
         foreach ($category as $key => $value) {
@@ -33,12 +32,12 @@ class Home extends MY_Controller
             $data['category'][$key]['r_images']=$this->Gallery_model->filter_by_category($value->id);
             }
         $this->load->view('layouts/main', $data);
-
     }
 
     public function show_second()//show "how it works"
     {
         $user_id = $this->session->userdata('user_id');
+        $username = $this->session->userdata('username');
         $category = $this->Category_model->get_category();
 
         $data=array(
@@ -49,7 +48,7 @@ class Home extends MY_Controller
             'images'   => $this->Gallery_model->all($user_id),
             'guest' =>'gallery/guest',
              'count_events'=>$this->Event_model->count_events(),
-            'event'=>$this->Event_model->get_events(),
+            'event'=>$this->Event_model->user_get_events($username),
         );
 
         foreach ($category as $key => $value) {
@@ -62,6 +61,7 @@ class Home extends MY_Controller
     public function show_third()//show "BILATERAL MEETINGS - HOW IT WORKS"
     {
         $user_id = $this->session->userdata('user_id');
+        $username = $this->session->userdata('username');
         $category = $this->Category_model->get_category();
 
         $data=array(
@@ -72,7 +72,7 @@ class Home extends MY_Controller
             'images'   => $this->Gallery_model->all($user_id),
             'guest' =>'gallery/guest',
             'count_events'=>$this->Event_model->count_events(),
-            'event'=>$this->Event_model->get_events(),
+            'event'=>$this->Event_model->user_get_events($username),
         );
 
         foreach ($category as $key => $value) {
@@ -85,6 +85,7 @@ class Home extends MY_Controller
     public function show_fourth()//show "programme"
     {
         $user_id = $this->session->userdata('user_id');
+        $username = $this->session->userdata('username');
         $category = $this->Category_model->get_category();
 
         $data=array(
@@ -95,7 +96,7 @@ class Home extends MY_Controller
             'images'   => $this->Gallery_model->all($user_id),
             'guest' =>'gallery/guest',
             'count_events'=>$this->Event_model->count_events(),
-            'event'=>$this->Event_model->get_events(),
+            'event'=>$this->Event_model->user_get_events($username),
         );
 
         foreach ($category as $key => $value) {
@@ -108,6 +109,7 @@ class Home extends MY_Controller
     public function show_fifth()//show "FAQ"
     {
         $user_id = $this->session->userdata('user_id');
+        $username = $this->session->userdata('username');
         $category = $this->Category_model->get_category();
 
         $data=array(
@@ -118,7 +120,7 @@ class Home extends MY_Controller
             'images'   => $this->Gallery_model->all($user_id),
             'guest' =>'gallery/guest',
             'count_events'=>$this->Event_model->count_events(),
-            'event'=>$this->Event_model->get_events(),
+            'event'=>$this->Event_model->user_get_events($username),
         );
 
         foreach ($category as $key => $value) {
@@ -132,6 +134,7 @@ class Home extends MY_Controller
     public function show_sixth() //show "contact"
     {
         $user_id = $this->session->userdata('user_id');
+        $username = $this->session->userdata('username');
         $category = $this->Category_model->get_category();
 
         $data=array(
@@ -142,7 +145,7 @@ class Home extends MY_Controller
             'images'   => $this->Gallery_model->all($user_id),
             'guest' =>'gallery/guest',
             'count_events'=>$this->Event_model->count_events(),
-            'event'=>$this->Event_model->get_events(),
+            'event'=>$this->Event_model->user_get_events($username),
         );
 
         foreach ($category as $key => $value) {

@@ -14,11 +14,17 @@ class Event_model extends CI_Model
         }
     }
 
-    public function get_events()/*method for fetching all events*/
+    public function get_events()/*method for fetching all events -  admin*/
     {
         $this->db->select('*');
         $result = $this->db->get('events');
         return $result->result();
+    }
+
+    public function user_get_events($username)/*get only events of some user*/
+    {
+        $row= $this->db->where('username',$username)->limit(25)->get('events');
+        return $row->result();
     }
 
     public function rename_event($id)/*rename event*/

@@ -9,11 +9,14 @@ class Event extends MY_Controller
         $this->load->model('Event_model');
     }
 
+
     public function home_event(){//all events show
+
+        $username = $this->session->userdata('username');
 
         $data=array(
             'content'=>'admin/events',
-             'event'  =>$this->Event_model->get_events()
+             'event'  =>$this->Event_model->get_events($username)
         );
         $this->load->view('admin/main',$data);
     }
@@ -48,7 +51,8 @@ class Event extends MY_Controller
             $data=[
                 "title"     =>set_value("title"),
                 "description"=>set_value("description"),
-                "date"      =>set_value("date")
+                "date"      =>set_value("date"),
+                "username" => $this->session->userdata('username')
             ];
             $this->Event_model->insert_event($data);
             $this->session->set_flashdata('add', 'New event has been added..');
