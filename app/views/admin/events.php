@@ -22,9 +22,64 @@
     </p>
 <?php endif; ?>
 
-<button id="btn_white" type="submit" class="btn btn-primary">
-    <a href="<?php echo base_url();?>Event/show">Add new</a>
-</button>
+
+<!--add new event button-->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">Add new</button>
+<!--add new event modal-->
+<div class="modal fade ad_add_event" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="col-md-4">
+                        <?php echo form_open('Event/insert_event'); ?>
+                        <!--Field: title-->
+                        <div>
+                            <?php echo form_label('Title:'); ?>
+                            <?php
+                            $data = array(
+                                'name'        => 'title',
+                                'value'       => set_value('title')
+                            );
+                            ?>
+                            <?php echo form_input($data); ?>
+                        </div>
+
+                        <!--Field: description-->
+                        <div><?php echo form_label('Description'); ?>
+                            <?php
+                            $data = array(
+                                'name'        => 'description',
+                                'value'       => set_value('description')
+                            );
+                            ?>
+                            <?php echo form_textarea($data); ?>
+                        </div>
+
+                        <!--Field: Date-->
+                        <div>
+                            <?php echo form_label('Date:'); ?>
+                            <input type="date" name="date" />
+                        </div>
+
+                        <!--Submit Buttons-->
+                        <?php $data = array("value" => "submit",
+                            "name"  => "update",
+                            "class" => "btn btn-primary"); ?>
+                        <div><br>
+                            <?php echo form_submit($data); ?>
+                        </div>
+                        <?php echo form_close(); ?>
+                        <br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <table id="tbuser">
     <thead>
     <tr>
@@ -48,6 +103,7 @@
                            <?=anchor('Event/edit_event/'.$row->id,'Edit',['class'=>'btn btn-warning', 'role'=>'button'])?>
                            <?=anchor('Event/delete_event/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
                            <?=anchor('Event/invite/'.$row->id,'Invite',['class'=>'btn btn-success', 'role'=>'button'])?>
+
                        </span>
                 </td>
             </div>

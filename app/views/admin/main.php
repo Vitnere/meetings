@@ -157,10 +157,9 @@
             </div><!--main-panel close-->
 </div><!--wrapper close-->
 <!--   JS    -->
-
-<script src="<?php echo base_url();?>assets/js/jquery.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/js/bootstrap-checkbox-radio-switch.js"></script>
-<script src="<?php echo base_url();?>assets/js/bootstrap-notify.js"></script>
+<script src="<?=base_url()?>assets/js/jquery.js"></script>
+<script src="<?=base_url()?>assets/js/bootstrap.js"></script>
+<script src="<?=base_url()?>assets/js/jsbootstrap.min.js"></script>
+<script src="<?=base_url()?>assets/js/jquery.ui.shake.js"></script>
 </body>
 </html>

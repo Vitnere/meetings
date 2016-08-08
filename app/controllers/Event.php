@@ -23,13 +23,6 @@ class Event extends MY_Controller
         $this->load->view('admin/main',$data);
     }
 
-    public function show(){//show add new event page
-        $data=array(
-            'content'=>'admin/add_events',
-        );
-        $this->load->view('admin/main',$data);
-    }
-
     public function insert_event()//add new event admin
     {
         $rules=[
