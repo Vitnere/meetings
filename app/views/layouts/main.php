@@ -4,8 +4,8 @@
 <header>
     <head>
         <title>Go International - ICT Brokerage Event 2015 - Go International - ICT Brokerage Event 2015</title>
-       <link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.min.css">
         <link href="<?=base_url();?>assets/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.min.css">
         <link href="<?=base_url();?>assets/css/style.css" rel="stylesheet">
         <link href="<?=base_url();?>assets/css/font-awesome.css" rel="stylesheet">
         <link href="<?=base_url()?>assets/css/modern-business.css" rel="stylesheet">

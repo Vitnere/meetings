@@ -73,3 +73,6 @@ tr:last-child td:last-child { border-bottom-right-radius: 50px!important; }
 #footer3{background-color: #000000;height: 52px;margin:-99px 35px 0 35px;
     position: relative;z-index: 500;text-decoration: none;color: #ffffff;}
 
+/*bootstrap  modals*/
+ .modal-wide .modal-dialog {  width: 75%;height: 50%;  }
+

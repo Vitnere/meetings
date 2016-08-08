@@ -1,3 +1,17 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+/*if($this->input->post())
+{
+    $title          = set_value('title');
+    $description    = set_value('description');
+    $date           = set_value('date');
+} else
+{
+    $title          = $event->title;
+    $description    = $event->description;
+    $date           = $event->date;
+}
+*/?>
+
 <div class="row">
         <h3 class="svgbg">Events&nbsp</h3>
     <!-- Button trigger modal -->
@@ -8,7 +22,7 @@
     </a>
 
     <!-- Events Modal -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade modal-wide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,13 +47,76 @@
                                     <td><?php print_r ($row->description); ?></td>
                                     <td><?php print_r ($row->date); ?></td>
                                     <td><?php print_r ($row->username); ?></td>
-                                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                     <td>
-                       <span id="right">
-                           <?=anchor('Event/edit_event/'.$row->id,'Invite',['class'=>'btn btn-success', 'role'=>'button'])?>
-                       </span>
+                                        <!-- Edit button-->
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal2">Edit</button>
+                                        <!--Edit modal-->
+                                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <!--<div class="modal-content">
+                                           <?php /*form_open_multipart('Event/user_edit_event/'.$event->id)*/?>
+                                           <div class="form-group">
+                                               <label for="title">Title</label>
+                                               <input type="text" class="form-control" name="title" value="<?/*=$title*/?>">
+                                           </div>
+
+                                           <div class="form-group">
+                                               <label for="description">Description</label>
+                                               <input type="text" class="form-control" name="description" value="<?/*=$description*/?>">
+                                           </div>
+
+                                           <div class="form-group">
+                                               <label for="date">Date</label>
+                                               <input type="date" class="form-control" name="date" value="<?/*=$date*/?>">
+                                           </div>
+
+                                           <button type="submit" class="btn btn-primary">Update</button>
+                                           <?/*form_close();*/?>
+                                           </div>-->
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                                                </div>
+                                            </div>
+                                        </div></div>
+                                        <!-- Invite button-->
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal3">Invite</button>
+                                        <!-- Invite Modal -->
+                                        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Send invitation</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="<?php base_url()?>Event/invite" method="post" class="form-inline">
+                                                            <div class="form-group">
+                                                                <label for="name">Name</label>
+                                                                <input  type="text" name="name" class="form-control" id="exampleInputName2" placeholder="your name here">
+                                                            </div><br>
+                                                            <div  class="form-group">
+                                                                <label  for="email">Sender</label>
+                                                                <input type="email" name="sender" class="form-control" id="exampleInputEmail2" placeholder="your mail here">
+                                                            </div><br>
+                                                            <div class="form-group">
+                                                                <label for="email">Receiver</label>
+                                                                <input  type="email" name="receiver" class="form-control" id="exampleInputEmail2" placeholder="receiver mail here">
+                                                            </div><br>
+                                                            <div class="form-group">
+                                                                <label for="invitation">Invitation</label>
+                                                                <textarea  name="message" rows="4" type="text" class="form-control" id="exampleInputInvitation1">You are invited to event</textarea>
+                                                            </div><br>
+                                                            <button id="btn_invite" type="submit" class="btn btn-primary">Send invitation</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Delete button-->
+                                        <?=anchor('Event/delete_event/'.$row->id,'Delete',['class'=>'btn btn-danger', 'role'=>'button','onclick'=>'return confirm(\'Are you sure?\')'])?>
                                     </td>
-                                </div>
                             </tr>
                         <?php }?>
                         </tbody>
@@ -47,13 +124,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                 </div>
             </div>
         </div>
     </div>
-
 </div><!--row close-->
+
 
 <div class="secondary-section gray">
     <h3 class="svgbg">Bilateral Talks</h3>

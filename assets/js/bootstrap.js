@@ -1,8 +1,6 @@
-/*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under the MIT license
- */
+
+
+
 
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
@@ -2375,3 +2373,12 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
+
+
+$('#Modal_One').modal('hide');
+setTimeout(function () {
+    $('#Modal_New').modal({
+        backdrop: 'dynamic',
+        keyboard: true
+    });
+}, 500);
