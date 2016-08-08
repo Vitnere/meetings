@@ -2374,7 +2374,8 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-
+/*custom js code*/
+/*modal inside modal*/
 $('#Modal_One').modal('hide');
 setTimeout(function () {
     $('#Modal_New').modal({
