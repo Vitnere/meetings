@@ -2375,6 +2375,7 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /*custom js code*/
+
 /*modal inside modal*/
 $('#Modal_One').modal('hide');
 setTimeout(function () {
@@ -2383,3 +2384,6 @@ setTimeout(function () {
         keyboard: true
     });
 }, 500);
+
+/*admin add event > modal fix*/
+$('#myModal5').appendTo("body");

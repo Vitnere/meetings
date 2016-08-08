@@ -51,7 +51,9 @@ tr:last-child td:last-child { border-bottom-right-radius: 50px!important; }
 
  /*events*/
  #btn_white a{color: #ffffff; !important;}
- .add_event{width: 55%; margin-left:60.5%; }
+ .add_event{width: 55%; margin-left:60.5%; }/*user add event*/
+ .ad_add_event{  width:80%;margin:10% 0 0 10%;}/*admin add event*/
+
 
  /*photo gallery*/
  #thumbnail{width: 100%;height: 100%; !important;}
