@@ -31,7 +31,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Date</th>
-        <th>Creator</th>
+        <th>Creator_ID</th>
     </tr>
     </thead>
     <tbody>
@@ -41,7 +41,7 @@
                 <td><?php print_r ($row->title); ?></td>
                 <td><?php print_r ($row->description); ?></td>
                 <td><?php print_r ($row->date); ?></td>
-                <td><?php print_r ($row->username); ?></td>
+                <td><?php print_r ($row->user_id); ?></td>
                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                 <td>
                        <span id="right">

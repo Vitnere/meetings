@@ -21,9 +21,9 @@ class Event_model extends CI_Model
         return $result->result();
     }
 
-    public function user_get_events($username)/*get only events of some user*/
+    public function user_get_events($user_id)/*get only events of some user*/
     {
-        $row= $this->db->where('username',$username)->limit(25)->get('events');
+        $row= $this->db->where('user_id',$user_id)->limit(25)->get('events');
         return $row->result();
     }
 
