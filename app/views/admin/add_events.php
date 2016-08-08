@@ -16,7 +16,7 @@
 
 <!--Field: description-->
 <div>
-    <?php echo form_label('Description'); ?>
+    <?php echo form_label('Description'); ?><br>
     <?php
     $data = array(
         'name'        => 'description',

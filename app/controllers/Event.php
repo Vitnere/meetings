@@ -9,6 +9,9 @@ class Event extends MY_Controller
         $this->load->model('Event_model');
     }
 
+    /*------------------ADMIN----------------------------------*/
+    /*@here are all methods of admin managing events from dashboard*/
+
     public function home_event(){//all events show
 
         $user_id = $this->session->userdata('user_id');
@@ -27,7 +30,7 @@ class Event extends MY_Controller
         $this->load->view('admin/main',$data);
     }
 
-    public function insert_event()//add new event
+    public function insert_event()//add new event admin
     {
         $rules=[
             [
@@ -94,48 +97,6 @@ class Event extends MY_Controller
         }
     }
 
-    public function user_edit_event($id)/*edit event user*/
-    {
-        $rules=[
-            [
-                'field'=>'title',
-                'label'=>'Title',
-                'rules'=>'required'
-            ],
-            [
-                'field'=>'description',
-                'label'=>'Description',
-                'rules'=>'required'
-            ]
-        ];
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run() == FALSE) {
-            $data=array(
-                'content'=>'pages/event_edit',
-                'event'=>$this->Event_model->rename_event($id)->row(),
-            );
-            $this->load->view('pages/event_edit',$data);
-        } else {
-            $data=[
-                "title"     =>set_value("title"),
-                "description"=>set_value("description"),
-                "date"      =>set_value("date")
-            ];
-
-            $this->Event_model->update_event($id, $data);
-            $this->session->set_flashdata('update', 'Event has been updated..');
-            redirect('home/index');
-        }
-    }
-
-    public function delete_event($id)/*delete event*/
-    {
-        $this->Event_model->delete_event($id);
-        $this->session->set_flashdata('delete','Event has been deleted..');
-        redirect('Event/home_event');
-    }
-
     public function invite($id){//admin invite to event
         $this->load->library('email');
         $rules =    [
@@ -179,12 +140,89 @@ class Event extends MY_Controller
 
             if( $this->email->send() )
             {
-               $this->session->set_flashdata('invite','You send invite');
+                $this->session->set_flashdata('invite','You send invite');
                 redirect('Event/home_event');
             }
             else {
                 echo $this->email->print_debugger();
             }
+        }
+    }
+
+    public function delete_event($id)/*delete event*/
+    {
+        $this->Event_model->delete_event($id);
+        $this->session->set_flashdata('delete','Event has been deleted..');
+        redirect('Event/home_event');
+    }
+
+    /*---------------USER----------------------------------*/
+    /*@here are all methods of restricted user from Frontend page*/
+
+    public function user_insert_event()//add new event user
+    {
+        $rules=[
+            [
+                'field'=>'title',
+                'label'=>'Title',
+                'rules'=>'required'
+            ],
+            [
+                'field'=>'description',
+                'label'=>'Description',
+                'rules'=>'required'
+            ]
+        ];
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('Event/user_insert_event');
+        } else {
+            $data=[
+                "title"     =>set_value("title"),
+                "description"=>set_value("description"),
+                "date"      =>set_value("date"),
+                "user_id" => $this->session->userdata('user_id')
+            ];
+            $this->Event_model->insert_event($data);
+            $this->session->set_flashdata('add', 'New event has been added..');
+            redirect('home/index');
+        }
+    }
+
+    public function user_edit_event($id)/*edit event user*/
+    {
+        $rules=[
+            [
+                'field'=>'title',
+                'label'=>'Title',
+                'rules'=>'required'
+            ],
+            [
+                'field'=>'description',
+                'label'=>'Description',
+                'rules'=>'required'
+            ]
+        ];
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() == FALSE) {
+            $data=array(
+                'content'=>'pages/event_edit',
+                'event'=>$this->Event_model->rename_event($id)->row(),
+            );
+            $this->load->view('pages/event_edit',$data);
+        } else {
+            $data=[
+                "title"     =>set_value("title"),
+                "description"=>set_value("description"),
+                "date"      =>set_value("date")
+            ];
+
+            $this->Event_model->update_event($id, $data);
+            $this->session->set_flashdata('update', 'Event has been updated..');
+            redirect('home/index');
         }
     }
 
@@ -239,4 +277,14 @@ class Event extends MY_Controller
             }
         }
     }
+
+    public function user_delete_event($id)/*user delete event*/
+    {
+        $this->Event_model->delete_event($id);
+        $this->session->set_flashdata('delete','Event has been deleted..');
+        redirect('home/index');
+    }
+
+
+
 }
