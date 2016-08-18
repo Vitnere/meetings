@@ -202,7 +202,6 @@ class Event extends MY_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data=array(
-                'content'=>'pages/event_edit',
                 'event'=>$this->Event_model->rename_event($id)->row(),
             );
             $this->load->view('pages/event_edit',$data);

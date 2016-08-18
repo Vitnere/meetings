@@ -95,11 +95,13 @@
             </div>
         </article>
 
+        <?php if($this->session->userdata('logged_in')) : ?>
         <aside><!-- guest gallery-->
             <div class="col-md-4">
                 <?php $this->load->view($guest); ?>
             </div>
         </aside>
+        <?php endif; ?>
 
 
 
