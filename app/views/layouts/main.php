@@ -79,7 +79,7 @@
 <div class="container-fluid" id="back">
 
     <div class="row" id="main">
-
+        <!--gallery--->
     <?php if($this->session->userdata('logged_in')) : ?>
     <aside>
         <div class="col-md-12" id="pform">
@@ -88,27 +88,20 @@
     </aside>
     <?php endif; ?>
 
-
         <article><!--home view-->
             <div class="col-md-8">
                 <?php $this->load->view($content); ?>
             </div>
         </article>
 
-        <?php if($this->session->userdata('logged_in')) : ?>
-        <aside><!-- guest gallery-->
+        <!-- right div-->
+        <aside>
             <div class="col-md-4">
                 <?php $this->load->view($guest); ?>
             </div>
         </aside>
-        <?php endif; ?>
-
-
-
         </div><!--row close-->
     </div><!--container fludi close-->
-
-
 
     <!-- Footer -->
     <footer>
@@ -117,14 +110,9 @@
         </div>
     </footer>
 <!-- /.container -->
-
 <script src="<?=base_url()?>assets/js/jquery.js"></script>
 <script src="<?=base_url()?>assets/js/jsbootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/js/bootstrap.js"></script>
 <script src="<?=base_url()?>assets/js/jquery.ui.shake.js"></script>
 </body>
-
-
-
-
 </html>

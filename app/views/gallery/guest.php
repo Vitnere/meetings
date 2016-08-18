@@ -16,6 +16,8 @@
     </p>
 <?php endif; ?>
 
+<?php if($this->session->userdata('logged_in')) : ?>
+
 <div class="row">
         <h3 class="svgbg">Events&nbsp</h3>
     <!-- Button trigger modal -->
@@ -127,6 +129,8 @@
         </div>
     </div>
 </div><!--row close-->
+
+<?php endif; ?>
 
 
 <div class="secondary-section gray">
