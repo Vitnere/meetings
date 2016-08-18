@@ -1,3 +1,8 @@
+<!--
+@BUG REPORT
+ name:bug 1
+ desc:edit event is not working on frontend (works in admin dash)
+ -->
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 if($this->input->post())
 {

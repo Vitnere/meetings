@@ -13,9 +13,7 @@
     </div><br>
     <div class="form-group">
         <label for="invitation">Invitation</label>
-        <textarea  name="message" rows="4" type="text" class="form-control" id="exampleInputInvitation1">
-            You are invited to event
-        </textarea>
+        <textarea  name="message" rows="4" type="text" class="form-control" id="exampleInputInvitation1">You are invited to event</textarea>
     </div><br>
     <button id="btn_invite" type="submit" class="btn btn-primary">Send invitation</button>
 </form>

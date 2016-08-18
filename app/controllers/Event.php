@@ -185,6 +185,9 @@ class Event extends MY_Controller
     }
 
     public function user_edit_event($id)/*edit event user*/
+    /*@BUG REPORT
+     name:bug 1
+     desc:edit event is not working on frontend (works in admin dash)*/
     {
         $rules=[
             [

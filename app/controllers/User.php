@@ -97,8 +97,8 @@ class User extends MY_Controller
                 /*redirect('home/index');*/
             } else {
                 //Set error
-                $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
-                /*redirect('home/index');*/
+                $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid. Try again please');
+                redirect('home/index');
             }
         }
     }
