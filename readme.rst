@@ -1,3 +1,3 @@
-Development done in Codebucket. From oktober 2016 project is open source.
+Development previously done in Bitbucket. From oktober 2016 project is open source. Feel free to fork it.
 
 Live preview on meetings.pe.hu 
