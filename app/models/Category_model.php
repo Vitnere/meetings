@@ -2,16 +2,15 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Category_model extends CI_Model {
-
-
+class Category_model extends CI_Model
+{
 
     public function add_cat($data)//insert new category
     {
-        try{
+        try {
             $this->db->insert('categories', $data);
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -20,25 +19,24 @@ class Category_model extends CI_Model {
     public function find_cat()/*method for fetching categories*/
     {
         $this->db->select('id,title');
-        $result = $this->db->get('categories');
+        $result=$this->db->get('categories');
         return $result->result();
     }
 
 
     public function rename_cat($id)/*rename category*/
     {
-        $row = $this->db->where('id',$id)->limit(1)->get('categories');
+        $row=$this->db->where('id', $id)->limit(1)->get('categories');
         return $row;
     }
 
 
-
-    public function update_cat($id,$data)/*update category*/
+    public function update_cat($id, $data)/*update category*/
     {
-        try{
-            $this->db->where('id',$id)->limit(1)->update('categories', $data);
+        try {
+            $this->db->where('id', $id)->limit(1)->update('categories', $data);
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -46,19 +44,18 @@ class Category_model extends CI_Model {
     public function del_cat($id)/*delete category*/
     {
         try {
-            $this->db->where('id',$id)->delete('categories');
+            $this->db->where('id', $id)->delete('categories');
             return true;
-        }
-
-            //catch exception
-        catch(Exception $e) {
+        } //catch exception
+        catch (Exception $e) {
             echo $e->getMessage();
         }
     }
 
-    public function get_category(){
-        $q = "select * from categories";
-        $rs = $this->db->query($q);
+    public function get_category()
+    {
+        $q="select * from categories";
+        $rs=$this->db->query($q);
         return $rs->result();
     }
 
