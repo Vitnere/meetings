@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '3020',/*za hosting sifra je kuki85 zbog free hosting problema, a za localhost dev je ova sifra.Mjenjati po potrebi*/
+	'password' => '3020',
 	'database' => 'meetings',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -94,3 +94,29 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+/*hosting db settings
+
+$db['default'] = array(
+    'dsn'	=> '',
+    'hostname' => 'mysql.hostinger.hr',
+    'username' => 'u215057731_1234',
+    'password' => '30203020',
+    'database' => 'u215057731_1234',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
+ * */
