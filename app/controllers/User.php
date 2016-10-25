@@ -16,24 +16,20 @@ class User extends MY_Controller
     public function register()/*register user*/
     {
         /*validation rules*/
-        $this->form_validation->set_rules('first_name','First_Name', 'trim|required|max_length[50]|min_length[2]');
-        $this->form_validation->set_rules('last_name','Last_Name','trim|required|max_length[50]|min_length[2]');
+        $this->form_validation->set_rules('first_name', 'First_Name', 'trim|required|max_length[50]|min_length[2]');
+        $this->form_validation->set_rules('last_name', 'Last_Name', 'trim|required|max_length[50]|min_length[2]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|max_length[100]|min_length[5]|valid_email');
-        $this->form_validation->set_rules('username','Username','trim|required|max_length[20]|min_length[4]|is_unique[users.username]');
-        $this->form_validation->set_rules('password','Password','trim|required|max_length[50]|min_length[8]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|max_length[20]|min_length[4]|is_unique[users.username]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[50]|min_length[8]');
         $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|max_length[50]|min_length[8]|matches[password]');
 
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('users/register');
 
-        }
-        else
-        {
-            if($this->User_model->create_member())
-            {
-                $this->session->set_flashdata('registered','You are now registered and can log in');
+        } else {
+            if ($this->User_model->create_member()) {
+                $this->session->set_flashdata('registered', 'You are now registered and can log in');
                 redirect('home/index');
             }
         }
@@ -43,30 +39,25 @@ class User extends MY_Controller
     public function login()/*login user*/
     {
         /*validation*/
-        $this->form_validation->set_rules('username','Username','trim|required|min_length[3]');
-        $this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[50]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[50]');
 
-        if($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('users/login');
-        }
-
-        else
-        {
+        } else {
             //Get from post
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
+            $username=$this->input->post('username');
+            $password=$this->input->post('password');
 
             //get id
-            $result = $this->User_model->login_user($username, $password);
+            $result=$this->User_model->login_user($username, $password);
 
             //Validate user
-            if($result)
-            {
+            if ($result) {
 
                 //set user data array
                 $user_data=array(
-                  'user_id'=>$result->id,
+                    'user_id'=>$result->id,
                     'username'=>$username,
                     'admin'=>$result->admin,
                     'logged_in'=>true
@@ -75,23 +66,19 @@ class User extends MY_Controller
                 /*set user_data*/
                 $this->session->set_userdata($user_data);
 
-                    if($result->admin==1)
-                {
+                if ($result->admin == 1) {
 
                     $data=array(
                         'content'=>'admin/dashboard'
                     );
 
-                    $this->load->view('admin/main',$data);
+                    $this->load->view('admin/main', $data);
+                } else {
+                    $data=array(
+                        'content'=>'gallery/index'
+                    );
+                    redirect('home/index', $data);
                 }
-
-                    else
-                        {
-                            $data=array(
-                              'content'=>'gallery/index'
-                            );
-                            redirect('home/index',$data);
-                        }
 
                 $this->session->set_flashdata('login_success', 'You are now logged in');
                 /*redirect('home/index');*/

@@ -12,15 +12,16 @@ class Event extends MY_Controller
     /*------------------ADMIN----------------------------------*/
     /*@here are all methods of admin managing events from dashboard*/
 
-    public function home_event(){//all events show
+    public function home_event()
+    {//all events show
 
-        $user_id = $this->session->userdata('user_id');
+        $user_id=$this->session->userdata('user_id');
 
         $data=array(
             'content'=>'admin/events',
-             'event'  =>$this->Event_model->get_events($user_id)
+            'event'=>$this->Event_model->get_events($user_id)
         );
-        $this->load->view('admin/main',$data);
+        $this->load->view('admin/main', $data);
     }
 
     public function insert_event()//add new event admin
@@ -44,10 +45,10 @@ class Event extends MY_Controller
             $this->load->view('Event/insert_event');
         } else {
             $data=[
-                "title"     =>set_value("title"),
+                "title"=>set_value("title"),
                 "description"=>set_value("description"),
-                "date"      =>set_value("date"),
-                "user_id" => $this->session->userdata('user_id')
+                "date"=>set_value("date"),
+                "user_id"=>$this->session->userdata('user_id')
             ];
             $this->Event_model->insert_event($data);
             $this->session->set_flashdata('add', 'New event has been added..');
@@ -72,16 +73,16 @@ class Event extends MY_Controller
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() == FALSE) {
-           $data=array(
+            $data=array(
                 'content'=>'admin/edit_event',
                 'event'=>$this->Event_model->rename_event($id)->row(),
             );
-            $this->load->view('admin/main',$data);
+            $this->load->view('admin/main', $data);
         } else {
             $data=[
-                "title"     =>set_value("title"),
+                "title"=>set_value("title"),
                 "description"=>set_value("description"),
-                "date"      =>set_value("date")
+                "date"=>set_value("date")
             ];
 
             $this->Event_model->update_event($id, $data);
@@ -90,53 +91,49 @@ class Event extends MY_Controller
         }
     }
 
-    public function invite($id){//admin invite to event
+    public function invite($id)
+    {//admin invite to event
         $this->load->library('email');
-        $rules =    [
+        $rules=[
             [
-                'field' => 'name',
-                'label' => 'Name',
-                'rules' => 'required'
+                'field'=>'name',
+                'label'=>'Name',
+                'rules'=>'required'
             ],
             [
-                'field' => 'sender',
-                'label' => 'Sender',
-                'rules' => 'required'
+                'field'=>'sender',
+                'label'=>'Sender',
+                'rules'=>'required'
             ],
             [
-                'field' => 'receiver',
-                'label' => 'Receiver',
-                'rules' => 'required'
+                'field'=>'receiver',
+                'label'=>'Receiver',
+                'rules'=>'required'
             ],
             [
-                'field' => 'message',
-                'label' => 'Invitation',
-                'rules' => 'required'
+                'field'=>'message',
+                'label'=>'Invitation',
+                'rules'=>'required'
             ]
         ];
         $this->form_validation->set_rules($rules);
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $data=array(
                 'content'=>'admin/invite',
                 'event'=>$this->Event_model->rename_event($id)->row()
             );
-            $this->load->view('admin/main',$data);
-        }
-        else
-        {
-            $this->email->from($this->input->post('sender'),$this->input->post('name'));
+            $this->load->view('admin/main', $data);
+        } else {
+            $this->email->from($this->input->post('sender'), $this->input->post('name'));
             $this->email->to($this->input->post('receiver'));
             $this->email->subject('Invite');
             $this->email->message($this->input->post('message'));
 
-            if( $this->email->send() )
-            {
-                $this->session->set_flashdata('invite','You send invite');
+            if ($this->email->send()) {
+                $this->session->set_flashdata('invite', 'You send invite');
                 redirect('Event/home_event');
-            }
-            else {
+            } else {
                 echo $this->email->print_debugger();
             }
         }
@@ -145,7 +142,7 @@ class Event extends MY_Controller
     public function delete_event($id)/*delete event*/
     {
         $this->Event_model->delete_event($id);
-        $this->session->set_flashdata('delete','Event has been deleted..');
+        $this->session->set_flashdata('delete', 'Event has been deleted..');
         redirect('Event/home_event');
     }
 
@@ -173,10 +170,10 @@ class Event extends MY_Controller
             $this->load->view('Event/user_insert_event');
         } else {
             $data=[
-                "title"     =>set_value("title"),
+                "title"=>set_value("title"),
                 "description"=>set_value("description"),
-                "date"      =>set_value("date"),
-                "user_id" => $this->session->userdata('user_id')
+                "date"=>set_value("date"),
+                "user_id"=>$this->session->userdata('user_id')
             ];
             $this->Event_model->insert_event($data);
             $this->session->set_flashdata('add', 'New event has been added..');
@@ -185,9 +182,9 @@ class Event extends MY_Controller
     }
 
     public function user_edit_event($id)/*edit event user*/
-    /*@BUG REPORT
-     name:bug 1
-     desc:edit event is not working on frontend (works in admin dash)*/
+        /*@BUG REPORT
+         name:bug 1
+         desc:edit event is not working on frontend (works in admin dash)*/
     {
         $rules=[
             [
@@ -207,12 +204,12 @@ class Event extends MY_Controller
             $data=array(
                 'event'=>$this->Event_model->rename_event($id)->row(),
             );
-            $this->load->view('pages/event_edit',$data);
+            $this->load->view('pages/event_edit', $data);
         } else {
             $data=[
-                "title"     =>set_value("title"),
+                "title"=>set_value("title"),
                 "description"=>set_value("description"),
-                "date"      =>set_value("date")
+                "date"=>set_value("date")
             ];
 
             $this->Event_model->update_event($id, $data);
@@ -221,53 +218,49 @@ class Event extends MY_Controller
         }
     }
 
-    public function user_invite($id){//user invite to event
+    public function user_invite($id)
+    {//user invite to event
         $this->load->library('email');
-        $rules =    [
+        $rules=[
             [
-                'field' => 'name',
-                'label' => 'Name',
-                'rules' => 'required'
+                'field'=>'name',
+                'label'=>'Name',
+                'rules'=>'required'
             ],
             [
-                'field' => 'sender',
-                'label' => 'Sender',
-                'rules' => 'required'
+                'field'=>'sender',
+                'label'=>'Sender',
+                'rules'=>'required'
             ],
             [
-                'field' => 'receiver',
-                'label' => 'Receiver',
-                'rules' => 'required'
+                'field'=>'receiver',
+                'label'=>'Receiver',
+                'rules'=>'required'
             ],
             [
-                'field' => 'message',
-                'label' => 'Invitation',
-                'rules' => 'required'
+                'field'=>'message',
+                'label'=>'Invitation',
+                'rules'=>'required'
             ]
         ];
         $this->form_validation->set_rules($rules);
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $data=array(
                 'content'=>'pages/event_invite',
                 'event'=>$this->Event_model->rename_event($id)->row()
             );
-            $this->load->view('pages/event_invite',$data);
-        }
-        else
-        {
-            $this->email->from($this->input->post('sender'),$this->input->post('name'));
+            $this->load->view('pages/event_invite', $data);
+        } else {
+            $this->email->from($this->input->post('sender'), $this->input->post('name'));
             $this->email->to($this->input->post('receiver'));
             $this->email->subject('Invite');
             $this->email->message($this->input->post('message'));
 
-            if( $this->email->send() )
-            {
-                $this->session->set_flashdata('invite','You send invite');
+            if ($this->email->send()) {
+                $this->session->set_flashdata('invite', 'You send invite');
                 redirect('home/index');
-            }
-            else {
+            } else {
                 echo $this->email->print_debugger();
             }
         }
@@ -276,10 +269,9 @@ class Event extends MY_Controller
     public function user_delete_event($id)/*user delete event*/
     {
         $this->Event_model->delete_event($id);
-        $this->session->set_flashdata('delete','Event has been deleted..');
+        $this->session->set_flashdata('delete', 'Event has been deleted..');
         redirect('home/index');
     }
-
 
 
 }

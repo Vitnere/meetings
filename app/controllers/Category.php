@@ -30,7 +30,7 @@ class Category extends MY_Controller
         } else {
             $data=[
                 "title"=>set_value("title"),
-                "user_id" => $this->session->userdata('user_id')
+                "user_id"=>$this->session->userdata('user_id')
             ];
 
             $this->Category_model->add_cat($data);
@@ -56,9 +56,9 @@ class Category extends MY_Controller
                 'content'=>'admin/edit_cat',
                 'category'=>$this->Category_model->rename_cat($id)->row()
             );
-            $this->load->view('admin/main',$data);
+            $this->load->view('admin/main', $data);
         } else {
-            $data['title']   = set_value("title");
+            $data['title']=set_value("title");
             $this->Category_model->update_cat($id, $data);
             $this->session->set_flashdata('update', 'Category has been updated..');
             redirect('admin/cattegories');
@@ -68,7 +68,7 @@ class Category extends MY_Controller
     public function del_cat($id)/*delete category*/
     {
         $this->Category_model->del_cat($id);
-        $this->session->set_flashdata('delete','Category has been deleted..');
+        $this->session->set_flashdata('delete', 'Category has been deleted..');
         redirect('Admin/cattegories');
     }
 

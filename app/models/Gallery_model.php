@@ -2,50 +2,51 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Gallery_model extends CI_Model {
+class Gallery_model extends CI_Model
+{
 
     public function all($user_id)/*get user images*/
     {
-         $row= $this->db->where('user_id',$user_id)->limit(25)->get('images');
+        $row=$this->db->where('user_id', $user_id)->limit(25)->get('images');
         return $row;
     }
 
     public function admin_all()/*get all images*/
     {
-        $result = $this->db->get('images');
+        $result=$this->db->get('images');
         return $result;
     }
 
     public function filter_by_category($categoryId)//filter categories
     {
-        $q =  "SELECT * FROM images INNER JOIN categories on images.categories_id = categories.id WHERE categories.id =".$categoryId;
-        $q = $this->db->query($q)->result();
+        $q="SELECT * FROM images INNER JOIN categories on images.categories_id = categories.id WHERE categories.id =" . $categoryId;
+        $q=$this->db->query($q)->result();
         return $q;
     }
 
 
     public function find($id)
     {
-        $row = $this->db->where('id',$id)->limit(1)->get('images');
+        $row=$this->db->where('id', $id)->limit(1)->get('images');
         return $row;
     }
 
     public function create($data)
     {
-        try{
+        try {
             $this->db->insert('images', $data);
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
 
     public function update($id, $data)
     {
-        try{
-            $this->db->where('id',$id)->limit(1)->update('images', $data);
+        try {
+            $this->db->where('id', $id)->limit(1)->update('images', $data);
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -53,12 +54,10 @@ class Gallery_model extends CI_Model {
     public function delete($id)
     {
         try {
-            $this->db->where('id',$id)->delete('images');
+            $this->db->where('id', $id)->delete('images');
             return true;
-        }
-
-            //catch exception
-        catch(Exception $e) {
+        } //catch exception
+        catch (Exception $e) {
             echo $e->getMessage();
         }
     }
